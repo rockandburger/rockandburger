@@ -1,3 +1,96 @@
 .cardapio {
     background: $c3;
+
+    .burger-wrp {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+
+        figure {
+            position: relative;
+            width: 33%;
+            max-width: 370px;
+
+            svg {
+                z-index: 1;
+                position: absolute;
+                right: 0;
+            }
+
+            img {
+                z-index: 2;
+            }
+
+            figcaption {
+                position: absolute;
+                z-index: 3;
+                top: 8px;
+                left: 9px;
+                color: $cWhite;
+                padding: 15px 8px 12px 18px;
+                text-align: center;
+                width: 294px;
+                height: 284px;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: flex-start;
+
+                h3 {
+                    font-size: 2.319rem;
+                    font-family: $titleFont;
+                }
+                .including {
+                    display: flex;
+                    align-self: flex-end;
+                    margin-right: auto;
+                    text-align: left;
+                }
+                .price {
+                    display: flex;
+                    align-self: flex-end;
+                }
+            }
+        }
+        p {
+            text-align: center;
+            color: $cWhite;
+            font-family: $contentFont;
+            font-size: 1.492rem;
+            width: 100%;
+            margin: 0 auto 35px;
+    
+            strong {
+                font-weight: 900;
+            }
+        }
+    }
+
+    .section-title {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        z-index: 3;
+        padding: 65px 0 0;
+        margin-bottom: 20px;
+        width: 100%;
+        h2 {
+            color: $c6;
+            font-size: 4.689rem;
+            text-align: center;
+            font-family: $titleFont;
+            position: absolute;
+        }
+        .ribbon {
+            fill: $c2;
+            width: 433px;
+            height: 67px;
+        }
+        .hamburger-icon {
+            width: 66px;
+            height: 66px;
+            fill: $c2;
+        }
+    }
 }
