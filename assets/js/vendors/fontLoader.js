@@ -1,9 +1,9 @@
-import WebFont from 'webfontloader'
+// import WebFont from 'webfontloader'
 
-const fonts = WebFont.load({
-   google: {
-     families: ['Lato:400,700,900']
-   }
-})
+// const fonts = WebFont.load({
+//    google: {
+//      families: ['Lato:400,700,900']
+//    }
+// })
 
-export default fonts
+// export default fonts

@@ -26,6 +26,9 @@ $cGrey  : #e0e5e8;
 $c1: #a12225;
 $c2: #f1c646;
 $c3: #341b1a;
+$c4: #c9282d;
+$c5: #f1c647;
+$c6: #2b1211;
 
 $medium: 500;
 $bold: 700;
@@ -38,8 +41,8 @@ $imagePath: './' !default;
 /*********************************************************************
 *  = Font Family
 *********************************************************************/
-$defaultFont : 'Lato', sans-serif;
-$secondaryFont: 'Adobe Heiti Std', sans-serif;
+$titleFont : 'Phosphate-Solid', sans-serif;
+$contentFont: 'Montserrat', sans-serif;
 $components: '../../../components/' !default;
 /*********************************************************************
 *  =Media Screen

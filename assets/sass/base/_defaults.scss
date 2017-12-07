@@ -5,7 +5,7 @@ html, body{
   min-height: 100vh;
   min-width: 100vw;
   overflow-x: hidden;
-  font-family: $defaultFont;
+  font-family: $contentFont;
   -webkit-font-smoothing: antialiased;
 
 }
@@ -49,4 +49,9 @@ abbr{
 figure{
   padding: 0;
   margin: 0;
+}
+.container {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
 }
