@@ -3,4 +3,60 @@ header {
     background: $c1;
     height: 475px;
     border-bottom: 12px solid $c2;
+
+    .logo-top {
+        display: none;
+    }
+    .phone-top {
+        display: none;
+    }
+    .banner-top {
+        .container {
+            position: relative;
+        }
+
+        img {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+        }
+        .burger-fries {
+            z-index: 1;
+            bottom: -100px;
+            right: -92px;
+        }
+        .burger-box {
+            bottom: -135px;
+            z-index: 2;
+        }
+    }
+    .logo-banner {
+        width: 510px;
+        height: 280px;
+        margin-top: 20px;
+    }
+    .phone-banner {
+        max-width: 500px;
+        span {
+            display: block;
+            font-family: $titleFont;
+            text-align: center;
+            line-height: 1;
+
+            &:nth-child(1) {
+                color: $cWhite;
+                font-size: 2.687rem;
+            }
+            &:nth-child(2) {
+                color: $cWhite;
+                font-size: 2.089rem;
+            }
+        }
+    }
+}
+#logo-1 {
+    fill: $c4;
+}
+g {
+    fill: $c5;
 }
