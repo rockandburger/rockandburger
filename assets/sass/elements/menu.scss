@@ -1,0 +1,50 @@
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 848px;
+    margin: 0 auto;
+    padding: 25px 0 0;
+    a {
+        font-family: $titleFont;
+        color: $cBlack;
+        font-size: 1.387rem;
+        line-height: 0.315;
+        text-align: center;
+        position: relative;
+        margin: 0;
+        height: 29px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        span {
+            display: flex;
+            height: 100%;
+            justify-content: center;
+            align-items: center;
+            background: $c2;
+            position: relative;
+            z-index: 2;
+        }
+        .ribbon_edge {
+            position: relative;
+
+            &.left {
+                left: 0;
+            }
+            &.right {
+                right: 30px;
+
+                &:after {
+                    left: 17px;
+                }
+            }
+        }
+        &.fale-conosco {
+            span {
+                width: 150px;
+            }
+        }
+    }
+}
