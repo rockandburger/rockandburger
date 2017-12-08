@@ -1,0 +1,86 @@
+.section-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 3;
+    padding: 65px 0 0;
+    margin-bottom: 20px;
+    width: 100%;
+    h2 {
+        color: $c6;
+        font-size: 4.689rem;
+        text-align: center;
+        font-family: $titleFont;
+        // position: absolute;
+        line-height: 0.7;
+        background: $c2;
+        padding: 7px 20px;
+        letter-spacing: .5rem;
+        position: relative;
+        z-index: 2;
+    }
+    .hamburger-icon {
+        width: 66px;
+        height: 66px;
+        fill: $c2;
+    }
+
+    .adicionais-icon {
+        width: 82px;
+        height: 82px;
+    }
+    .petiscos-icon {
+        width: 60px;
+        height: 80px;
+        fill: $c2;
+
+        &.left {
+            transform: rotate(-15deg);
+        }
+
+        &.right {
+            transform: rotate(15deg);
+        }
+    }
+    .bebidas-icon {
+        width: 42px;
+        height: 90px;
+        fill: $c2;
+        
+        &.left {
+            transform: rotate(-15deg);
+        }
+
+        &.right {
+            transform: rotate(15deg);
+        }
+    }
+    .fale-conosco-icon {
+        fill: $c2;
+        width: 47px;
+        height: 72px;
+        
+        &.left {
+            transform: rotate(-15deg);
+        }
+
+        &.right {
+            transform: rotate(15deg);
+        }
+    }
+    .ribbon {
+        width: 66px;
+        height: 68px;
+        fill: $c2;
+        position: relative;
+        z-index: 1;
+
+        &.left {
+            right: -30px;
+        }
+        &.right {
+            left: -30px;
+        }
+    }
+}
