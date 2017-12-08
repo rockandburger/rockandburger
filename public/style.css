@@ -127,6 +127,14 @@ svg:not(.dflt) circle {
   stroke: inherit; }
 .hidden {
   display: none; }
+.sprite {
+  width: 0;
+  height: 0;
+  line-height: 0;
+  padding: 0;
+  margin: 0;
+  font-size: 0;
+  display: inherit; }
 nav {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -209,12 +217,86 @@ nav a.fale-conosco span {
     width: 0px;
     position: relative;
     float: left; }
+.section-title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+  z-index: 3;
+  padding: 65px 0 0;
+  margin-bottom: 20px;
+  width: 100%; }
+.section-title h2 {
+    color: #2b1211;
+    font-size: 4.689rem;
+    text-align: center;
+    font-family: "Phosphate-Solid", sans-serif;
+    line-height: 0.7;
+    background: #f1c646;
+    padding: 7px 20px;
+    letter-spacing: .5rem;
+    position: relative;
+    z-index: 2; }
+.section-title .hamburger-icon {
+    width: 66px;
+    height: 66px;
+    fill: #f1c646; }
+.section-title .adicionais-icon {
+    width: 82px;
+    height: 82px; }
+.section-title .petiscos-icon {
+    width: 60px;
+    height: 80px;
+    fill: #f1c646; }
+.section-title .petiscos-icon.left {
+      -webkit-transform: rotate(-15deg);
+              transform: rotate(-15deg); }
+.section-title .petiscos-icon.right {
+      -webkit-transform: rotate(15deg);
+              transform: rotate(15deg); }
+.section-title .bebidas-icon {
+    width: 42px;
+    height: 90px;
+    fill: #f1c646; }
+.section-title .bebidas-icon.left {
+      -webkit-transform: rotate(-15deg);
+              transform: rotate(-15deg); }
+.section-title .bebidas-icon.right {
+      -webkit-transform: rotate(15deg);
+              transform: rotate(15deg); }
+.section-title .fale-conosco-icon {
+    fill: #f1c646;
+    width: 47px;
+    height: 72px; }
+.section-title .fale-conosco-icon.left {
+      -webkit-transform: rotate(-15deg);
+              transform: rotate(-15deg); }
+.section-title .fale-conosco-icon.right {
+      -webkit-transform: rotate(15deg);
+              transform: rotate(15deg); }
+.section-title .ribbon {
+    width: 66px;
+    height: 68px;
+    fill: #f1c646;
+    position: relative;
+    z-index: 1; }
+.section-title .ribbon.left {
+      right: -30px; }
+.section-title .ribbon.right {
+      left: -30px; }
 h1, h2, h3, h4, h5, h6 {
   margin: 0; }
 p {
   margin: 0; }
 .cardapio {
-  background: #341b1a; }
+  background: #341b1a;
+  padding: 0 0 120px; }
 .cardapio .burger-wrp {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -257,7 +339,26 @@ p {
                 align-items: flex-start; }
 .cardapio .burger-wrp figure figcaption h3 {
           font-size: 2.319rem;
-          font-family: "Phosphate-Solid", sans-serif; }
+          font-family: "Phosphate-Solid", sans-serif;
+          text-shadow: 1px 2px 0px rgba(0, 0, 0, 0.63);
+          line-height: .75; }
+.cardapio .burger-wrp figure figcaption h3 span {
+            font-size: 0.686rem;
+            display: block;
+            margin: 4px auto 0; }
+.cardapio .burger-wrp figure figcaption .ingredients {
+          font-size: 0.824rem;
+          font-weight: 400;
+          text-align: center;
+          font-family: "Montserrat", sans-serif;
+          margin-bottom: 100px;
+          display: -webkit-box;
+          display: -ms-flexbox;
+          display: flex;
+          -webkit-box-pack: center;
+              -ms-flex-pack: center;
+                  justify-content: center;
+          width: 100%; }
 .cardapio .burger-wrp figure figcaption .including {
           display: -webkit-box;
           display: -ms-flexbox;
@@ -265,13 +366,41 @@ p {
           -ms-flex-item-align: end;
               align-self: flex-end;
           margin-right: auto;
-          text-align: left; }
+          text-align: left;
+          font-size: 0.685rem;
+          text-align: left;
+          font-family: "Phosphate-Solid", sans-serif;
+          text-shadow: 1px 2px 0px rgba(0, 0, 0, 0.63);
+          line-height: 1; }
 .cardapio .burger-wrp figure figcaption .price {
           display: -webkit-box;
           display: -ms-flexbox;
           display: flex;
           -ms-flex-item-align: end;
-              align-self: flex-end; }
+              align-self: flex-end;
+          color: #f1c646;
+          font-size: 2.284rem;
+          font-weight: 900;
+          text-shadow: 2px 4px 12.6px rgba(0, 0, 0, 0.75);
+          font-family: "Montserrat", sans-serif;
+          color: #000;
+          -webkit-text-fill-color: #000;
+          -webkit-text-stroke-width: 5px;
+          -webkit-text-stroke-color: #000;
+          position: relative; }
+.cardapio .burger-wrp figure figcaption .price:before {
+            content: attr(data-price);
+            position: absolute;
+            top: 0;
+            left: 0;
+            font-size: 2.284rem;
+            color: #f1c646;
+            -webkit-text-fill-color: #f1c646;
+            -webkit-text-stroke-width: 0px;
+            -webkit-text-stroke-color: #f1c646;
+            font-weight: 900; }
+.cardapio .burger-wrp figure figcaption.veggie .ingredients {
+          margin: 113px auto 0; }
 .cardapio .burger-wrp p {
       text-align: center;
       color: #fff;
@@ -281,39 +410,183 @@ p {
       margin: 0 auto 35px; }
 .cardapio .burger-wrp p strong {
         font-weight: 900; }
-.cardapio .section-title {
+.cardapio .cardapio-wrp {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    position: relative;
-    z-index: 3;
-    padding: 65px 0 0;
-    margin-bottom: 20px;
-    width: 100%; }
-.cardapio .section-title h2 {
-      color: #2b1211;
-      font-size: 4.689rem;
-      text-align: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap; }
+.cardapio .col {
+    width: 33%; }
+.cardapio .col span {
+      font-family: "Montserrat", sans-serif;
+      color: #fff;
+      font-size: 1.12rem;
+      font-weight: 400;
+      line-height: .7; }
+.cardapio .col h3 {
+      color: #f1c646;
       font-family: "Phosphate-Solid", sans-serif;
-      position: absolute; }
-.cardapio .section-title .ribbon {
-      fill: #f1c646;
-      width: 433px;
-      height: 67px; }
-.cardapio .section-title .hamburger-icon {
-      width: 66px;
-      height: 66px;
-      fill: #f1c646; }
+      font-size: 1.751rem;
+      letter-spacing: .1rem;
+      line-height: .9;
+      margin: 0 auto 13px; }
+.cardapio .col p {
+      font-size: 1.125rem;
+      font-weight: 400;
+      font-family: "Montserrat", sans-serif;
+      color: #fff;
+      letter-spacing: .1rem;
+      width: 85%; }
+.cardapio .col .row {
+      margin: 0 0 8px; }
+.cardapio .col .row.row-0 {
+        margin: 0 0 11px; }
+.cardapio .col .row.row-3 {
+        margin: 25px 0; }
+.cardapio .col .row.row-3 span {
+          line-height: 1.1; }
+.cardapio .col .row.row-margin {
+        margin: 0 0 45px; }
+.cardapio .sobremesa {
+    font-size: 1.354rem;
+    font-weight: 700;
+    color: #f1c646;
+    font-family: "Montserrat", sans-serif;
+    text-align: center; }
+#adicionais-icon g, #adicionais-icon-2 g {
+  fill: transparent !important;
+  stroke: #f1c646; }
 .contato {
   background: url(/assets/img/bg-contato.png); }
 header {
   background: #000; }
+.fale-conosco-sub {
+  font-family: "Montserrat", sans-serif;
+  color: #fff;
+  font-size: 1.501rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 42px; }
+.map-container {
+  width: 525px; }
+.contato-container {
+  width: 445px; }
+.contato-container p {
+    font-family: "Montserrat", sans-serif;
+    color: #fff;
+    font-size: 1.125rem;
+    font-weight: 400;
+    margin-bottom: 14px; }
+.contato-container p svg {
+      margin-right: 15px; }
+.contato-container p input {
+      border: 1px solid #fff;
+      background: rgba(0, 0, 0, 0.4);
+      width: 100%;
+      border-radius: 5px;
+      height: 40px;
+      padding: 15px 13px;
+      font-size: 0.873rem;
+      font-weight: 400;
+      color: #fff;
+      font-family: "Montserrat", sans-serif; }
+.contato-container p textarea {
+      border: 1px solid #fff;
+      background: rgba(0, 0, 0, 0.4);
+      width: 100%;
+      border-radius: 5px;
+      max-height: 140px;
+      padding: 15px 13px; }
+.contato-container p input[type=submit] {
+      background: #f1c647;
+      border: none;
+      width: 184px;
+      height: 46px;
+      color: #9f2329;
+      font-size: 1.026rem;
+      font-weight: 700;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: center;
+          -ms-flex-pack: center;
+              justify-content: center;
+      margin-left: auto;
+      -webkit-box-align: center;
+          -ms-flex-align: center;
+              align-items: center;
+      cursor: pointer;
+      -webkit-transition: background .5s;
+      transition: background .5s; }
+.contato-container p input[type=submit]:hover {
+        -webkit-transition: background .5s;
+        transition: background .5s;
+        background: rgba(241, 198, 71, 0.8); }
+.contato-container p ::-webkit-input-placeholder {
+      /* Chrome/Opera/Safari */
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 400;
+      font-family: "Montserrat", sans-serif; }
+.contato-container p ::-moz-placeholder {
+      /* Firefox 19+ */
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 400;
+      font-family: "Montserrat", sans-serif; }
+.contato-container p :-ms-input-placeholder {
+      /* IE 10+ */
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 400;
+      font-family: "Montserrat", sans-serif; }
+.contato-container p :-moz-placeholder {
+      /* Firefox 18- */
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 400;
+      font-family: "Montserrat", sans-serif; }
+.contato-container form {
+    margin-top: 14px; }
+.contato-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between; }
+.phone-icon {
+  width: 25px;
+  height: 25px;
+  fill: #fff; }
+.email-icon {
+  width: 26px;
+  height: 17px;
+  fill: #fff; }
+.address-icon {
+  width: 18px;
+  height: 25px;
+  fill: #fff; }
+.whatsapp-icon {
+  height: 25px;
+  width: 25px; }
+.line {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center; }
+.address-line svg {
+  width: 28px;
+  height: 25px; }
 header {
   width: 100%;
   background: #a12225;

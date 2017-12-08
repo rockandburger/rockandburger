@@ -30,3 +30,12 @@ svg:not(.dflt) {
 .hidden{
   display: none;
 }
+.sprite {
+  width: 0;
+  height: 0;
+  line-height: 0;
+  padding: 0;
+  margin: 0;
+  font-size: 0;
+  display: inherit;
+}
