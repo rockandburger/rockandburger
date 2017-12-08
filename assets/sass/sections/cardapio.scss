@@ -1,5 +1,6 @@
 .cardapio {
     background: $c3;
+    padding: 0 0 120px;
 
     .burger-wrp {
         display: flex;
@@ -39,16 +40,68 @@
                 h3 {
                     font-size: 2.319rem;
                     font-family: $titleFont;
+                    text-shadow: 1px 2px 0px rgba(0, 0, 0, 0.63);
+                    line-height: .75;
+
+                    span {
+                        font-size: 0.686rem;
+                        display: block;
+                        margin: 4px auto 0;
+                    }
+                }
+                .ingredients {
+                    font-size: 0.824rem;
+                    font-weight: 400;
+                    text-align: center;
+                    font-family: $contentFont;
+                    margin-bottom: 100px;
+                    display: flex;
+                    justify-content: center;
+                    width: 100%;
                 }
                 .including {
                     display: flex;
                     align-self: flex-end;
                     margin-right: auto;
                     text-align: left;
+                    font-size: 0.685rem;
+                    text-align: left;
+                    font-family: $titleFont;
+                    text-shadow: 1px 2px 0px rgba(0, 0, 0, 0.63);
+                    line-height: 1;
                 }
                 .price {
                     display: flex;
                     align-self: flex-end;
+                    color: $c2;
+                    font-size: 2.284rem;
+                    font-weight: 900;
+                    text-shadow: 2px 4px 12.6px rgba(0, 0, 0, 0.75);
+                    font-family: $contentFont;
+                    color: $cBlack;
+                    -webkit-text-fill-color: $cBlack; 
+                    -webkit-text-stroke-width: 5px;
+                    -webkit-text-stroke-color: $cBlack;
+                    position: relative;
+
+                    &:before {
+                        content: attr(data-price);
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        font-size: 2.284rem;
+                        color: $c2;
+                        -webkit-text-fill-color: $c2; 
+                        -webkit-text-stroke-width: 0px;
+                        -webkit-text-stroke-color: $c2;
+                        font-weight: 900;
+                    }
+                }
+
+                &.veggie {
+                    .ingredients {
+                        margin: 113px auto 0;
+                    }
                 }
             }
         }
@@ -65,32 +118,66 @@
             }
         }
     }
-
-    .section-title {
+    .cardapio-wrp {
         display: flex;
-        justify-content: center;
-        align-items: center;
-        position: relative;
-        z-index: 3;
-        padding: 65px 0 0;
-        margin-bottom: 20px;
-        width: 100%;
-        h2 {
-            color: $c6;
-            font-size: 4.689rem;
-            text-align: center;
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-wrap: wrap;
+    }
+    .col {
+        width: 33%;
+        span {
+            font-family: $contentFont;
+            color: $cWhite;
+            font-size: 1.12rem;
+            font-weight: 400;
+            line-height: .7;
+        }
+        h3 {
+            color: $c2;
             font-family: $titleFont;
-            position: absolute;
+            font-size: 1.751rem;
+            letter-spacing: .1rem;
+            line-height: .9;
+            margin: 0 auto 13px;
         }
-        .ribbon {
-            fill: $c2;
-            width: 433px;
-            height: 67px;
+        p {
+            font-size: 1.125rem;
+            font-weight: 400;
+            font-family: $contentFont;
+            color: $cWhite;
+            letter-spacing: .1rem;
+            width: 85%;
         }
-        .hamburger-icon {
-            width: 66px;
-            height: 66px;
-            fill: $c2;
+        
+        .row {
+            margin: 0 0 8px;
+
+            &.row-0 {
+                margin: 0 0 11px;
+            }
+            &.row-3 {
+                margin: 25px 0;
+                span {
+                    line-height: 1.1;
+                }
+            }
+            &.row-margin {
+                margin: 0 0 45px;
+            }
         }
+    }
+    .sobremesa {
+        font-size: 1.354rem;
+        font-weight: 700;
+        color: $c2;
+        font-family: $contentFont;
+        text-align: center;
+    }
+}
+#adicionais-icon, #adicionais-icon-2 {
+    g {
+        fill: transparent !important;
+        stroke: $c2;
     }
 }
