@@ -11,15 +11,120 @@
             position: relative;
             width: 33%;
             max-width: 370px;
+            min-width: 370px;
 
             svg {
                 z-index: 1;
                 position: absolute;
                 right: 0;
             }
-
-            img {
+            .box {
                 z-index: 2;
+                position: relative;
+            }
+            .hamburger {
+              position: absolute;
+              left: 0;
+              top: 50%;
+              // margin-top: -111px;
+              transform: translateX(110px);
+              z-index: 1;
+            }
+            &.elvis-burger {
+              .hamburger {
+                transform: translateX(55px) translateY(-121px);
+                transition: transform .5s;
+              }
+              &:hover {
+                .hamburger {
+                  transform: translateX(70px) translateY(-121px);
+                  transition: transform .5s;
+                }
+              }
+            }
+            &.janis-burger {
+              .hamburger {
+                transform: translateX(55px) translateY(-120px);
+                transition: transform .5s;
+              }
+              &:hover {
+                .hamburger {
+                  transform: translateX(78px) translateY(-120px);
+                  transition: transform .5s;
+                }
+              }
+            }
+            &.ramones-burger {
+              .hamburger {
+                transform: translateX(70px) translateY(-110px);
+                transition: transform .5s;
+              }
+              &:hover {
+                .hamburger {
+                  transform: translateX(100px) translateY(-110px);
+                  transition: transform .5s;
+                }
+              }
+            }
+            &.led-burger {
+              .hamburger {
+                transform: translateX(100px) translateY(-128px);
+                transition: transform .5s;
+              }
+              &:hover {
+                .hamburger {
+                  transition: transform .5s;
+                  transform: translateX(125px) translateY(-128px);
+                }
+              }
+            }
+            &.beatles-burger {
+              .hamburger {
+                transform: translateX(65px) translateY(-123px);
+                transition: transform .5s;
+              }
+              &:hover {
+                .hamburger {
+                  transform: translateX(90px) translateY(-123px);
+                  transition: transform .5s;
+                }
+              }
+            }
+            &.hendrix-burger {
+              .hamburger {
+                transform: translateX(74px) translateY(-128px);
+                  transition: transform .5s;
+              }
+              &:hover {
+                .hamburger {
+                  transform: translateX(104px) translateY(-128px);
+                  transition: transform .5s;
+                }
+              }
+            }
+            &.bowie-burger {
+              .hamburger {
+                transform: translateX(55px) translateY(-111px);
+                transition: transform .5s;
+              }
+              &:hover {
+                .hamburger {
+                  transform: translateX(75px) translateY(-111px);
+                  transition: transform .5s;
+                }
+              }
+            }
+            &.kiss-burger {
+              .hamburger {
+                transform: translateX(63px) translateY(-122px);
+                  transition: transform .5s;
+              }
+              &:hover {
+                .hamburger {
+                  transform: translateX(90px) translateY(-122px);
+                  transition: transform .5s;
+                }
+              }
             }
 
             figcaption {
@@ -42,6 +147,10 @@
                     font-family: $titleFont;
                     text-shadow: 1px 2px 0px rgba(0, 0, 0, 0.63);
                     line-height: .75;
+                    text-transform: uppercase;
+                    display: flex;
+                    align-items: center;
+                    height: 73px;
 
                     span {
                         font-size: 0.686rem;
@@ -69,6 +178,7 @@
                     font-family: $titleFont;
                     text-shadow: 1px 2px 0px rgba(0, 0, 0, 0.63);
                     line-height: 1;
+                    text-transform: uppercase;
                 }
                 .price {
                     display: flex;
@@ -79,7 +189,7 @@
                     text-shadow: 2px 4px 12.6px rgba(0, 0, 0, 0.75);
                     font-family: $contentFont;
                     color: $cBlack;
-                    -webkit-text-fill-color: $cBlack; 
+                    -webkit-text-fill-color: $cBlack;
                     -webkit-text-stroke-width: 5px;
                     -webkit-text-stroke-color: $cBlack;
                     position: relative;
@@ -91,7 +201,7 @@
                         left: 0;
                         font-size: 2.284rem;
                         color: $c2;
-                        -webkit-text-fill-color: $c2; 
+                        -webkit-text-fill-color: $c2;
                         -webkit-text-stroke-width: 0px;
                         -webkit-text-stroke-color: $c2;
                         font-weight: 900;
@@ -99,6 +209,12 @@
                 }
 
                 &.veggie {
+                    h3 {
+                      flex-wrap: wrap;
+                      height: 0;
+                      max-width: 123px;
+                      margin-top: 10px;
+                    }
                     .ingredients {
                         margin: 113px auto 0;
                     }
@@ -112,7 +228,7 @@
             font-size: 1.492rem;
             width: 100%;
             margin: 0 auto 35px;
-    
+
             strong {
                 font-weight: 900;
             }
@@ -123,9 +239,23 @@
         justify-content: space-between;
         align-items: flex-start;
         flex-wrap: wrap;
+
+        @media(max-width: 1233px) {
+            justify-content: center;
+        }
     }
     .col {
         width: 33%;
+        min-width: 349px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        @media(max-width: 1233px) {
+          .col {
+            margin: 0 10px 20px;
+          }
+        }
+
         span {
             font-family: $contentFont;
             color: $cWhite;
@@ -140,6 +270,7 @@
             letter-spacing: .1rem;
             line-height: .9;
             margin: 0 auto 13px;
+            text-transform: uppercase;
         }
         p {
             font-size: 1.125rem;
@@ -149,9 +280,10 @@
             letter-spacing: .1rem;
             width: 85%;
         }
-        
+
         .row {
             margin: 0 0 8px;
+            width: 100%;
 
             &.row-0 {
                 margin: 0 0 11px;

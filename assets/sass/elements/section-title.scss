@@ -13,12 +13,16 @@
         text-align: center;
         font-family: $titleFont;
         // position: absolute;
-        line-height: 0.7;
+        line-height: 0.35;
         background: $c2;
-        padding: 7px 20px;
+        padding: 0 20px;
         letter-spacing: .5rem;
         position: relative;
         z-index: 2;
+        text-transform: uppercase;
+        height: 66.8px;
+        display: flex;
+        align-items: flex-end;
     }
     .hamburger-icon {
         width: 66px;
@@ -29,6 +33,14 @@
     .adicionais-icon {
         width: 82px;
         height: 82px;
+    }
+    .hamburger-icon {
+        &.left {
+          transform: rotate(-15deg);
+        }
+        &.right {
+          transform: rotate(15deg);
+        }
     }
     .petiscos-icon {
         width: 60px;
@@ -47,7 +59,7 @@
         width: 42px;
         height: 90px;
         fill: $c2;
-        
+
         &.left {
             transform: rotate(-15deg);
         }
@@ -60,7 +72,7 @@
         fill: $c2;
         width: 47px;
         height: 72px;
-        
+
         &.left {
             transform: rotate(-15deg);
         }
@@ -71,7 +83,7 @@
     }
     .ribbon {
         width: 66px;
-        height: 68px;
+        height: 70px;
         fill: $c2;
         position: relative;
         z-index: 1;
@@ -82,5 +94,83 @@
         &.right {
             left: -30px;
         }
+    }
+    &.petiscos {
+      .ribbon {
+        height: 72px;
+      }
+    }
+    @media(max-width: 990px) {
+      h2 {
+        height: 45px;
+        line-height: .55;
+        font-size: 2.5rem;
+      }
+      .ribbon {
+        height: 45px;
+      }
+      &.petiscos {
+        .ribbon {
+          height: 45px;
+        }
+      }
+      .hamburger-icon {
+        height: 40px;
+        width: 40px;
+      }
+      .adicionais-icon {
+        height: 50px;
+        width: 85px;
+      }
+      .petiscos-icon {
+        width: 40px;
+        height: 60px;
+      }
+      .bebidas-icon {
+        width: 22px;
+        height: 70px;
+      }
+      .fale-conosco-icon {
+        width: 37px;
+        height: 62px;
+      }
+    }
+    @media(max-width: 765px) {
+      h2 {
+        height: 35px;
+        line-height: 0.95;
+        font-size: 1.5rem;
+      }
+      .ribbon {
+        height: 35px;
+        &.left {
+          right: -20px;
+        }
+        &.right {
+          left: -20px;
+        }
+      }
+      &.petiscos {
+        .ribbon {
+          height: 35px;
+        }
+      }
+      &.fale-conosco {
+        h2 {
+          height: 50px;
+          line-height: 0.75;
+          font-size: 1.5rem;
+        }
+        .ribbon {
+          height: 50px;
+        }
+      }
+    }
+    @media(max-width: 535px) {
+      h2 {
+        height: 35px;
+        line-height: 1.45;
+        font-size: 1.1rem;
+      }
     }
 }
