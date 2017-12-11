@@ -17,29 +17,29 @@ nav {
         display: flex;
         justify-content: center;
         align-items: center;
+        text-transform: uppercase;
 
         span {
-            display: flex;
+            // display: flex;
             height: 100%;
-            justify-content: center;
-            align-items: center;
+            // justify-content: center;
+            // align-items: center;
             background: $c2;
             position: relative;
             z-index: 2;
+            line-height: 1.7;
         }
-        .ribbon_edge {
-            position: relative;
+        .ribbon {
+          height: 28px;
+          width: 28px;
+          fill: $c2;
 
-            &.left {
-                left: 0;
-            }
-            &.right {
-                right: 30px;
-
-                &:after {
-                    left: 17px;
-                }
-            }
+          &.left {
+            transform: translateX(3px);
+          }
+          &.right {
+            transform: translateX(-3px);
+          }
         }
         &.fale-conosco {
             span {
