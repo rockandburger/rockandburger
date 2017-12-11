@@ -1,3 +1,13 @@
+@font-face {
+    font-family: 'Phosphate-Solid';
+    src: url('~/assets/fonts/PhosphateSolid.eot');
+    src: url('~/assets/fonts/PhosphateSolid.eot?#iefix') format('embedded-opentype'),
+        url('~/assets/fonts/PhosphateSolid.woff2') format('woff2'),
+        url('~/assets/fonts/PhosphateSolid.woff') format('woff'),
+        url('~/assets/fonts/PhosphateSolid.svg#PhosphateSolid') format('svg');
+        line-height: 1;
+}
+
 h1, h2, h3, h4, h5, h6 {
     margin: 0;
 }
