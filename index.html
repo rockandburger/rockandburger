@@ -11,29 +11,49 @@
     <header>
         <nav>
             <a href="#" class="burgers nav-item">
-            <div class='ribbon_edge left'></div>
+                <svg role="link" title="Burgers" class="ribbon left">
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#ribbon-1"></use>
+                </svg>
                 <span>Burgers</span>
-                <div class='ribbon_edge right'></div>
+                <svg role="link" title="Burgers" class="ribbon right">
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#ribbon-2"></use>
+                </svg>
             </a>
             <a href="#" class="adicionais nav-item">
-            <div class='ribbon_edge left'></div>
+                <svg role="link" title="Adicionais" class="ribbon left">
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#ribbon-1"></use>
+                </svg>
                 <span>Adicionais</span>
-                <div class='ribbon_edge right'></div>
+                <svg role="link" title="Adicionais" class="ribbon right">
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#ribbon-2"></use>
+                </svg>
             </a>
             <a href="#" class="petiscos nav-item">
-            <div class='ribbon_edge left'></div>
+                <svg role="link" title="Petiscos" class="ribbon left">
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#ribbon-1"></use>
+                </svg>
                 <span>Petiscos</span>
-                <div class='ribbon_edge right'></div>
+                <svg role="link" title="Petiscos" class="ribbon right">
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#ribbon-2"></use>
+                </svg>
             </a>
             <a href="#" class="bebidas nav-item">
-            <div class='ribbon_edge left'></div>
+                <svg role="link" title="Bebidas" class="ribbon left">
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#ribbon-1"></use>
+                </svg>
                 <span>Bebidas</span>
-                <div class='ribbon_edge right'></div>
+                <svg role="link" title="Bebidas" class="ribbon right">
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#ribbon-2"></use>
+                </svg>
             </a>
             <a href="#" class="fale-conosco nav-item">
-                <div class='ribbon_edge left'></div>
+                <svg role="link" title="Fale Conosco" class="ribbon left">
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#ribbon-1"></use>
+                </svg>
                 <span>Fale Conosco</span>
-                <div class='ribbon_edge right'></div>
+                <svg role="link" title="Fale Conosco" class="ribbon right">
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#ribbon-2"></use>
+                </svg>
             </a>
         </nav>
         <h1 class="logo-top">
@@ -44,7 +64,7 @@
             </a>
         </h1>
         <div class="phone-top">
-            Delivery<br>(53) 3204.0506  
+            Delivery<br>(53) 3204.0506
         </div>
         <div class="banner-top">
             <div class="container">
@@ -62,8 +82,8 @@
     <section class="cardapio" id="cardapio">
         <div class="container">
             <div class="burger-wrp">
-                <div class="section-title">
-                    <svg role="link" title="Burgers" class="hamburger-icon">
+                <div class="section-title burgers">
+                    <svg role="link" title="Burgers" class="hamburger-icon left">
                         <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#hamburger-icon"></use>
                     </svg>
                     <svg role="link" title="Burgers" class="ribbon left">
@@ -73,30 +93,26 @@
                     <svg role="link" title="Burgers" class="ribbon right">
                         <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#ribbon-2"></use>
                     </svg>
-                    <svg role="link" title="Burgers" class="hamburger-icon">
+                    <svg role="link" title="Burgers" class="hamburger-icon right">
                         <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#hamburger-icon"></use>
                     </svg>
                 </div>
                 <p>
                     Burgers de <strong>Carne 100% Angus</strong>, acompanhados de fritas
                 </p>
-                <figure>
-                    <img src="assets/img/hamburgers/box-ramones.png" alt="">
-                    <svg role="link" title="Burger - The Ramones" class="">
-                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#burger"></use>
-                    </svg>
+                <figure class="ramones-burger">
+                    <img src="assets/img/hamburgers/box-ramones.png" alt="" class="box">
+                    <img src="assets/img/hamburgers/hamburger-ramones.png" alt="" class="hamburger">
                     <figcaption>
                         <h3>The<br>Ramones</h3>
                         <span class="ingredients">(Pão, carne e queijo)</span>
-                        <span class="including">Including:<br>“Gimme Gimme Burger<br>Treatment”</span>
+                        <span class="including">Including:<br>“Gimme Gimme Burger<br>Treatment”</span>
                         <span class="price" data-price="$14">$14</span>
                     </figcaption>
                 </figure>
-                <figure>
-                    <img src="assets/img/hamburgers/box-led.png" alt="">
-                    <svg role="link" title="Burger - The Led Zeppelin" class="">
-                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#burger"></use>
-                    </svg>
+                <figure class="led-burger">
+                    <img src="assets/img/hamburgers/box-led.png" alt="" class="box">
+                    <img src="assets/img/hamburgers/hamburger-led.png" alt="" class="hamburger">
                     <figcaption>
                         <h3>The<br>Led Zeppelin</h3>
                         <span class="ingredients"> (Pão, carne, queijo, alface, tomate e maionese)</span>
@@ -104,24 +120,20 @@
                         <span class="price">$15</span>
                     </figcaption>
                 </figure>
-                <figure>
-                    <img src="assets/img/hamburgers/box-beatles.png" alt="">
-                    <svg role="link" title="Burger - The Beatles" class="">
-                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#burger"></use>
-                    </svg>
+                <figure class="beatles-burger">
+                    <img src="assets/img/hamburgers/box-beatles.png" alt="" class="box">
+                    <img src="assets/img/hamburgers/hamburger-beatles.png" alt="" class="hamburger">
                     <figcaption>
                         <h3>The<br>Beatles</h3>
-                        <span class="ingredients">(Pão, burger de frango, queijo, 
+                        <span class="ingredients">(Pão, burger de frango, queijo,
                             bacon, cebola caramelizada, alface, tomate e maionese)</span>
                         <span class="including">Including:<br>“haburger fields<br>forever”</span>
                         <span class="price">$15</span>
                     </figcaption>
                 </figure>
-                <figure>
-                    <img src="assets/img/hamburgers/box-janis.png" alt="">
-                    <svg role="link" title="Burger - Janis Joplin" class="">
-                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#burger"></use>
-                    </svg>
+                <figure class="janis-burger">
+                    <img src="assets/img/hamburgers/box-janis.png" alt="" class="box">
+                    <img src="assets/img/hamburgers/hamburger-janis.png" alt="" class="hamburger">
                     <figcaption class="veggie">
                         <h3>Janis<br>Joplin<span>(veggie burger)</span></h3>
                         <span class="ingredients">(Pão, Burger Vegetariano, queijo minas padrão, alface, tomate e molho da casa)</span>
@@ -129,11 +141,9 @@
                         <span class="price">$16</span>
                     </figcaption>
                 </figure>
-                <figure>
-                    <img src="assets/img/hamburgers/box-elvis.png" alt="">
-                    <svg role="link" title="Burger - Elvis The King" class="">
-                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#burger"></use>
-                    </svg>
+                <figure class="elvis-burger">
+                    <img src="assets/img/hamburgers/box-elvis.png" alt="" class="box">
+                    <img src="assets/img/hamburgers/hamburger-elvis.png" alt="" class="hamburger">
                     <figcaption>
                         <h3>Elvis<br>The King</h3>
                         <span class="ingredients"> (Pão, carne, queijo, bacon, cebola, alface, tomate e maionese)</span>
@@ -141,11 +151,9 @@
                         <span class="price">$17</span>
                     </figcaption>
                 </figure>
-                <figure>
-                    <img src="assets/img/hamburgers/box-hendrix.png" alt="">
-                    <svg role="link" title="Burger - The Hendrix" class="">
-                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#burger"></use>
-                    </svg>
+                <figure class="hendrix-burger">
+                    <img src="assets/img/hamburgers/box-hendrix.png" alt="" class="box">
+                    <img src="assets/img/hamburgers/hamburger-hendrix.png" alt="" class="hamburger">
                     <figcaption>
                         <h3>The<br>Hendrix</h3>
                         <span class="ingredients">(Pão, carne, queijo, bacon, cebola roxa, picles, alface, tomate e molho da casa)</span>
@@ -153,11 +161,9 @@
                         <span class="price">$18</span>
                     </figcaption>
                 </figure>
-                <figure>
-                    <img src="assets/img/hamburgers/box-bowie.png" alt="">
-                    <svg role="link" title="Burger - The Bowie" class="">
-                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#burger"></use>
-                    </svg>
+                <figure class="bowie-burger">
+                    <img src="assets/img/hamburgers/box-bowie.png" alt="" class="box">
+                    <img src="assets/img/hamburgers/hamburger-bowie.png" alt="" class="hamburger">
                     <figcaption>
                         <h3>The<br>Bowie</h3>
                         <span class="ingredients">(Pão, carne, queijo cheddar, bacon, cebola caramelizada, picles e maionese)</span>
@@ -165,11 +171,9 @@
                         <span class="price">$18</span>
                     </figcaption>
                 </figure>
-                <figure>
-                    <img src="assets/img/hamburgers/box-kiss.png" alt="">
-                    <svg role="link" title="Burger - The Kiss" class="">
-                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#burger"></use>
-                    </svg>
+                <figure class="kiss-burger">
+                    <img src="assets/img/hamburgers/box-kiss.png" alt="" class="box">
+                    <img src="assets/img/hamburgers/hamburger-kiss.png" alt="" class="hamburger">
                     <figcaption>
                         <h3>The Kiss</h3>
                         <span class="ingredients">(Pão, carne, queijo cheddar, bacon, cebola crispy e katchup umami)</span>
@@ -277,7 +281,7 @@
                 </div>
             </div>
             <div class="cardapio-wrp">
-                <div class="section-title adicionais">
+                <div class="section-title petiscos">
                     <svg role="link" title="Petiscos" class="petiscos-icon left">
                         <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#petiscos-icon"></use>
                     </svg>
@@ -308,17 +312,17 @@
                         <span>$9.00</span>
                     </div>
                     <div class="row row-3">
-                        <span>300g de Fritas<br>+ Cheddar e Farofa<br>de Bacon</span>
+                        <span>300g de Fritas<br>+ Cheddar e Farofa<br>de Bacon</span>
                         <span> .......................................... </span>
                         <span>$13.00</span>
                     </div>
                     <div class="row row-3">
-                        <span>300g de Fritas<br>+ Cebola Crispy, Cheddar <br>e Farofa de Bacon</span>
+                        <span>300g de Fritas<br>+ Cebola Crispy, Cheddar <br>e Farofa de Bacon</span>
                         <span> ........................... </span>
                         <span>$17.00</span>
                     </div>
                     <div class="row">
-                        <h3>Sandwich <br>Lennon’s <br>cold turkey<span> ..............</span><span>$12.00</span></h3>
+                        <h3>Sandwich <br>Lennon’s <br>cold turkey<span> ..............</span><span>$12.00</span></h3>
                         <p>
                             Pão de forma, peito de perú defumado, queijo minas padrão, alface, tomate, azeitonas recheadas c/ pimentões, azeite extra virgem e molho da casa.
                         </p>
@@ -340,19 +344,19 @@
                         <span>$11.00</span>
                     </div>
                     <div class="row row-3">
-                        <span>300g de Fritas Doces <br>+ Cheddar e Farofa <br>de Bacon</span>
+                        <span>300g de Fritas Doces <br>+ Cheddar e Farofa <br>de Bacon</span>
                         <span> .................................... </span>
                         <span>$15.00</span>
                     </div>
                     <div class="row row-3">
-                        <span>300g de Fritas Doces <br>+ Cebola Crispy, Cheddar <br>e Farofa de Bacon</span>
+                        <span>300g de Fritas Doces <br>+ Cebola Crispy, Cheddar <br>e Farofa de Bacon</span>
                         <span> ...................... </span>
                         <span>$19.00</span>
                     </div>
                     <div class="row">
-                        <h3>Sandwich <br>Sex Pistols’ God Save<br>the Royal Ham<span>.........</span> <span>$12.00</span></h3>
+                        <h3>Sandwich <br>Sex Pistols’ God Save<br>the Royal Ham<span>.........</span> <span>$12.00</span></h3>
                         <p>
-                            Pão de forma, presunto royale, queijo minas padrão, alface, tomate, azeitonas recheadas c/ pimentões, azeite extra virgem e molho da casa. 
+                            Pão de forma, presunto royale, queijo minas padrão, alface, tomate, azeitonas recheadas c/ pimentões, azeite extra virgem e molho da casa.
                         </p>
                     </div>
                 </div>
@@ -375,18 +379,18 @@
                         <span> ..............................................</span>
                         <span>$9.00</span>
                     </div>
-                    <h3>Cake’s Fashion Nugget</h3>
+                    <h3>Cake’s Fashion Nugget</h3>
                     <div class="row row-0">
-                        <span>Nuggets artesanais de frangocom recheio de queijo cheddar</span>
+                        <span>Nuggets artesanais de frangocom recheio de queijo cheddar</span>
                     </div>
                     <div class="row row-margin">
                         <span>275g</span>
                         <span> ............................................</span>
                         <span>$16.00</span>
                     </div>
-                    <h3>Jerry’s greatmeatballs of fire</h3>
+                    <h3>Jerry’s greatmeatballs of fire</h3>
                     <div class="row">
-                        <span>Bolinhas de Carne recheadas com queijo Brie</span>
+                        <span>Bolinhas de Carne recheadas com queijo Brie</span>
                     </div>
                     <div class="row row-margin">
                         <span>275g</span>
@@ -524,7 +528,7 @@
                 </svg>
             </div>
             <p class="fale-conosco-sub">
-                Venha conhecer o nosso Burger Bar! <br>Em caso de dúvidas, entre em contato pelos dados ou formulário abaixo:
+                Venha conhecer o nosso Burger Bar! <br>Em caso de dúvidas, entre em contato pelos dados ou formulário abaixo:
             </p>
             <div class="contato-content">
                 <div class="map-container">
@@ -551,7 +555,7 @@
                         <svg role="link" title="Endereço" class="address-icon">
                             <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#pin-icon"></use>
                         </svg>
-                        <span>Av. Atlântica, 254 - Praia do CassinoRio Grande / RS - CEP 96207-424</span>
+                        <span>Av. Atlântica, 254 - Praia do CassinoRio Grande / RS - CEP 96207-424</span>
                     </p>
                     <form action="">
                         <p>
@@ -596,7 +600,7 @@
             <g>
                 <path d="M.603 21.467a1.454 1.454 0 0 1 .864-2.631c.3.002.589.098.835.274.57.41 1.379.417 1.957.017l.148-.102c.784-.542 1.705-.823 2.662-.814s1.873.308 2.647.866l.145.104c.57.41 1.38.418 1.957.018l.147-.102a4.575 4.575 0 0 1 2.662-.815c.958.01 1.873.309 2.647.867l.144.104a1.726 1.726 0 0 0 1.959.018l.146-.101a4.586 4.586 0 0 1 2.663-.816c.957.01 1.872.309 2.646.867l.146.104c.57.412 1.38.419 1.958.02a1.457 1.457 0 0 1 2.022.368c.22.319.304.705.234 1.087-.07.382-.284.713-.604.935a4.582 4.582 0 0 1-2.662.815 4.585 4.585 0 0 1-2.646-.866l-.146-.104a1.726 1.726 0 0 0-1.957-.019l-.146.101a4.579 4.579 0 0 1-2.663.816 4.585 4.585 0 0 1-2.647-.867l-.143-.103a1.728 1.728 0 0 0-1.959-.02l-.146.102a4.573 4.573 0 0 1-2.662.816 4.576 4.576 0 0 1-2.647-.868l-.145-.103a1.728 1.728 0 0 0-1.958-.019l-.148.102a4.578 4.578 0 0 1-2.662.816 4.595 4.595 0 0 1-2.648-.867zm7.851-.638l.144.104a3.835 3.835 0 0 0 2.22.726 3.826 3.826 0 0 0 2.23-.683l.146-.102a2.435 2.435 0 0 1 1.413-.433 2.43 2.43 0 0 1 1.405.46l.143.103a3.84 3.84 0 0 0 2.219.727 3.835 3.835 0 0 0 2.232-.684l.146-.102a2.433 2.433 0 0 1 1.413-.433c.508.005.993.164 1.404.459l.145.104c.648.467 1.415.718 2.218.726s1.575-.229 2.232-.683a.709.709 0 0 0 .179-.985.724.724 0 0 0-.984-.179 2.423 2.423 0 0 1-1.413.433 2.422 2.422 0 0 1-1.404-.46l-.145-.104a3.833 3.833 0 0 0-2.219-.725 3.832 3.832 0 0 0-2.231.684l-.146.101a2.428 2.428 0 0 1-1.413.433 2.426 2.426 0 0 1-1.404-.459l-.144-.103c-.648-.468-1.416-.719-2.219-.727s-1.574.229-2.231.683l-.147.102a2.425 2.425 0 0 1-1.412.433 2.432 2.432 0 0 1-1.405-.459l-.144-.104a3.84 3.84 0 0 0-2.22-.726 3.834 3.834 0 0 0-2.23.682l-.148.103a2.428 2.428 0 0 1-1.413.433 2.43 2.43 0 0 1-1.403-.459.726.726 0 0 0-.988.16.708.708 0 0 0 .161.987 3.835 3.835 0 0 0 2.217.726 3.829 3.829 0 0 0 2.231-.683l.148-.103a2.44 2.44 0 0 1 2.817.027z"/>
             </g>
-        </symbol>    
+        </symbol>
         <symbol id="adicionais-icon" viewBox="0 0 93.148 93.338">
             <g>
                 <circle fill="none" stroke="#F1C646" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" cx="69.167" cy="50.217" r="12.696"/>
@@ -628,10 +632,10 @@
                         M43.963,30.32c1.896-1.895,3.602-4.358,4.549-6.822c1.137-2.463,2.651-4.927,4.547-6.822c1.896-1.895,4.17-3.41,6.821-4.548
                             M7.579,62.155c1.896-1.896,4.169-3.411,6.822-4.548s4.927-2.653,6.822-4.549c1.895-1.895,3.601-4.357,4.548-6.821"/>
                 </g>
-            </g>                    
+            </g>
         </symbol>
         <symbol id="adicionais-icon-2" viewBox="1.611 1 89.852 89.292">
-            <g>                       
+            <g>
                 <ellipse fill="none" stroke="#F1C646" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" cx="23.798" cy="49.992" rx="12.237" ry="12.134"/>
                 <path fill="none" stroke="#F1C646" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
                     M16.857,51.438c0,2.9,2.375,5.434,5.48,5.434"/>
@@ -662,7 +666,7 @@
                             M83.158,61.401c-1.826-1.812-4.018-3.262-6.575-4.348s-4.749-2.535-6.576-4.348c-1.826-1.811-3.471-4.164-4.383-6.518"/>
                 </g>
             </g>
-                            
+
         </symbol>
         <symbol id="petiscos-icon" viewBox="0 0 21.773 27.856">
             <path fill="#FFF" d="M8.016 13.638c.236.035.474.066.71.094L8.14 5.069l-.124 8.569zM4.035 12.683c.204.067.408.133.611.194l-.574-2.709-.037 2.515zM10.501 10.7l.202 2.983zM21.395 11.839a.373.373 0 0 1 .009-.745h.003a.373.373 0 0 1-.012.745zM16.025 13.69a.375.375 0 0 1-.264-.113.374.374 0 0 1-.091-.355l1.728-6.476a.376.376 0 0 1 .456-.264l1.91.511a.373.373 0 0 1 .264.455l-1.43 5.357a.373.373 0 0 1-.245.258c-.755.245-1.508.453-2.241.618a.318.318 0 0 1-.087.009zm1.998-6.391l-1.472 5.512a24.61 24.61 0 0 0 1.379-.395l1.282-4.8-1.189-.317zM10.844 14.239l-.137-.002a.37.37 0 0 1-.363-.348l-.013-.182a.34.34 0 0 1 .012-.119l2.71-10.322A.373.373 0 0 1 13.508 3l1.91.501a.377.377 0 0 1 .229.173.377.377 0 0 1 .038.282l-2.612 9.952a.372.372 0 0 1-.334.276c-.629.046-1.266.065-1.895.055zm2.835-10.423l-2.542 9.681c.428.001.857-.012 1.283-.037l2.449-9.331-1.19-.313z"/>
@@ -724,13 +728,13 @@
 
         </symbol>
         <symbol id="phone-icon" viewBox="405.491 107.852 465.503 465.426">
-            <path fill="#FFF" d="M679.676 185.911c-18.387 18.387-18.387 51.074 0 69.461l34.73 32.688c-26.559 53.118-75.59 102.149-128.707 128.708l-32.688-34.73c-18.387-18.387-51.075-18.387-69.462 0l-53.117 53.117c-18.387 18.387-18.387 49.032 2.043 69.462l51.074 51.074c102.149 102.148 471.929-269.673 369.779-369.779l-51.074-51.075c-20.43-20.43-51.074-20.43-69.462 0l-53.116 51.074zm-77.633-51.075c16.344-4.086 10.215-30.645-8.172-26.559-91.935 24.516-163.438 96.02-187.954 187.954-4.086 18.387 22.473 24.516 26.559 8.172 22.472-81.718 85.804-147.093 169.567-169.567zm16.344 63.333c18.387-4.086 10.215-30.645-6.129-26.559-69.461 18.387-124.622 73.547-143.009 143.009-4.086 16.344 22.473 24.516 26.559 6.129 16.343-59.247 63.333-106.235 122.579-122.579zm81.718 6.129l51.075-51.074c8.172-8.172 22.473-8.172 30.645 0l51.074 51.074c75.591 75.59-255.372 406.553-330.963 330.963l-51.074-51.074c-8.172-8.173-8.172-22.474 0-30.646l51.074-51.074c8.172-10.215 22.473-10.215 32.688 0l38.816 38.816c4.086 4.086 10.215 6.129 16.344 4.086 63.332-28.602 124.621-89.891 153.224-153.223 2.043-4.086 2.043-12.258-4.086-16.344l-38.817-38.817c-10.214-10.214-10.214-24.515 0-32.687z"/> 
+            <path fill="#FFF" d="M679.676 185.911c-18.387 18.387-18.387 51.074 0 69.461l34.73 32.688c-26.559 53.118-75.59 102.149-128.707 128.708l-32.688-34.73c-18.387-18.387-51.075-18.387-69.462 0l-53.117 53.117c-18.387 18.387-18.387 49.032 2.043 69.462l51.074 51.074c102.149 102.148 471.929-269.673 369.779-369.779l-51.074-51.075c-20.43-20.43-51.074-20.43-69.462 0l-53.116 51.074zm-77.633-51.075c16.344-4.086 10.215-30.645-8.172-26.559-91.935 24.516-163.438 96.02-187.954 187.954-4.086 18.387 22.473 24.516 26.559 8.172 22.472-81.718 85.804-147.093 169.567-169.567zm16.344 63.333c18.387-4.086 10.215-30.645-6.129-26.559-69.461 18.387-124.622 73.547-143.009 143.009-4.086 16.344 22.473 24.516 26.559 6.129 16.343-59.247 63.333-106.235 122.579-122.579zm81.718 6.129l51.075-51.074c8.172-8.172 22.473-8.172 30.645 0l51.074 51.074c75.591 75.59-255.372 406.553-330.963 330.963l-51.074-51.074c-8.172-8.173-8.172-22.474 0-30.646l51.074-51.074c8.172-10.215 22.473-10.215 32.688 0l38.816 38.816c4.086 4.086 10.215 6.129 16.344 4.086 63.332-28.602 124.621-89.891 153.224-153.223 2.043-4.086 2.043-12.258-4.086-16.344l-38.817-38.817c-10.214-10.214-10.214-24.515 0-32.687z"/>
         </symbol>
         <symbol id="email-icon" viewBox="343.274 147.825 589.041 384.669">
             <path fill="#FFF" d="M871.088 147.825H404.502c-33.764 0-61.228 27.464-61.228 61.228v262.212c0 33.764 27.464 61.229 61.228 61.229h466.586c33.764 0 61.228-27.465 61.228-61.229V209.053c-.001-33.764-27.464-61.228-61.228-61.228zm-125.001 179.16l157.125-128.654c1.129 3.388 1.892 6.946 1.892 10.715v262.212c0 3.293-.619 6.409-1.497 9.43l-157.52-153.703zm125.001-151.947c4.959 0 9.646 1.123 13.905 3.041L637.795 380.485 390.597 178.079c4.259-1.918 8.939-3.041 13.905-3.041h466.586zm-499.105 305.65c-.877-3.015-1.497-6.13-1.497-9.43V209.053c0-3.769.762-7.327 1.891-10.715l157.125 128.654-157.519 153.696zm32.519 24.586c-5.415 0-10.463-1.388-15.014-3.646l161.207-157.295 87.101 71.324 87.101-71.317 161.206 157.295c-4.551 2.259-9.599 3.646-15.014 3.646H404.502v-.007z"/>
         </symbol>
         <symbol id="pin-icon" viewBox="470.574 58.956 394.581 562.394">
-            <path fill="#FFF" d="M667.864 621.35a17.009 17.009 0 0 1-13.307-6.416c-7.518-9.436-183.983-232.592-183.983-358.687 0-108.782 88.509-197.291 197.29-197.291 108.782 0 197.291 88.508 197.291 197.291 0 125.81-176.459 349.231-183.977 358.681a17.018 17.018 0 0 1-13.314 6.422zm0-528.378c-90.025 0-163.274 73.249-163.274 163.275 0 95.509 122.144 265.614 163.268 320.175C708.976 521.82 831.14 351.538 831.14 256.247c0-90.026-73.249-163.275-163.276-163.275zm0 250.395c-48.043 0-87.12-39.077-87.12-87.121s39.077-87.121 87.12-87.121c48.044 0 87.121 39.077 87.121 87.121s-39.084 87.121-87.121 87.121zm0-140.226c-29.28 0-53.104 23.825-53.104 53.105 0 29.28 23.824 53.105 53.104 53.105 29.281 0 53.105-23.825 53.105-53.105.001-29.28-23.823-53.105-53.105-53.105z"/>                
+            <path fill="#FFF" d="M667.864 621.35a17.009 17.009 0 0 1-13.307-6.416c-7.518-9.436-183.983-232.592-183.983-358.687 0-108.782 88.509-197.291 197.29-197.291 108.782 0 197.291 88.508 197.291 197.291 0 125.81-176.459 349.231-183.977 358.681a17.018 17.018 0 0 1-13.314 6.422zm0-528.378c-90.025 0-163.274 73.249-163.274 163.275 0 95.509 122.144 265.614 163.268 320.175C708.976 521.82 831.14 351.538 831.14 256.247c0-90.026-73.249-163.275-163.276-163.275zm0 250.395c-48.043 0-87.12-39.077-87.12-87.121s39.077-87.121 87.12-87.121c48.044 0 87.121 39.077 87.121 87.121s-39.084 87.121-87.121 87.121zm0-140.226c-29.28 0-53.104 23.825-53.104 53.105 0 29.28 23.824 53.105 53.104 53.105 29.281 0 53.105-23.825 53.105-53.105.001-29.28-23.823-53.105-53.105-53.105z"/>
         </symbol>
     </svg>
 </body>

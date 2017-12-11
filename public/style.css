@@ -46,7 +46,6 @@ html, body {
   margin: 0;
   padding: 0;
   min-height: 100vh;
-  min-width: 100vw;
   overflow-x: hidden;
   font-family: "Montserrat", sans-serif;
   -webkit-font-smoothing: antialiased; }
@@ -74,6 +73,9 @@ figure {
   width: 100%;
   max-width: 1180px;
   margin: 0 auto; }
+@media (max-width: 1200px) {
+    .container {
+      width: 90%; } }
 /*********************************************************************
 *  =Image replacement
 *********************************************************************/
@@ -165,58 +167,26 @@ nav a {
             justify-content: center;
     -webkit-box-align: center;
         -ms-flex-align: center;
-            align-items: center; }
+            align-items: center;
+    text-transform: uppercase; }
 nav a span {
-      display: -webkit-box;
-      display: -ms-flexbox;
-      display: flex;
       height: 100%;
-      -webkit-box-pack: center;
-          -ms-flex-pack: center;
-              justify-content: center;
-      -webkit-box-align: center;
-          -ms-flex-align: center;
-              align-items: center;
       background: #f1c646;
       position: relative;
-      z-index: 2; }
-nav a .ribbon_edge {
-      position: relative; }
-nav a .ribbon_edge.left {
-        left: 0; }
-nav a .ribbon_edge.right {
-        right: 30px; }
-nav a .ribbon_edge.right:after {
-          left: 17px; }
+      z-index: 2;
+      line-height: 1.7; }
+nav a .ribbon {
+      height: 28px;
+      width: 28px;
+      fill: #f1c646; }
+nav a .ribbon.left {
+        -webkit-transform: translateX(3px);
+                transform: translateX(3px); }
+nav a .ribbon.right {
+        -webkit-transform: translateX(-3px);
+                transform: translateX(-3px); }
 nav a.fale-conosco span {
       width: 150px; }
-.ribbon_edge {
-  display: inline-block;
-  background: transparent;
-  width: 40px;
-  height: 29px; }
-.ribbon_edge:before {
-    content: '';
-    top: 0px;
-    left: 15px;
-    border-color: #f1c646 transparent transparent;
-    border-style: solid;
-    border-width: 21px;
-    height: 0px;
-    width: 0px;
-    position: relative;
-    float: left; }
-.ribbon_edge:after {
-    content: '';
-    top: -53px;
-    left: 15px;
-    border-color: transparent transparent #f1c646;
-    border-style: solid;
-    border-width: 20px;
-    height: 0px;
-    width: 0px;
-    position: relative;
-    float: left; }
 .section-title {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -237,12 +207,20 @@ nav a.fale-conosco span {
     font-size: 4.689rem;
     text-align: center;
     font-family: "Phosphate-Solid", sans-serif;
-    line-height: 0.7;
+    line-height: 0.35;
     background: #f1c646;
-    padding: 7px 20px;
+    padding: 0 20px;
     letter-spacing: .5rem;
     position: relative;
-    z-index: 2; }
+    z-index: 2;
+    text-transform: uppercase;
+    height: 66.8px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: end;
+        -ms-flex-align: end;
+            align-items: flex-end; }
 .section-title .hamburger-icon {
     width: 66px;
     height: 66px;
@@ -250,6 +228,12 @@ nav a.fale-conosco span {
 .section-title .adicionais-icon {
     width: 82px;
     height: 82px; }
+.section-title .hamburger-icon.left {
+    -webkit-transform: rotate(-15deg);
+            transform: rotate(-15deg); }
+.section-title .hamburger-icon.right {
+    -webkit-transform: rotate(15deg);
+            transform: rotate(15deg); }
 .section-title .petiscos-icon {
     width: 60px;
     height: 80px;
@@ -282,7 +266,7 @@ nav a.fale-conosco span {
               transform: rotate(15deg); }
 .section-title .ribbon {
     width: 66px;
-    height: 68px;
+    height: 70px;
     fill: #f1c646;
     position: relative;
     z-index: 1; }
@@ -290,6 +274,61 @@ nav a.fale-conosco span {
       right: -30px; }
 .section-title .ribbon.right {
       left: -30px; }
+.section-title.petiscos .ribbon {
+    height: 72px; }
+@media (max-width: 990px) {
+    .section-title h2 {
+      height: 45px;
+      line-height: .55;
+      font-size: 2.5rem; }
+    .section-title .ribbon {
+      height: 45px; }
+    .section-title.petiscos .ribbon {
+      height: 45px; }
+    .section-title .hamburger-icon {
+      height: 40px;
+      width: 40px; }
+    .section-title .adicionais-icon {
+      height: 50px;
+      width: 85px; }
+    .section-title .petiscos-icon {
+      width: 40px;
+      height: 60px; }
+    .section-title .bebidas-icon {
+      width: 22px;
+      height: 70px; }
+    .section-title .fale-conosco-icon {
+      width: 37px;
+      height: 62px; } }
+@media (max-width: 765px) {
+    .section-title h2 {
+      height: 35px;
+      line-height: 0.95;
+      font-size: 1.5rem; }
+    .section-title .ribbon {
+      height: 35px; }
+      .section-title .ribbon.left {
+        right: -20px; }
+      .section-title .ribbon.right {
+        left: -20px; }
+    .section-title.petiscos .ribbon {
+      height: 35px; }
+    .section-title.fale-conosco h2 {
+      height: 50px;
+      line-height: 0.75;
+      font-size: 1.5rem; }
+    .section-title.fale-conosco .ribbon {
+      height: 50px; } }
+@media (max-width: 535px) {
+    .section-title h2 {
+      height: 35px;
+      line-height: 1.45;
+      font-size: 1.1rem; } }
+@font-face {
+  font-family: 'Phosphate-Solid';
+  src: url("/assets/fonts/PhosphateSolid.eot");
+  src: url("/assets/fonts/PhosphateSolid.eot?#iefix") format("embedded-opentype"), url("/assets/fonts/PhosphateSolid.woff2") format("woff2"), url("/assets/fonts/PhosphateSolid.woff") format("woff"), url("/assets/fonts/PhosphateSolid.svg#PhosphateSolid") format("svg");
+  line-height: 1; }
 h1, h2, h3, h4, h5, h6 {
   margin: 0; }
 p {
@@ -309,13 +348,134 @@ p {
 .cardapio .burger-wrp figure {
       position: relative;
       width: 33%;
-      max-width: 370px; }
+      max-width: 370px;
+      min-width: 370px; }
 .cardapio .burger-wrp figure svg {
         z-index: 1;
         position: absolute;
         right: 0; }
-.cardapio .burger-wrp figure img {
-        z-index: 2; }
+.cardapio .burger-wrp figure .box {
+        z-index: 2;
+        position: relative; }
+.cardapio .burger-wrp figure .hamburger {
+        position: absolute;
+        left: 0;
+        top: 50%;
+        -webkit-transform: translateX(110px);
+                transform: translateX(110px);
+        z-index: 1; }
+.cardapio .burger-wrp figure.elvis-burger .hamburger {
+        -webkit-transform: translateX(55px) translateY(-121px);
+                transform: translateX(55px) translateY(-121px);
+        -webkit-transition: -webkit-transform .5s;
+        transition: -webkit-transform .5s;
+        transition: transform .5s;
+        transition: transform .5s, -webkit-transform .5s; }
+.cardapio .burger-wrp figure.elvis-burger:hover .hamburger {
+        -webkit-transform: translateX(70px) translateY(-121px);
+                transform: translateX(70px) translateY(-121px);
+        -webkit-transition: -webkit-transform .5s;
+        transition: -webkit-transform .5s;
+        transition: transform .5s;
+        transition: transform .5s, -webkit-transform .5s; }
+.cardapio .burger-wrp figure.janis-burger .hamburger {
+        -webkit-transform: translateX(55px) translateY(-120px);
+                transform: translateX(55px) translateY(-120px);
+        -webkit-transition: -webkit-transform .5s;
+        transition: -webkit-transform .5s;
+        transition: transform .5s;
+        transition: transform .5s, -webkit-transform .5s; }
+.cardapio .burger-wrp figure.janis-burger:hover .hamburger {
+        -webkit-transform: translateX(78px) translateY(-120px);
+                transform: translateX(78px) translateY(-120px);
+        -webkit-transition: -webkit-transform .5s;
+        transition: -webkit-transform .5s;
+        transition: transform .5s;
+        transition: transform .5s, -webkit-transform .5s; }
+.cardapio .burger-wrp figure.ramones-burger .hamburger {
+        -webkit-transform: translateX(70px) translateY(-110px);
+                transform: translateX(70px) translateY(-110px);
+        -webkit-transition: -webkit-transform .5s;
+        transition: -webkit-transform .5s;
+        transition: transform .5s;
+        transition: transform .5s, -webkit-transform .5s; }
+.cardapio .burger-wrp figure.ramones-burger:hover .hamburger {
+        -webkit-transform: translateX(100px) translateY(-110px);
+                transform: translateX(100px) translateY(-110px);
+        -webkit-transition: -webkit-transform .5s;
+        transition: -webkit-transform .5s;
+        transition: transform .5s;
+        transition: transform .5s, -webkit-transform .5s; }
+.cardapio .burger-wrp figure.led-burger .hamburger {
+        -webkit-transform: translateX(100px) translateY(-128px);
+                transform: translateX(100px) translateY(-128px);
+        -webkit-transition: -webkit-transform .5s;
+        transition: -webkit-transform .5s;
+        transition: transform .5s;
+        transition: transform .5s, -webkit-transform .5s; }
+.cardapio .burger-wrp figure.led-burger:hover .hamburger {
+        -webkit-transition: -webkit-transform .5s;
+        transition: -webkit-transform .5s;
+        transition: transform .5s;
+        transition: transform .5s, -webkit-transform .5s;
+        -webkit-transform: translateX(125px) translateY(-128px);
+                transform: translateX(125px) translateY(-128px); }
+.cardapio .burger-wrp figure.beatles-burger .hamburger {
+        -webkit-transform: translateX(65px) translateY(-123px);
+                transform: translateX(65px) translateY(-123px);
+        -webkit-transition: -webkit-transform .5s;
+        transition: -webkit-transform .5s;
+        transition: transform .5s;
+        transition: transform .5s, -webkit-transform .5s; }
+.cardapio .burger-wrp figure.beatles-burger:hover .hamburger {
+        -webkit-transform: translateX(90px) translateY(-123px);
+                transform: translateX(90px) translateY(-123px);
+        -webkit-transition: -webkit-transform .5s;
+        transition: -webkit-transform .5s;
+        transition: transform .5s;
+        transition: transform .5s, -webkit-transform .5s; }
+.cardapio .burger-wrp figure.hendrix-burger .hamburger {
+        -webkit-transform: translateX(74px) translateY(-128px);
+                transform: translateX(74px) translateY(-128px);
+        -webkit-transition: -webkit-transform .5s;
+        transition: -webkit-transform .5s;
+        transition: transform .5s;
+        transition: transform .5s, -webkit-transform .5s; }
+.cardapio .burger-wrp figure.hendrix-burger:hover .hamburger {
+        -webkit-transform: translateX(104px) translateY(-128px);
+                transform: translateX(104px) translateY(-128px);
+        -webkit-transition: -webkit-transform .5s;
+        transition: -webkit-transform .5s;
+        transition: transform .5s;
+        transition: transform .5s, -webkit-transform .5s; }
+.cardapio .burger-wrp figure.bowie-burger .hamburger {
+        -webkit-transform: translateX(55px) translateY(-111px);
+                transform: translateX(55px) translateY(-111px);
+        -webkit-transition: -webkit-transform .5s;
+        transition: -webkit-transform .5s;
+        transition: transform .5s;
+        transition: transform .5s, -webkit-transform .5s; }
+.cardapio .burger-wrp figure.bowie-burger:hover .hamburger {
+        -webkit-transform: translateX(75px) translateY(-111px);
+                transform: translateX(75px) translateY(-111px);
+        -webkit-transition: -webkit-transform .5s;
+        transition: -webkit-transform .5s;
+        transition: transform .5s;
+        transition: transform .5s, -webkit-transform .5s; }
+.cardapio .burger-wrp figure.kiss-burger .hamburger {
+        -webkit-transform: translateX(63px) translateY(-122px);
+                transform: translateX(63px) translateY(-122px);
+        -webkit-transition: -webkit-transform .5s;
+        transition: -webkit-transform .5s;
+        transition: transform .5s;
+        transition: transform .5s, -webkit-transform .5s; }
+.cardapio .burger-wrp figure.kiss-burger:hover .hamburger {
+        -webkit-transform: translateX(90px) translateY(-122px);
+                transform: translateX(90px) translateY(-122px);
+        -webkit-transition: -webkit-transform .5s;
+        transition: -webkit-transform .5s;
+        transition: transform .5s;
+        transition: transform .5s, -webkit-transform .5s; }
 .cardapio .burger-wrp figure figcaption {
         position: absolute;
         z-index: 3;
@@ -341,7 +501,15 @@ p {
           font-size: 2.319rem;
           font-family: "Phosphate-Solid", sans-serif;
           text-shadow: 1px 2px 0px rgba(0, 0, 0, 0.63);
-          line-height: .75; }
+          line-height: .75;
+          text-transform: uppercase;
+          display: -webkit-box;
+          display: -ms-flexbox;
+          display: flex;
+          -webkit-box-align: center;
+              -ms-flex-align: center;
+                  align-items: center;
+          height: 73px; }
 .cardapio .burger-wrp figure figcaption h3 span {
             font-size: 0.686rem;
             display: block;
@@ -371,7 +539,8 @@ p {
           text-align: left;
           font-family: "Phosphate-Solid", sans-serif;
           text-shadow: 1px 2px 0px rgba(0, 0, 0, 0.63);
-          line-height: 1; }
+          line-height: 1;
+          text-transform: uppercase; }
 .cardapio .burger-wrp figure figcaption .price {
           display: -webkit-box;
           display: -ms-flexbox;
@@ -399,6 +568,12 @@ p {
             -webkit-text-stroke-width: 0px;
             -webkit-text-stroke-color: #f1c646;
             font-weight: 900; }
+.cardapio .burger-wrp figure figcaption.veggie h3 {
+          -ms-flex-wrap: wrap;
+              flex-wrap: wrap;
+          height: 0;
+          max-width: 123px;
+          margin-top: 10px; }
 .cardapio .burger-wrp figure figcaption.veggie .ingredients {
           margin: 113px auto 0; }
 .cardapio .burger-wrp p {
@@ -422,8 +597,25 @@ p {
             align-items: flex-start;
     -ms-flex-wrap: wrap;
         flex-wrap: wrap; }
+@media (max-width: 1233px) {
+      .cardapio .cardapio-wrp {
+        -webkit-box-pack: center;
+            -ms-flex-pack: center;
+                justify-content: center; } }
 .cardapio .col {
-    width: 33%; }
+    width: 33%;
+    min-width: 349px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center; }
+@media (max-width: 1233px) {
+      .cardapio .col .col {
+        margin: 0 10px 20px; } }
 .cardapio .col span {
       font-family: "Montserrat", sans-serif;
       color: #fff;
@@ -436,7 +628,8 @@ p {
       font-size: 1.751rem;
       letter-spacing: .1rem;
       line-height: .9;
-      margin: 0 auto 13px; }
+      margin: 0 auto 13px;
+      text-transform: uppercase; }
 .cardapio .col p {
       font-size: 1.125rem;
       font-weight: 400;
@@ -445,7 +638,8 @@ p {
       letter-spacing: .1rem;
       width: 85%; }
 .cardapio .col .row {
-      margin: 0 0 8px; }
+      margin: 0 0 8px;
+      width: 100%; }
 .cardapio .col .row.row-0 {
         margin: 0 0 11px; }
 .cardapio .col .row.row-3 {
@@ -619,7 +813,8 @@ header .phone-banner span {
       display: block;
       font-family: "Phosphate-Solid", sans-serif;
       text-align: center;
-      line-height: 1; }
+      line-height: 1;
+      text-transform: uppercase; }
 header .phone-banner span:nth-child(1) {
         color: #fff;
         font-size: 2.687rem; }
