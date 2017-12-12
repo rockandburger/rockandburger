@@ -10,3 +10,7 @@ domready( () => {
 
 
 })
+document.onscroll = function () {
+    var bigger = document.querySelector('.contato');
+    return bigger.style.backgroundPosition = 'center ' + window.scrollY * -2 / 3 + 'px';
+};

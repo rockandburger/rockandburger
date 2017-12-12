@@ -26,13 +26,15 @@ nav {
             // align-items: center;
             background: $c2;
             position: relative;
-            z-index: 2;
+            z-index: 4;
             line-height: 1.7;
         }
         .ribbon {
           height: 28px;
           width: 28px;
           fill: $c2;
+          position: relative;
+          z-index: 3;
 
           &.left {
             transform: translateX(3px);

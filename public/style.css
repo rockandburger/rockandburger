@@ -173,12 +173,14 @@ nav a span {
       height: 100%;
       background: #f1c646;
       position: relative;
-      z-index: 2;
+      z-index: 4;
       line-height: 1.7; }
 nav a .ribbon {
       height: 28px;
       width: 28px;
-      fill: #f1c646; }
+      fill: #f1c646;
+      position: relative;
+      z-index: 3; }
 nav a .ribbon.left {
         -webkit-transform: translateX(3px);
                 transform: translateX(3px); }
@@ -324,6 +326,9 @@ nav a.fale-conosco span {
       height: 35px;
       line-height: 1.45;
       font-size: 1.1rem; } }
+@media (max-width: 400px) {
+    .section-title h2 {
+      letter-spacing: 0; } }
 @font-face {
   font-family: 'Phosphate-Solid';
   src: url("/assets/fonts/PhosphateSolid.eot");
@@ -576,6 +581,10 @@ p {
           margin-top: 10px; }
 .cardapio .burger-wrp figure figcaption.veggie .ingredients {
           margin: 113px auto 0; }
+@media (max-width: 450px) {
+        .cardapio .burger-wrp figure {
+          max-width: 90%;
+          min-width: 100%; } }
 .cardapio .burger-wrp p {
       text-align: center;
       color: #fff;
@@ -616,12 +625,18 @@ p {
 @media (max-width: 1233px) {
       .cardapio .col .col {
         margin: 0 10px 20px; } }
+@media (max-width: 1233px) and (max-width: 450px) {
+  .cardapio .col {
+    min-width: 100%; } }
 .cardapio .col span {
       font-family: "Montserrat", sans-serif;
       color: #fff;
       font-size: 1.12rem;
       font-weight: 400;
       line-height: .7; }
+@media (max-width: 450px) {
+        .cardapio .col span {
+          font-size: .92rem; } }
 .cardapio .col h3 {
       color: #f1c646;
       font-family: "Phosphate-Solid", sans-serif;
@@ -658,7 +673,8 @@ p {
   fill: transparent !important;
   stroke: #f1c646; }
 .contato {
-  background: url(/assets/img/bg-contato.png); }
+  background: url(/assets/img/bg-contato.png);
+  background-attachment: fixed; }
 header {
   background: #000; }
 .fale-conosco-sub {
@@ -798,17 +814,43 @@ header .banner-top img {
     bottom: 0; }
 header .banner-top .burger-fries {
     z-index: 1;
-    bottom: -100px;
-    right: -92px; }
+    -webkit-transform: translateY(100px) translateX(100px);
+            transform: translateY(100px) translateX(100px); }
+@media (max-width: 1024px) {
+      header .banner-top .burger-fries {
+        -webkit-transform: translateY(30px) translateX(100px);
+                transform: translateY(30px) translateX(100px); } }
+@media (max-width: 650px) {
+      header .banner-top .burger-fries {
+        display: none; } }
 header .banner-top .burger-box {
-    bottom: -135px;
+    -webkit-transform: translateY(135px);
+            transform: translateY(135px);
     z-index: 2; }
+@media (max-width: 1024px) {
+      header .banner-top .burger-box {
+        -webkit-transform: translateY(135px) translateX(120px);
+                transform: translateY(135px) translateX(120px); } }
+@media (max-width: 900px) {
+      header .banner-top .burger-box {
+        -webkit-transform: translateY(135px) translateX(350px);
+                transform: translateY(135px) translateX(350px); } }
+@media (max-width: 650px) {
+      header .banner-top .burger-box {
+        display: none; } }
 header .logo-banner {
     width: 510px;
     height: 280px;
-    margin-top: 20px; }
+    margin-top: 20px;
+    position: relative;
+    z-index: 5; }
+@media (max-width: 650px) {
+      header .logo-banner {
+        max-width: 95%; } }
 header .phone-banner {
-    max-width: 500px; }
+    max-width: 500px;
+    position: relative;
+    z-index: 5; }
 header .phone-banner span {
       display: block;
       font-family: "Phosphate-Solid", sans-serif;

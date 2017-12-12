@@ -22,21 +22,47 @@ header {
         }
         .burger-fries {
             z-index: 1;
-            bottom: -100px;
-            right: -92px;
+            // bottom: -100px;
+            // right: -92px;
+            transform: translateY(100px) translateX(100px);
+            @media(max-width: 1024px) {
+              transform: translateY(30px) translateX(100px);
+            }
+            @media(max-width: 650px) {
+              display: none;
+            }
         }
         .burger-box {
-            bottom: -135px;
+            // bottom: -135px;
+            transform: translateY(135px);
             z-index: 2;
+
+            @media(max-width: 1024px) {
+              transform: translateY(135px) translateX(120px);
+            }
+            @media(max-width: 900px) {
+              transform: translateY(135px) translateX(350px);
+            }
+              @media(max-width: 650px) {
+              display: none;
+            }
         }
     }
     .logo-banner {
         width: 510px;
         height: 280px;
         margin-top: 20px;
+        position: relative;
+        z-index: 5;
+
+        @media(max-width: 650px) {
+          max-width: 95%;
+        }
     }
     .phone-banner {
         max-width: 500px;
+        position: relative;
+        z-index: 5;
         span {
             display: block;
             font-family: $titleFont;

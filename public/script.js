@@ -88,8 +88,12 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 (0, _domready2.default)(function () {
 
-  console.log('hey');
+    console.log('hey');
 });
+document.onscroll = function () {
+    var bigger = document.querySelector('.contato');
+    return bigger.style.backgroundPosition = 'center ' + window.scrollY * -2 / 3 + 'px';
+};
 
 /***/ }),
 /* 1 */
