@@ -5,10 +5,10 @@ header {
     border-bottom: 12px solid $c2;
 
     .logo-top {
-        display: none;
+        // display: none;
     }
     .phone-top {
-        display: none;
+        // display: none;
     }
     .banner-top {
         .container {
@@ -79,6 +79,23 @@ header {
                 font-size: 2.089rem;
             }
         }
+    }
+
+    .space {
+      width: 100%;
+      height: 0;
+    }
+    &.fixed {
+      .space {
+        width: 100%;
+        height: 80px;
+      }
+    }
+    @media(max-width: 1100px) {
+      .space {
+        width: 100%;
+        height: 80px;
+      }
     }
 }
 #logo-1 {

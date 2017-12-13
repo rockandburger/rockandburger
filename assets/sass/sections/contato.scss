@@ -1,7 +1,73 @@
 .contato {
     background: url(~/assets/img/bg-contato.png);
-    background-attachment: fixed; 
+    background-attachment: fixed;
+    padding-bottom: 133px;
 }
 header {
     background: #000;
+}
+.map-container {
+  overflow: hidden;
+  width: 520px;
+  height: 520px;
+  border-radius: 50%;
+  border: 12px solid #ca272c;
+
+    @media(max-width: 600px) {
+      width: 400px;
+      height: 400px;
+    }
+
+    @media(max-width: 480px) {
+      width: 300px;
+      height: 300px;
+    }
+}
+#map {
+  width: 520px;
+  height: 520px;
+
+  @media(max-width: 600px) {
+    width: 400px;
+    height: 400px;
+  }
+  @media(max-width: 480px) {
+    width: 300px;
+    height: 300px;
+  }
+}
+.gmnoprint {
+    display: none !important;
+}
+a[href^="https://maps.google.com/maps"]{display:none !important;}
+.gm-style-cc {
+    display: none !important;
+}
+
+#legend {
+    // @include box-sizing(border-box);
+    background: white;
+    width: 260px;
+    height: 52px;
+    border-radius: 8px;
+    margin-top: -153px;
+    margin-left: 295px;
+    padding: 12px;
+
+    p {
+        color: #da2944;
+        text-transform: uppercase;
+        // font-family: $PROJECT_FONT_MEDIUM;
+        font-size: em(12px);
+        line-height: em(12px);
+        width: 100% !important;
+    }
+}
+
+#siteNotice{
+    color: #da2944;
+    text-transform: uppercase;
+    line-height: 1.2em;
+    overflow: hidden;
+    // font-family: $PROJECT_FONT_MEDIUM;
 }

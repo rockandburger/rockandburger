@@ -7,7 +7,11 @@
     margin-bottom: 42px;
 }
 .map-container {
-    width: 525px;
+    // width: 525px;
+
+    @media(max-width: 1200px) {
+      margin-bottom: 20px;
+    }
 }
 .contato-container {
     width: 445px;
@@ -21,6 +25,10 @@
 
         svg {
             margin-right: 15px;
+        }
+
+        .whatsapp-icon {
+          margin: 0 10px;
         }
 
         input {
@@ -62,6 +70,7 @@
                 transition: background .5s;
                 background: rgba($c5, .8);
             }
+
         }
         ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
             color: $cWhite;
@@ -95,6 +104,11 @@
 .contato-content {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
+
+    @media(max-width: 1200px) {
+      justify-content: center;
+    }
 }
 .phone-icon {
     width: 25px;
@@ -118,6 +132,17 @@
 .line {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
+
+    @media(max-width: 400px) {
+      span {
+        width: 80%;
+        margin: 8px 0;
+      }
+      .whatsapp-icon {
+        margin-top: 16px;
+      }
+    }
 }
 .address-line {
     svg {

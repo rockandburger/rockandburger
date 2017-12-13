@@ -9,7 +9,28 @@
 </head>
 <body>
     <header>
-        <nav>
+      <div class="space">
+
+      </div>
+        <div id="hamburger-menu">
+            <h1 class="logo-top">
+                <a href="#">
+                    <img src="assets/img/logo-menu.png" alt="Rock & Burger">
+                </a>
+            </h1>
+
+            <div class="hamburger" id="hamburger-1">
+              <span class="line"></span>
+              <span class="line"></span>
+              <span class="line"></span>
+            </div>
+        </div>
+        <nav id="menu">
+            <h1 class="logo-top">
+                <a href="#">
+                    <img src="assets/img/logo-menu.png" alt="Rock & Burger">
+                </a>
+            </h1>
             <a href="#" class="burgers nav-item">
                 <svg role="link" title="Burgers" class="ribbon left">
                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#ribbon-1"></use>
@@ -55,17 +76,12 @@
                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#ribbon-2"></use>
                 </svg>
             </a>
+            <div class="phone-top">
+                <span>Delivery</span>(53) 3204.0506
+            </div>
         </nav>
-        <h1 class="logo-top">
-            <a href="#">
-                <svg role="link" title="Rock & Burger" class="">
-                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#logo"></use>
-                </svg>
-            </a>
-        </h1>
-        <div class="phone-top">
-            Delivery<br>(53) 3204.0506
-        </div>
+
+
         <div class="banner-top">
             <div class="container">
                 <svg role="link" title="Rock & Burger" class="logo-banner">
@@ -117,7 +133,7 @@
                         <h3>The<br>Led Zeppelin</h3>
                         <span class="ingredients"> (Pão, carne, queijo, alface, tomate e maionese)</span>
                         <span class="including">Including:<br>“Wanna whole<br>lotta burgers!”</span>
-                        <span class="price">$15</span>
+                        <span class="price" data-price="$15">$15</span>
                     </figcaption>
                 </figure>
                 <figure class="beatles-burger">
@@ -128,7 +144,7 @@
                         <span class="ingredients">(Pão, burger de frango, queijo,
                             bacon, cebola caramelizada, alface, tomate e maionese)</span>
                         <span class="including">Including:<br>“haburger fields<br>forever”</span>
-                        <span class="price">$15</span>
+                        <span class="price" data-price="$15">$15</span>
                     </figcaption>
                 </figure>
                 <figure class="janis-burger">
@@ -138,7 +154,7 @@
                         <h3>Janis<br>Joplin<span>(veggie burger)</span></h3>
                         <span class="ingredients">(Pão, Burger Vegetariano, queijo minas padrão, alface, tomate e molho da casa)</span>
                         <span class="including">Including: “Another piece<br>of my burger, baby!”</span>
-                        <span class="price">$16</span>
+                        <span class="price" data-price="$16">$16</span>
                     </figcaption>
                 </figure>
                 <figure class="elvis-burger">
@@ -148,7 +164,7 @@
                         <h3>Elvis<br>The King</h3>
                         <span class="ingredients"> (Pão, carne, queijo, bacon, cebola, alface, tomate e maionese)</span>
                         <span class="including">Including:<br>“It’s now or burgers”</span>
-                        <span class="price">$17</span>
+                        <span class="price" data-price="$17">$17</span>
                     </figcaption>
                 </figure>
                 <figure class="hendrix-burger">
@@ -158,7 +174,7 @@
                         <h3>The<br>Hendrix</h3>
                         <span class="ingredients">(Pão, carne, queijo, bacon, cebola roxa, picles, alface, tomate e molho da casa)</span>
                         <span class="including">Including:<br>“voodoo burger”</span>
-                        <span class="price">$18</span>
+                        <span class="price" data-price="$18">$18</span>
                     </figcaption>
                 </figure>
                 <figure class="bowie-burger">
@@ -168,7 +184,7 @@
                         <h3>The<br>Bowie</h3>
                         <span class="ingredients">(Pão, carne, queijo cheddar, bacon, cebola caramelizada, picles e maionese)</span>
                         <span class="including">Including:<br>“BURGERS ON MARS?</span>
-                        <span class="price">$18</span>
+                        <span class="price" data-price="$18">$18</span>
                     </figcaption>
                 </figure>
                 <figure class="kiss-burger">
@@ -178,7 +194,7 @@
                         <h3>The Kiss</h3>
                         <span class="ingredients">(Pão, carne, queijo cheddar, bacon, cebola crispy e katchup umami)</span>
                         <span class="including">Including:<br>“wanna rock n’ roll<br>all night and burgers<br>every day”</span>
-                        <span class="price">$18</span>
+                        <span class="price" data-price="$18">$18</span>
                     </figcaption>
                 </figure>
             </div>
@@ -532,7 +548,9 @@
             </p>
             <div class="contato-content">
                 <div class="map-container">
+                    <div id="map">
 
+                    </div>
                 </div>
                 <div class="contato-container">
                     <p class="line">
@@ -540,9 +558,7 @@
                             <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#phone-icon"></use>
                         </svg>
                         <span>(53) 3204.0506</span>
-                        <svg role="link" title="WhatsApp" class="whatsapp-icon">
-                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#whatsapp-icon"></use>
-                        </svg>
+                        <img src="assets/img/whatsapp.png" alt="" class="whatsapp-icon">
                         <span>(53) 3204.0506</span>
                     </p>
                     <p class="line">
@@ -737,6 +753,7 @@
             <path fill="#FFF" d="M667.864 621.35a17.009 17.009 0 0 1-13.307-6.416c-7.518-9.436-183.983-232.592-183.983-358.687 0-108.782 88.509-197.291 197.29-197.291 108.782 0 197.291 88.508 197.291 197.291 0 125.81-176.459 349.231-183.977 358.681a17.018 17.018 0 0 1-13.314 6.422zm0-528.378c-90.025 0-163.274 73.249-163.274 163.275 0 95.509 122.144 265.614 163.268 320.175C708.976 521.82 831.14 351.538 831.14 256.247c0-90.026-73.249-163.275-163.276-163.275zm0 250.395c-48.043 0-87.12-39.077-87.12-87.121s39.077-87.121 87.12-87.121c48.044 0 87.121 39.077 87.121 87.121s-39.084 87.121-87.121 87.121zm0-140.226c-29.28 0-53.104 23.825-53.104 53.105 0 29.28 23.824 53.105 53.104 53.105 29.281 0 53.105-23.825 53.105-53.105.001-29.28-23.823-53.105-53.105-53.105z"/>
         </symbol>
     </svg>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWspGMzOzQGZGj1lKmlreVLIB8GlOuiP8"></script>
     <script src="public/script.js" charset="utf-8"></script>
 </body>
 </html>

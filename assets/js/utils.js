@@ -13,7 +13,6 @@ const animation = window.requestAnimationFrame ||
         window.setTimeout(callback, 1000 / 60)
     }
 
-
 const getElemOffset = elem => {
 
   const width = elem.offsetWidth
