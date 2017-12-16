@@ -138,9 +138,16 @@ svg:not(.dflt) circle {
   font-size: 0;
   display: inherit; }
 nav {
+  position: fixed;
+  left: 50%;
+  -webkit-transform: translate3d(-50%, 0, 0);
+          transform: translate3d(-50%, 0, 0);
+  width: 100%;
+  height: 80px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  padding: 0;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -150,33 +157,35 @@ nav {
   max-width: 848px;
   margin: 0 auto;
   padding: 25px 0 0;
-  -webkit-transition: all .8s;
-  transition: all .8s; }
+  -webkit-transition: opacity linear, -webkit-transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 0.775);
+  transition: opacity linear, -webkit-transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 0.775);
+  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 0.775), opacity linear;
+  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 0.775), opacity linear, -webkit-transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 0.775); }
 nav.fixed {
-    position: fixed;
-    width: 100%;
-    height: 80px;
     background: #cb272c;
     max-width: none;
     z-index: 20;
     padding: 0;
+    opacity: 0;
     -webkit-box-shadow: 0 1px 6px 0px #000;
             box-shadow: 0 1px 6px 0px #000;
-    -webkit-animation: sticky 1200ms forwards;
-            animation: sticky 1200ms forwards; }
+    -webkit-transform: translate3d(-50%, -100%, 0);
+            transform: translate3d(-50%, -100%, 0);
+    -webkit-animation: menuScrollDown 0.3s 0.3s cubic-bezier(0.175, 0.885, 0.32, 0.775) forwards;
+            animation: menuScrollDown 0.3s 0.3s cubic-bezier(0.175, 0.885, 0.32, 0.775) forwards; }
 nav.fixed .logo-top, nav.fixed .phone-top {
       display: block; }
 nav.fixed a {
       height: 28px; }
+nav h1 a:before, nav h1 a:after {
+    display: none; }
 nav a {
+    position: relative;
     font-family: "Phosphate-Solid", sans-serif;
     color: #000;
     font-size: 1.387rem;
-    line-height: 0.315;
     text-align: center;
-    position: relative;
-    margin: 0;
-    height: 28px;
+    margin: 0 30px;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -186,27 +195,44 @@ nav a {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
-    text-transform: uppercase; }
+    text-transform: uppercase;
+    -webkit-filter: drop-shadow(0 5px 2px rgba(0, 0, 0, 0.4));
+            filter: drop-shadow(0 5px 2px rgba(0, 0, 0, 0.4)); }
 nav a span {
-      height: 100%;
-      background: #f1c646;
-      position: relative;
-      z-index: 4;
-      line-height: 1.7; }
-nav a .ribbon {
       height: 28px;
-      width: 28px;
-      fill: #f1c646;
-      position: relative;
-      z-index: 3; }
-nav a .ribbon.left {
-        -webkit-transform: translateX(3px);
-                transform: translateX(3px); }
-nav a .ribbon.right {
-        -webkit-transform: translateX(-3px);
-                transform: translateX(-3px); }
+      background: #f1c646;
+      display: block;
+      z-index: 2;
+      line-height: 2em; }
+nav a:before, nav a:after {
+      position: absolute;
+      border-top: 14px solid #f1c646;
+      border-bottom: 14px solid #f1c646;
+      content: '';
+      z-index: 1; }
+nav a:before {
+      left: -20px;
+      border-left: solid 13px transparent;
+      border-right: 15px solid #f1c646; }
+nav a:after {
+      right: -20px;
+      border-right: solid 13px transparent;
+      border-left: 15px solid #f1c646; }
 nav a.fale-conosco span {
       width: 150px; }
+nav a:hover span {
+      background: #fff; }
+nav a:hover:before, nav a:hover:after {
+      border-color: #fff; }
+nav a:hover:before {
+      border-left: solid 13px transparent; }
+nav a:hover:after {
+      border-right: solid 13px transparent; }
+nav a:active {
+      -webkit-filter: drop-shadow(0 5px 2px transparent);
+              filter: drop-shadow(0 5px 2px transparent);
+      -webkit-transform: translate3d(0, 1px, 0);
+              transform: translate3d(0, 1px, 0); }
 @media (max-width: 1100px) {
   nav, nav.fixed {
     width: 300px;
@@ -296,12 +322,15 @@ nav a.fale-conosco span {
   color: #fff;
   text-transform: uppercase;
   font-size: 19px;
+  text-align: center;
   line-height: .8;
-  margin: 0 20px;
+  letter-spacing: 1pt;
+  margin: 0 20px 0;
   display: none; }
 .phone-top span {
     display: block;
-    font-size: 24px; }
+    font-size: 24px;
+    letter-spacing: 2pt; }
 @media (max-width: 1280px) {
     .phone-top {
       margin: 0 0 0 7px; } }
@@ -314,26 +343,24 @@ nav a.fale-conosco span {
 @media (max-width: 1145px) {
     .logo-top {
       margin: 0 10px 0 0; } }
-@-webkit-keyframes sticky {
+@-webkit-keyframes menuScrollDown {
   0% {
-    top: -100px; }
+    opacity: 0;
+    -webkit-transform: translate3d(-50%, -100%, 0);
+            transform: translate3d(-50%, -100%, 0); }
   100% {
-    top: 0; } }
-@keyframes sticky {
+    -webkit-transform: translate3d(-50%, 0, 0);
+            transform: translate3d(-50%, 0, 0);
+    opacity: 1; } }
+@keyframes menuScrollDown {
   0% {
-    top: -100px; }
+    opacity: 0;
+    -webkit-transform: translate3d(-50%, -100%, 0);
+            transform: translate3d(-50%, -100%, 0); }
   100% {
-    top: 0; } }
-@-webkit-keyframes unsticky {
-  0% {
-    top: -100px; }
-  100% {
-    top: 0; } }
-@keyframes unsticky {
-  0% {
-    top: -100px; }
-  100% {
-    top: 0; } }
+    -webkit-transform: translate3d(-50%, 0, 0);
+            transform: translate3d(-50%, 0, 0);
+    opacity: 1; } }
 .section-title {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -346,15 +373,14 @@ nav a.fale-conosco span {
           align-items: center;
   position: relative;
   z-index: 3;
-  padding: 65px 0 0;
-  margin-bottom: 20px;
+  padding: 80px 0 0;
+  margin-bottom: 30px;
   width: 100%; }
 .section-title h2 {
     color: #2b1211;
     font-size: 4.689rem;
     text-align: center;
     font-family: "Phosphate-Solid", sans-serif;
-    line-height: 0.35;
     background: #f1c646;
     padding: 0 20px;
     letter-spacing: .5rem;
@@ -367,7 +393,8 @@ nav a.fale-conosco span {
     display: flex;
     -webkit-box-align: end;
         -ms-flex-align: end;
-            align-items: flex-end; }
+            align-items: flex-end;
+    line-height: 0.2em; }
 .section-title .hamburger-icon {
     width: 66px;
     height: 66px;
@@ -476,8 +503,8 @@ nav a.fale-conosco span {
       letter-spacing: 0; } }
 @font-face {
   font-family: 'Phosphate-Solid';
-  src: url("/assets/fonts/PhosphateSolid.eot");
-  src: url("/assets/fonts/PhosphateSolid.eot?#iefix") format("embedded-opentype"), url("/assets/fonts/PhosphateSolid.woff2") format("woff2"), url("/assets/fonts/PhosphateSolid.woff") format("woff"), url("/assets/fonts/PhosphateSolid.svg#PhosphateSolid") format("svg");
+  src: url("../assets/fonts/PhosphateSolid.eot");
+  src: url("../assets/fonts/PhosphateSolid.eot?#iefix") format("embedded-opentype"), url("../assets/fonts/PhosphateSolid.woff2") format("woff2"), url("../assets/fonts/PhosphateSolid.woff") format("woff"), url("../assets/fonts/PhosphateSolid.svg#PhosphateSolid") format("svg");
   line-height: 1; }
 h1, h2, h3, h4, h5, h6 {
   margin: 0; }
@@ -487,9 +514,14 @@ p {
   background: #341b1a;
   padding: 0 0 120px; }
 .cardapio .burger-wrp {
+    margin: 0 -20px;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-flow: row wrap;
+            flex-flow: row wrap;
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
@@ -497,9 +529,8 @@ p {
         flex-wrap: wrap; }
 .cardapio .burger-wrp figure {
       position: relative;
-      width: 33%;
-      max-width: 370px;
-      min-width: 370px; }
+      margin-bottom: 15px;
+      width: 33%; }
 .cardapio .burger-wrp figure svg {
         z-index: 1;
         position: absolute;
@@ -511,121 +542,41 @@ p {
         position: absolute;
         left: 0;
         top: 50%;
-        -webkit-transform: translateX(110px);
-                transform: translateX(110px);
-        z-index: 1; }
-.cardapio .burger-wrp figure.elvis-burger .hamburger {
-        -webkit-transform: translateX(55px) translateY(-121px);
-                transform: translateX(55px) translateY(-121px);
-        -webkit-transition: -webkit-transform .5s;
-        transition: -webkit-transform .5s;
-        transition: transform .5s;
-        transition: transform .5s, -webkit-transform .5s; }
-.cardapio .burger-wrp figure.elvis-burger:hover .hamburger {
-        -webkit-transform: translateX(70px) translateY(-121px);
-                transform: translateX(70px) translateY(-121px);
-        -webkit-transition: -webkit-transform .5s;
-        transition: -webkit-transform .5s;
-        transition: transform .5s;
-        transition: transform .5s, -webkit-transform .5s; }
-.cardapio .burger-wrp figure.janis-burger .hamburger {
-        -webkit-transform: translateX(55px) translateY(-120px);
-                transform: translateX(55px) translateY(-120px);
-        -webkit-transition: -webkit-transform .5s;
-        transition: -webkit-transform .5s;
-        transition: transform .5s;
-        transition: transform .5s, -webkit-transform .5s; }
-.cardapio .burger-wrp figure.janis-burger:hover .hamburger {
-        -webkit-transform: translateX(78px) translateY(-120px);
-                transform: translateX(78px) translateY(-120px);
-        -webkit-transition: -webkit-transform .5s;
-        transition: -webkit-transform .5s;
-        transition: transform .5s;
-        transition: transform .5s, -webkit-transform .5s; }
-.cardapio .burger-wrp figure.ramones-burger .hamburger {
-        -webkit-transform: translateX(70px) translateY(-110px);
-                transform: translateX(70px) translateY(-110px);
-        -webkit-transition: -webkit-transform .5s;
-        transition: -webkit-transform .5s;
-        transition: transform .5s;
-        transition: transform .5s, -webkit-transform .5s; }
-.cardapio .burger-wrp figure.ramones-burger:hover .hamburger {
-        -webkit-transform: translateX(100px) translateY(-110px);
-                transform: translateX(100px) translateY(-110px);
-        -webkit-transition: -webkit-transform .5s;
-        transition: -webkit-transform .5s;
-        transition: transform .5s;
-        transition: transform .5s, -webkit-transform .5s; }
+        -webkit-transition: -webkit-transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        transition: -webkit-transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), -webkit-transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        -webkit-transform: translate3d(38%, -53%, 0);
+                transform: translate3d(38%, -53%, 0);
+        z-index: 1;
+        cursor: pointer; }
+.cardapio .burger-wrp figure:hover .hamburger {
+        -webkit-transform: translate3d(44%, -53%, 0);
+                transform: translate3d(44%, -53%, 0); }
 .cardapio .burger-wrp figure.led-burger .hamburger {
-        -webkit-transform: translateX(100px) translateY(-128px);
-                transform: translateX(100px) translateY(-128px);
-        -webkit-transition: -webkit-transform .5s;
-        transition: -webkit-transform .5s;
-        transition: transform .5s;
-        transition: transform .5s, -webkit-transform .5s; }
+        -webkit-transform: translate3d(65%, -52%, 0);
+                transform: translate3d(65%, -52%, 0); }
 .cardapio .burger-wrp figure.led-burger:hover .hamburger {
-        -webkit-transition: -webkit-transform .5s;
-        transition: -webkit-transform .5s;
-        transition: transform .5s;
-        transition: transform .5s, -webkit-transform .5s;
-        -webkit-transform: translateX(125px) translateY(-128px);
-                transform: translateX(125px) translateY(-128px); }
-.cardapio .burger-wrp figure.beatles-burger .hamburger {
-        -webkit-transform: translateX(65px) translateY(-123px);
-                transform: translateX(65px) translateY(-123px);
-        -webkit-transition: -webkit-transform .5s;
-        transition: -webkit-transform .5s;
-        transition: transform .5s;
-        transition: transform .5s, -webkit-transform .5s; }
-.cardapio .burger-wrp figure.beatles-burger:hover .hamburger {
-        -webkit-transform: translateX(90px) translateY(-123px);
-                transform: translateX(90px) translateY(-123px);
-        -webkit-transition: -webkit-transform .5s;
-        transition: -webkit-transform .5s;
-        transition: transform .5s;
-        transition: transform .5s, -webkit-transform .5s; }
+        -webkit-transform: translate3d(71%, -52%, 0);
+                transform: translate3d(71%, -52%, 0); }
+.cardapio .burger-wrp figure.ramones-burger .hamburger {
+        -webkit-transform: translate3d(50%, -52%, 0);
+                transform: translate3d(50%, -52%, 0); }
+.cardapio .burger-wrp figure.ramones-burger:hover .hamburger {
+        -webkit-transform: translate3d(56%, -52%, 0);
+                transform: translate3d(56%, -52%, 0); }
 .cardapio .burger-wrp figure.hendrix-burger .hamburger {
-        -webkit-transform: translateX(74px) translateY(-128px);
-                transform: translateX(74px) translateY(-128px);
-        -webkit-transition: -webkit-transform .5s;
-        transition: -webkit-transform .5s;
-        transition: transform .5s;
-        transition: transform .5s, -webkit-transform .5s; }
+        -webkit-transform: translate3d(45%, -52%, 0);
+                transform: translate3d(45%, -52%, 0); }
 .cardapio .burger-wrp figure.hendrix-burger:hover .hamburger {
-        -webkit-transform: translateX(104px) translateY(-128px);
-                transform: translateX(104px) translateY(-128px);
-        -webkit-transition: -webkit-transform .5s;
-        transition: -webkit-transform .5s;
-        transition: transform .5s;
-        transition: transform .5s, -webkit-transform .5s; }
-.cardapio .burger-wrp figure.bowie-burger .hamburger {
-        -webkit-transform: translateX(55px) translateY(-111px);
-                transform: translateX(55px) translateY(-111px);
-        -webkit-transition: -webkit-transform .5s;
-        transition: -webkit-transform .5s;
-        transition: transform .5s;
-        transition: transform .5s, -webkit-transform .5s; }
-.cardapio .burger-wrp figure.bowie-burger:hover .hamburger {
-        -webkit-transform: translateX(75px) translateY(-111px);
-                transform: translateX(75px) translateY(-111px);
-        -webkit-transition: -webkit-transform .5s;
-        transition: -webkit-transform .5s;
-        transition: transform .5s;
-        transition: transform .5s, -webkit-transform .5s; }
+        -webkit-transform: translate3d(51%, -52%, 0);
+                transform: translate3d(51%, -52%, 0); }
 .cardapio .burger-wrp figure.kiss-burger .hamburger {
-        -webkit-transform: translateX(63px) translateY(-122px);
-                transform: translateX(63px) translateY(-122px);
-        -webkit-transition: -webkit-transform .5s;
-        transition: -webkit-transform .5s;
-        transition: transform .5s;
-        transition: transform .5s, -webkit-transform .5s; }
+        -webkit-transform: translate3d(41%, -52%, 0);
+                transform: translate3d(41%, -52%, 0); }
 .cardapio .burger-wrp figure.kiss-burger:hover .hamburger {
-        -webkit-transform: translateX(90px) translateY(-122px);
-                transform: translateX(90px) translateY(-122px);
-        -webkit-transition: -webkit-transform .5s;
-        transition: -webkit-transform .5s;
-        transition: transform .5s;
-        transition: transform .5s, -webkit-transform .5s; }
+        -webkit-transform: translate3d(47%, -52%, 0);
+                transform: translate3d(47%, -52%, 0); }
 .cardapio .burger-wrp figure figcaption {
         position: absolute;
         z-index: 3;
@@ -669,7 +620,7 @@ p {
           font-weight: 400;
           text-align: center;
           font-family: "Montserrat", sans-serif;
-          margin-bottom: 100px;
+          margin-bottom: 110px;
           display: -webkit-box;
           display: -ms-flexbox;
           display: flex;
@@ -728,7 +679,9 @@ p {
           max-width: 123px;
           margin-top: 10px; }
 .cardapio .burger-wrp figure figcaption.veggie .ingredients {
-          margin: 113px auto 0; }
+          margin: 158px auto 0; }
+.cardapio .burger-wrp figure figcaption.kiss-burger .ingredients {
+          margin: 158px auto 0; }
 @media (max-width: 450px) {
         .cardapio .burger-wrp figure {
           max-width: 90%;
@@ -738,6 +691,7 @@ p {
       color: #fff;
       font-family: "Montserrat", sans-serif;
       font-size: 1.492rem;
+      letter-spacing: 1pt;
       width: 100%;
       margin: 0 auto 35px; }
 .cardapio .burger-wrp p strong {
@@ -760,16 +714,9 @@ p {
             -ms-flex-pack: center;
                 justify-content: center; } }
 .cardapio .col {
-    width: 33%;
-    min-width: 349px;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center; }
+    position: relative;
+    padding: 0 20px;
+    width: 33%; }
 @media (max-width: 1233px) {
       .cardapio .col {
         margin: 0 10px 20px;
@@ -777,45 +724,88 @@ p {
 @media (max-width: 450px) {
       .cardapio .col {
         min-width: 100%; } }
-.cardapio .col span {
-      font-family: "Montserrat", sans-serif;
-      color: #fff;
-      font-size: 1.12rem;
-      font-weight: 400;
-      line-height: .7; }
-@media (max-width: 450px) {
-        .cardapio .col span {
-          font-size: .92rem; } }
 .cardapio .col h3 {
+      position: relative;
       color: #f1c646;
+      z-index: 2;
+      display: inline;
       font-family: "Phosphate-Solid", sans-serif;
       font-size: 1.751rem;
       letter-spacing: .1rem;
-      line-height: .9;
+      line-height: .9em;
       margin: 0 auto 13px;
-      text-transform: uppercase; }
+      text-transform: uppercase;
+      background: #341b1a; }
 @media (max-width: 1233px) {
         .cardapio .col h3 {
           margin: 0 0 13px;
           width: 100%; } }
+.cardapio .col h3 span {
+        right: 0; }
 .cardapio .col p {
       font-size: 1.125rem;
       font-weight: 400;
       font-family: "Montserrat", sans-serif;
       color: #fff;
-      letter-spacing: .1rem;
-      width: 85%; }
+      letter-spacing: .1rem; }
+.cardapio .col .name {
+      margin: 8px 0;
+      font-family: "Montserrat", sans-serif;
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.12rem; }
+.cardapio .col .name p {
+        margin-bottom: 0;
+        line-height: 1.2em; }
+.cardapio .col .name small {
+        position: relative;
+        top: -6px;
+        color: #fff;
+        font-weight: 700;
+        font-size: 0.75em; }
 .cardapio .col .row {
-      margin: 0 0 8px;
-      width: 100%; }
+      position: relative;
+      margin: 0 0 5px;
+      width: 100%;
+      line-height: 1.2em; }
+.cardapio .col .row span {
+        position: relative;
+        z-index: 2;
+        font-family: "Montserrat", sans-serif;
+        color: #fff;
+        font-size: 1.12rem;
+        font-weight: 500;
+        background: #341b1a; }
+.cardapio .col .row span:last-child {
+          position: absolute;
+          right: 0;
+          bottom: 0;
+          padding-left: 2px; }
+@media (max-width: 450px) {
+          .cardapio .col .row span {
+            font-size: .92rem; } }
 .cardapio .col .row.row-0 {
         margin: 0 0 11px; }
+.cardapio .col .row.row-0:after {
+          content: initial; }
+.cardapio .col .row.type {
+        margin: 23px 0; }
 .cardapio .col .row.row-3 {
-        margin: 25px 0; }
+        margin: 0 0 40px; }
 .cardapio .col .row.row-3 span {
-          line-height: 1.1; }
+          line-height: 1.1em; }
 .cardapio .col .row.row-margin {
-        margin: 0 0 45px; }
+        margin: 0 0 38px; }
+.cardapio .col .row:after {
+        content: "............................................................................................................................................................";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1;
+        color: #fff;
+        white-space: nowrap;
+        overflow: hidden; }
 .cardapio .sobremesa {
     font-size: 1.354rem;
     font-weight: 700;
@@ -826,7 +816,7 @@ p {
   fill: transparent !important;
   stroke: #f1c646; }
 .contato {
-  background: url(/assets/img/bg-contato.png);
+  background: url(../assets/img/bg-contato.png);
   background-attachment: fixed;
   padding-bottom: 133px; }
 header {
@@ -1024,50 +1014,56 @@ header {
   background: #a12225;
   height: 475px;
   border-bottom: 12px solid #f1c646; }
+header .banner-top {
+    padding: 60px 0; }
 header .banner-top .container {
-    position: relative; }
+      position: relative; }
 header .banner-top img {
-    position: absolute;
-    right: 0;
-    bottom: 0; }
+      position: absolute;
+      right: 0;
+      bottom: 0; }
 header .banner-top .burger-fries {
-    z-index: 1;
-    -webkit-transform: translateY(100px) translateX(100px);
-            transform: translateY(100px) translateX(100px); }
+      z-index: 1;
+      -webkit-transform: translateY(100px) translateX(0px);
+              transform: translateY(100px) translateX(0px); }
 @media (max-width: 1024px) {
-      header .banner-top .burger-fries {
-        -webkit-transform: translateY(30px) translateX(100px);
-                transform: translateY(30px) translateX(100px); } }
+        header .banner-top .burger-fries {
+          -webkit-transform: translateY(30px) translateX(100px);
+                  transform: translateY(30px) translateX(100px); } }
 @media (max-width: 650px) {
-      header .banner-top .burger-fries {
-        display: none; } }
+        header .banner-top .burger-fries {
+          display: none; } }
 header .banner-top .burger-box {
-    -webkit-transform: translateY(135px);
-            transform: translateY(135px);
-    z-index: 2; }
+      -webkit-transform: translateY(135px) translateX(-100px);
+              transform: translateY(135px) translateX(-100px);
+      z-index: 2; }
 @media (max-width: 1024px) {
-      header .banner-top .burger-box {
-        -webkit-transform: translateY(135px) translateX(120px);
-                transform: translateY(135px) translateX(120px); } }
+        header .banner-top .burger-box {
+          -webkit-transform: translateY(135px) translateX(120px);
+                  transform: translateY(135px) translateX(120px); } }
 @media (max-width: 900px) {
-      header .banner-top .burger-box {
-        -webkit-transform: translateY(135px) translateX(350px);
-                transform: translateY(135px) translateX(350px); } }
+        header .banner-top .burger-box {
+          -webkit-transform: translateY(135px) translateX(350px);
+                  transform: translateY(135px) translateX(350px); } }
 @media (max-width: 650px) {
-      header .banner-top .burger-box {
-        display: none; } }
+        header .banner-top .burger-box {
+          display: none; } }
 header .logo-banner {
     width: 510px;
     height: 280px;
-    margin-top: 20px;
+    margin-top: 40px;
     position: relative;
-    z-index: 5; }
+    z-index: 5;
+    -webkit-filter: drop-shadow(0 5px 20px black);
+            filter: drop-shadow(0 5px 20px black); }
 @media (max-width: 650px) {
       header .logo-banner {
         max-width: 95%; } }
 header .phone-banner {
     max-width: 500px;
     position: relative;
+    left: 0px;
+    top: -10px;
     z-index: 5; }
 header .phone-banner span {
       display: block;
@@ -1077,16 +1073,18 @@ header .phone-banner span {
       text-transform: uppercase; }
 header .phone-banner span:nth-child(1) {
         color: #fff;
-        font-size: 2.687rem; }
+        font-size: 2.687rem;
+        letter-spacing: 2.15pt; }
 header .phone-banner span:nth-child(2) {
         color: #fff;
-        font-size: 2.089rem; }
+        font-size: 2.089rem;
+        letter-spacing: 1.5pt; }
 header .space {
     width: 100%;
-    height: 0; }
+    height: 80px;
+    display: none; }
 header.fixed .space {
-    width: 100%;
-    height: 80px; }
+    display: block; }
 @media (max-width: 1100px) {
     header .space {
       width: 100%;

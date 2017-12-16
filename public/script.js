@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -70,65 +70,14 @@
 "use strict";
 
 
-var _utils = __webpack_require__(1);
-
-var _fontLoader = __webpack_require__(2);
-
-var _fontLoader2 = _interopRequireDefault(_fontLoader);
-
-var _domready = __webpack_require__(4);
-
-var _domready2 = _interopRequireDefault(_domready);
-
-var _maps = __webpack_require__(5);
-
-var _maps2 = _interopRequireDefault(_maps);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var hamburger = document.querySelector('#hamburger-1');
-var menu = document.querySelector('#menu');
-var header = document.querySelector('header');
-var hHeight = header.offsetHeight;
-var mHeight = menu.offsetHeight;
-var parallax = document.querySelector('.contato');
-(0, _domready2.default)(function () {
-
-  hamburger.addEventListener('click', function () {
-    menu.classList.toggle('openned');
-    this.classList.toggle('is-active');
-  }, false);
-});
-function parallaxTriger() {
-  parallax.style.backgroundPosition = 'center ' + window.scrollY * -2 / 3 + 'px';
-}
-function menuSticky() {
-  if (window.pageYOffset > hHeight) {
-    menu.classList.add('fixed');
-    header.classList.add('fixed');
-    // console.log(window.pageYOffset > hHeight)
-    // header.style.marginTop = nHeight+"px";
-  } else {
-    menu.classList.remove('fixed');
-    header.classList.remove('fixed');
-    // header.style.marginTop = 0;
-  }
-}
-window.addEventListener('scroll', function () {
-  parallaxTriger();
-  menuSticky();
-});
-
-/***/ }),
-/* 1 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
 var doc = document;
 var the = doc.querySelector.bind(doc);
 var all = doc.querySelectorAll.bind(doc);
@@ -160,11 +109,157 @@ var getElemOffset = function getElemOffset(elem) {
   return { height: height, top: top };
 };
 
+var ScrollHandler = function () {
+  // Needs Animation variable from common.js file
+  function ScrollHandler() {
+    _classCallCheck(this, ScrollHandler);
+
+    this.lastPosY = window.pageYOffset;
+    this.loop();
+  }
+
+  _createClass(ScrollHandler, [{
+    key: "init",
+    value: function init(options) {
+      this.after = options.after || function () {};
+      this.before = options.before || function () {};
+      this.max = options.max || 0;
+      this.min = options.min || 0;
+    }
+  }, {
+    key: "callback",
+    value: function callback() {
+
+      if (this.lastPosY >= this.max) {
+        this.after();
+      }
+
+      if (this.lastPosY <= this.min) {
+        this.before();
+      }
+    }
+  }, {
+    key: "loop",
+    value: function loop() {
+
+      var scrollTop = window.pageYOffset;
+
+      if (this.lastPosY === scrollTop) {
+        animation(this.loop.bind(this));
+        return;
+      } else {
+        this.lastPosY = scrollTop;
+        this.callback();
+        animation(this.loop.bind(this));
+      }
+    }
+  }, {
+    key: "stop",
+    value: function stop() {
+      var name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+
+
+      if (name) {
+
+        this[name] = function () {
+          return null;
+        };
+      } else {
+
+        this.after = function () {
+          return null;
+        };
+        this.before = function () {
+          return null;
+        };
+      }
+    }
+  }]);
+
+  return ScrollHandler;
+}();
+
+var elementIsVisibleInViewport = function elementIsVisibleInViewport(el) {
+  var partiallyVisible = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+
+  var _el$getBoundingClient = el.getBoundingClientRect(),
+      top = _el$getBoundingClient.top,
+      left = _el$getBoundingClient.left,
+      bottom = _el$getBoundingClient.bottom,
+      right = _el$getBoundingClient.right;
+
+  return partiallyVisible ? (top > 0 && top < innerHeight || bottom > 0 && bottom < innerHeight) && (left > 0 && left < innerWidth || right > 0 && right < innerWidth) : top >= 0 && left >= 0 && bottom <= innerHeight && right <= innerWidth;
+};
+
 exports.doc = doc;
 exports.the = the;
 exports.all = all;
 exports.animation = animation;
 exports.getElemOffset = getElemOffset;
+exports.ScrollHandler = ScrollHandler;
+exports.elementIsVisibleInViewport = elementIsVisibleInViewport;
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _utils = __webpack_require__(0);
+
+var _fontLoader = __webpack_require__(2);
+
+var _fontLoader2 = _interopRequireDefault(_fontLoader);
+
+var _domready = __webpack_require__(4);
+
+var _domready2 = _interopRequireDefault(_domready);
+
+var _parallax = __webpack_require__(5);
+
+var _parallax2 = _interopRequireDefault(_parallax);
+
+var _menuSticky = __webpack_require__(6);
+
+var _menuSticky2 = _interopRequireDefault(_menuSticky);
+
+var _lazyLoad = __webpack_require__(7);
+
+var _lazyLoad2 = _interopRequireDefault(_lazyLoad);
+
+var _burger = __webpack_require__(8);
+
+var _burger2 = _interopRequireDefault(_burger);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// import Swiper from './vendors/maps.js'
+
+
+(0, _domready2.default)(function () {
+
+  // handle the menu on mobile;
+  // const menu = the('#menu')
+  // const hamburger = the('#hamburger-1')
+
+  // hamburger.addEventListener('click', function() {
+  //   menu.classList.toggle('openned')
+  //   this.classList.toggle('is-active')
+  // }, false)
+
+  // start parallax 
+  (0, _parallax2.default)();
+
+  // menu fixed on scroll
+  (0, _menuSticky2.default)();
+
+  //Lazy load
+  (0, _lazyLoad2.default)();
+
+  // active burger section
+  (0, _burger2.default)();
+});
 
 /***/ }),
 /* 2 */
@@ -593,42 +688,146 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 "use strict";
 
 
-/*********************************************************************
-*  =MAP
-*********************************************************************/
-var w = window,
-    d = document,
-    e = d.documentElement,
-    g = d.getElementsByTagName('body')[0],
-    screen_width = w.innerWidth || e.clientWidth || g.clientWidth,
-    screen_height = w.inner;
-
-var contentString = '<div id="content">' + '<div id="siteNotice">' + 'Rua Hoffmann, 447 <br /> floresta - POA/RS' + '</div>' + '</div>';
-// console.log(contentString)
-
-var pos = new google.maps.LatLng(-30.029436, -51.214260),
-
-// var map;
-map = new google.maps.Map(document.getElementById('map'), {
-    center: pos,
-    zoom: 16,
-    scrollwheel: false,
-    draggable: screen_width > 1024 ? true : false,
-    disableDefaultUI: true
+Object.defineProperty(exports, "__esModule", {
+    value: true
 });
+exports.default = parallax;
 
-var infowindow = new google.maps.InfoWindow({
-    content: contentString
+var _utils = __webpack_require__(0);
+
+function parallax() {
+
+    // parallax
+    var parallax = new _utils.ScrollHandler();
+    var bg = (0, _utils.the)('.contato');
+
+    parallax.init({
+        after: function after() {
+            var y = parallax.lastPosY * -2 / 3 + 'px';
+            bg.style.backgroundPosition = 'center ' + y;
+        }
+    });
+}
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
 });
-var image = 'assets/img/pin.png';
+exports.default = menuSticky;
 
-var pinMarker = new google.maps.Marker({
-    position: pos,
-    map: map,
-    icon: image
+var _utils = __webpack_require__(0);
+
+function menuSticky() {
+
+    var menu = (0, _utils.the)('#menu');
+    var header = (0, _utils.the)('header');
+
+    if (window.pageYOffset > 0) {
+        menu.classList.add('fixed');
+        header.classList.add('fixed');
+    }
+
+    function menuSticky(y) {
+
+        if (y > 5) {
+            menu.classList.add('fixed');
+            header.classList.add('fixed');
+        } else {
+            menu.classList.remove('fixed');
+            header.classList.remove('fixed');
+        }
+    }
+
+    var scrollPos = new _utils.ScrollHandler();
+
+    scrollPos.init({
+        after: function after() {
+            return menuSticky(scrollPos.lastPosY);
+        }
+    });
+}
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
 });
+exports.default = lazyLoad;
 
-// console.log(infowindow)
+var _utils = __webpack_require__(0);
+
+function lazyLoad() {
+
+    var load = function load(img) {
+        return img.src = img.dataset.src;
+    };
+
+    var watch = function watch(img) {
+
+        var scroll = new _utils.ScrollHandler();
+
+        scroll.init({
+            after: function after() {
+
+                if ((0, _utils.elementIsVisibleInViewport)(img, true)) {
+                    load(img);
+                    scroll.stop();
+                }
+            }
+        });
+    };
+
+    (0, _utils.all)('.lazy').forEach(function (lazy) {
+
+        if ((0, _utils.elementIsVisibleInViewport)(lazy, true)) {
+            load(lazy);
+        } else {
+            watch(lazy);
+        }
+    });
+}
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = bugers;
+
+var _utils = __webpack_require__(0);
+
+function bugers() {
+
+    var burger = (0, _utils.the)('.burger-wrp');
+
+    var scroll = new _utils.ScrollHandler();
+
+    scroll.init({
+        after: function after() {
+
+            if ((0, _utils.elementIsVisibleInViewport)(burger, true)) {
+                burger.classList.add('visible');
+                scroll.stop();
+            }
+        }
+    });
+}
 
 /***/ })
 /******/ ]);
