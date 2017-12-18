@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -70,65 +70,14 @@
 "use strict";
 
 
-var _utils = __webpack_require__(1);
-
-var _fontLoader = __webpack_require__(2);
-
-var _fontLoader2 = _interopRequireDefault(_fontLoader);
-
-var _domready = __webpack_require__(4);
-
-var _domready2 = _interopRequireDefault(_domready);
-
-var _maps = __webpack_require__(5);
-
-var _maps2 = _interopRequireDefault(_maps);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var hamburger = document.querySelector('#hamburger-1');
-var menu = document.querySelector('#menu');
-var header = document.querySelector('header');
-var hHeight = header.offsetHeight;
-var mHeight = menu.offsetHeight;
-var parallax = document.querySelector('.contato');
-(0, _domready2.default)(function () {
-
-  hamburger.addEventListener('click', function () {
-    menu.classList.toggle('openned');
-    this.classList.toggle('is-active');
-  }, false);
-});
-function parallaxTriger() {
-  parallax.style.backgroundPosition = 'center ' + window.scrollY * -2 / 3 + 'px';
-}
-function menuSticky() {
-  if (window.pageYOffset > hHeight) {
-    menu.classList.add('fixed');
-    header.classList.add('fixed');
-    // console.log(window.pageYOffset > hHeight)
-    // header.style.marginTop = nHeight+"px";
-  } else {
-    menu.classList.remove('fixed');
-    header.classList.remove('fixed');
-    // header.style.marginTop = 0;
-  }
-}
-window.addEventListener('scroll', function () {
-  parallaxTriger();
-  menuSticky();
-});
-
-/***/ }),
-/* 1 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
 var doc = document;
 var the = doc.querySelector.bind(doc);
 var all = doc.querySelectorAll.bind(doc);
@@ -160,11 +109,158 @@ var getElemOffset = function getElemOffset(elem) {
   return { height: height, top: top };
 };
 
+var ScrollHandler = function () {
+  // Needs Animation variable from common.js file
+  function ScrollHandler() {
+    _classCallCheck(this, ScrollHandler);
+
+    this.lastPosY = window.pageYOffset;
+    this.loop();
+  }
+
+  _createClass(ScrollHandler, [{
+    key: "init",
+    value: function init(options) {
+      this.after = options.after || function () {};
+      this.before = options.before || function () {};
+      this.max = options.max || 0;
+      this.min = options.min || 0;
+    }
+  }, {
+    key: "callback",
+    value: function callback() {
+
+      if (this.lastPosY >= this.max) {
+        this.after();
+      }
+
+      if (this.lastPosY <= this.min) {
+        this.before();
+      }
+    }
+  }, {
+    key: "loop",
+    value: function loop() {
+
+      var scrollTop = window.pageYOffset;
+
+      if (this.lastPosY === scrollTop) {
+        animation(this.loop.bind(this));
+        return;
+      } else {
+        this.lastPosY = scrollTop;
+        this.callback();
+        animation(this.loop.bind(this));
+      }
+    }
+  }, {
+    key: "stop",
+    value: function stop() {
+      var name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+
+
+      if (name) {
+
+        this[name] = function () {
+          return null;
+        };
+      } else {
+
+        this.after = function () {
+          return null;
+        };
+        this.before = function () {
+          return null;
+        };
+      }
+    }
+  }]);
+
+  return ScrollHandler;
+}();
+
+var elementIsVisibleInViewport = function elementIsVisibleInViewport(el) {
+  var partiallyVisible = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+
+  var _el$getBoundingClient = el.getBoundingClientRect(),
+      top = _el$getBoundingClient.top,
+      left = _el$getBoundingClient.left,
+      bottom = _el$getBoundingClient.bottom,
+      right = _el$getBoundingClient.right;
+
+  return partiallyVisible ? (top > 0 && top < innerHeight || bottom > 0 && bottom < innerHeight) && (left > 0 && left < innerWidth || right > 0 && right < innerWidth) : top >= 0 && left >= 0 && bottom <= innerHeight && right <= innerWidth;
+};
+
 exports.doc = doc;
 exports.the = the;
 exports.all = all;
 exports.animation = animation;
 exports.getElemOffset = getElemOffset;
+exports.ScrollHandler = ScrollHandler;
+exports.elementIsVisibleInViewport = elementIsVisibleInViewport;
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _utils = __webpack_require__(0);
+
+var _fontLoader = __webpack_require__(2);
+
+var _fontLoader2 = _interopRequireDefault(_fontLoader);
+
+var _parallax = __webpack_require__(5);
+
+var _parallax2 = _interopRequireDefault(_parallax);
+
+var _menuSticky = __webpack_require__(6);
+
+var _menuSticky2 = _interopRequireDefault(_menuSticky);
+
+var _lazyLoad = __webpack_require__(7);
+
+var _lazyLoad2 = _interopRequireDefault(_lazyLoad);
+
+var _sections = __webpack_require__(14);
+
+var _sections2 = _interopRequireDefault(_sections);
+
+var _zenscroll = __webpack_require__(11);
+
+var _zenscroll2 = _interopRequireDefault(_zenscroll);
+
+var _domready = __webpack_require__(4);
+
+var _domready2 = _interopRequireDefault(_domready);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+(0, _domready2.default)(function () {
+
+  // handle the menu on mobile;
+  // const menu = the('#menu')
+  // const hamburger = the('#hamburger-1')
+
+  // hamburger.addEventListener('click', function() {
+  //   menu.classList.toggle('openned')
+  //   this.classList.toggle('is-active')
+  // }, false)
+
+  // start parallax 
+  (0, _parallax2.default)();
+
+  // menu fixed on scroll
+  (0, _menuSticky2.default)();
+
+  //Lazy load
+  (0, _lazyLoad2.default)();
+
+  // when sections are reached
+  (0, _sections2.default)();
+});
 
 /***/ }),
 /* 2 */
@@ -593,42 +689,731 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = parallax;
+
+var _utils = __webpack_require__(0);
+
+function parallax() {
+
+    // parallax
+    var parallax = new _utils.ScrollHandler();
+    var bg = (0, _utils.the)('.contato');
+
+    parallax.init({
+        after: function after() {
+            var y = parallax.lastPosY * -2 / 3 + 'px';
+            bg.style.backgroundPosition = 'center ' + y;
+        }
+    });
+}
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = menuSticky;
+
+var _utils = __webpack_require__(0);
+
+function menuSticky() {
+
+    var menu = (0, _utils.the)('#menu');
+    var header = (0, _utils.the)('header');
+
+    if (window.pageYOffset > 0) {
+        menu.classList.add('fixed');
+        header.classList.add('fixed');
+    }
+
+    function menuSticky(y) {
+
+        if (y > 5) {
+            menu.classList.add('fixed');
+            header.classList.add('fixed');
+        } else {
+            menu.classList.remove('fixed');
+            header.classList.remove('fixed');
+        }
+    }
+
+    var scrollPos = new _utils.ScrollHandler();
+
+    scrollPos.init({
+        after: function after() {
+            return menuSticky(scrollPos.lastPosY);
+        }
+    });
+}
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = lazyLoad;
+
+var _utils = __webpack_require__(0);
+
+function lazyLoad() {
+
+    var load = function load(img) {
+        img.src = img.dataset.src;
+        img.classList.add('loaded');
+    };
+
+    var watch = function watch(img) {
+
+        var scroll = new _utils.ScrollHandler();
+
+        scroll.init({
+            after: function after() {
+
+                if ((0, _utils.elementIsVisibleInViewport)(img, true)) {
+                    load(img);
+                    scroll.stop();
+                }
+            }
+        });
+    };
+
+    (0, _utils.all)('.lazy').forEach(function (lazy) {
+
+        if ((0, _utils.elementIsVisibleInViewport)(lazy, true)) {
+            load(lazy);
+        } else {
+            watch(lazy);
+        }
+    });
+}
+
+/***/ }),
+/* 8 */,
+/* 9 */,
+/* 10 */,
+/* 11 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+/**
+ * Zenscroll 4.0.0
+ * https://github.com/zengabor/zenscroll/
+ *
+ * Copyright 2015–2017 Gabor Lenard
+ *
+ * This is free and unencumbered software released into the public domain.
+ * 
+ * Anyone is free to copy, modify, publish, use, compile, sell, or
+ * distribute this software, either in source code form or as a compiled
+ * binary, for any purpose, commercial or non-commercial, and by any
+ * means.
+ * 
+ * In jurisdictions that recognize copyright laws, the author or authors
+ * of this software dedicate any and all copyright interest in the
+ * software to the public domain. We make this dedication for the benefit
+ * of the public at large and to the detriment of our heirs and
+ * successors. We intend this dedication to be an overt act of
+ * relinquishment in perpetuity of all present and future rights to this
+ * software under copyright law.
+ * 
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+ * IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+ * OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ * ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ * OTHER DEALINGS IN THE SOFTWARE.
+ * 
+ * For more information, please refer to <http://unlicense.org>
+ * 
+ */
+
+/*jshint devel:true, asi:true */
+
+/*global define, module */
+
+(function (root, factory) {
+	if (true) {
+		!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory()),
+				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
+				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	} else if ((typeof module === "undefined" ? "undefined" : _typeof(module)) === "object" && module.exports) {
+		module.exports = factory();
+	} else {
+		(function install() {
+			// To make sure Zenscroll can be referenced from the header, before `body` is available
+			if (document && document.body) {
+				root.zenscroll = factory();
+			} else {
+				// retry 9ms later
+				setTimeout(install, 9);
+			}
+		})();
+	}
+})(undefined, function () {
+	"use strict";
+
+	// Detect if the browser already supports native smooth scrolling (e.g., Firefox 36+ and Chrome 49+) and it is enabled:
+
+	var isNativeSmoothScrollEnabledOn = function isNativeSmoothScrollEnabledOn(elem) {
+		return "getComputedStyle" in window && window.getComputedStyle(elem)["scroll-behavior"] === "smooth";
+	};
+
+	// Exit if it’s not a browser environment:
+	if (typeof window === "undefined" || !("document" in window)) {
+		return {};
+	}
+
+	var makeScroller = function makeScroller(container, defaultDuration, edgeOffset) {
+
+		// Use defaults if not provided
+		defaultDuration = defaultDuration || 999; //ms
+		if (!edgeOffset && edgeOffset !== 0) {
+			// When scrolling, this amount of distance is kept from the edges of the container:
+			edgeOffset = 9; //px
+		}
+
+		// Handling the life-cycle of the scroller
+		var scrollTimeoutId;
+		var setScrollTimeoutId = function setScrollTimeoutId(newValue) {
+			scrollTimeoutId = newValue;
+		};
+
+		/**
+   * Stop the current smooth scroll operation immediately
+   */
+		var stopScroll = function stopScroll() {
+			clearTimeout(scrollTimeoutId);
+			setScrollTimeoutId(0);
+		};
+
+		var getTopWithEdgeOffset = function getTopWithEdgeOffset(elem) {
+			return Math.max(0, container.getTopOf(elem) - edgeOffset);
+		};
+
+		/**
+   * Scrolls to a specific vertical position in the document.
+   *
+   * @param {targetY} The vertical position within the document.
+   * @param {duration} Optionally the duration of the scroll operation.
+   *        If not provided the default duration is used.
+   * @param {onDone} An optional callback function to be invoked once the scroll finished.
+   */
+		var scrollToY = function scrollToY(targetY, duration, onDone) {
+			stopScroll();
+			if (duration === 0 || duration && duration < 0 || isNativeSmoothScrollEnabledOn(container.body)) {
+				container.toY(targetY);
+				if (onDone) {
+					onDone();
+				}
+			} else {
+				var startY = container.getY();
+				var distance = Math.max(0, targetY) - startY;
+				var startTime = new Date().getTime();
+				duration = duration || Math.min(Math.abs(distance), defaultDuration);
+				(function loopScroll() {
+					setScrollTimeoutId(setTimeout(function () {
+						// Calculate percentage:
+						var p = Math.min(1, (new Date().getTime() - startTime) / duration);
+						// Calculate the absolute vertical position:
+						var y = Math.max(0, Math.floor(startY + distance * (p < 0.5 ? 2 * p * p : p * (4 - p * 2) - 1)));
+						container.toY(y);
+						if (p < 1 && container.getHeight() + y < container.body.scrollHeight) {
+							loopScroll();
+						} else {
+							setTimeout(stopScroll, 99); // with cooldown time
+							if (onDone) {
+								onDone();
+							}
+						}
+					}, 9));
+				})();
+			}
+		};
+
+		/**
+   * Scrolls to the top of a specific element.
+   *
+   * @param {elem} The element to scroll to.
+   * @param {duration} Optionally the duration of the scroll operation.
+   * @param {onDone} An optional callback function to be invoked once the scroll finished.
+   */
+		var scrollToElem = function scrollToElem(elem, duration, onDone) {
+			scrollToY(getTopWithEdgeOffset(elem), duration, onDone);
+		};
+
+		/**
+   * Scrolls an element into view if necessary.
+   *
+   * @param {elem} The element.
+   * @param {duration} Optionally the duration of the scroll operation.
+   * @param {onDone} An optional callback function to be invoked once the scroll finished.
+   */
+		var scrollIntoView = function scrollIntoView(elem, duration, onDone) {
+			var elemHeight = elem.getBoundingClientRect().height;
+			var elemBottom = container.getTopOf(elem) + elemHeight;
+			var containerHeight = container.getHeight();
+			var y = container.getY();
+			var containerBottom = y + containerHeight;
+			if (getTopWithEdgeOffset(elem) < y || elemHeight + edgeOffset > containerHeight) {
+				// Element is clipped at top or is higher than screen.
+				scrollToElem(elem, duration, onDone);
+			} else if (elemBottom + edgeOffset > containerBottom) {
+				// Element is clipped at the bottom.
+				scrollToY(elemBottom - containerHeight + edgeOffset, duration, onDone);
+			} else if (onDone) {
+				onDone();
+			}
+		};
+
+		/**
+   * Scrolls to the center of an element.
+   *
+   * @param {elem} The element.
+   * @param {duration} Optionally the duration of the scroll operation.
+   * @param {offset} Optionally the offset of the top of the element from the center of the screen.
+   * @param {onDone} An optional callback function to be invoked once the scroll finished.
+   */
+		var scrollToCenterOf = function scrollToCenterOf(elem, duration, offset, onDone) {
+			scrollToY(Math.max(0, container.getTopOf(elem) - container.getHeight() / 2 + (offset || elem.getBoundingClientRect().height / 2)), duration, onDone);
+		};
+
+		/**
+   * Changes default settings for this scroller.
+   *
+   * @param {newDefaultDuration} Optionally a new value for default duration, used for each scroll method by default.
+   *        Ignored if null or undefined.
+   * @param {newEdgeOffset} Optionally a new value for the edge offset, used by each scroll method by default. Ignored if null or undefined.
+   * @returns An object with the current values.
+   */
+		var setup = function setup(newDefaultDuration, newEdgeOffset) {
+			if (newDefaultDuration === 0 || newDefaultDuration) {
+				defaultDuration = newDefaultDuration;
+			}
+			if (newEdgeOffset === 0 || newEdgeOffset) {
+				edgeOffset = newEdgeOffset;
+			}
+			return {
+				defaultDuration: defaultDuration,
+				edgeOffset: edgeOffset
+			};
+		};
+
+		return {
+			setup: setup,
+			to: scrollToElem,
+			toY: scrollToY,
+			intoView: scrollIntoView,
+			center: scrollToCenterOf,
+			stop: stopScroll,
+			moving: function moving() {
+				return !!scrollTimeoutId;
+			},
+			getY: container.getY,
+			getTopOf: container.getTopOf
+		};
+	};
+
+	var docElem = document.documentElement;
+	var getDocY = function getDocY() {
+		return window.scrollY || docElem.scrollTop;
+	};
+
+	// Create a scroller for the document:
+	var zenscroll = makeScroller({
+		body: document.scrollingElement || document.body,
+		toY: function toY(y) {
+			window.scrollTo(0, y);
+		},
+		getY: getDocY,
+		getHeight: function getHeight() {
+			return window.innerHeight || docElem.clientHeight;
+		},
+		getTopOf: function getTopOf(elem) {
+			return elem.getBoundingClientRect().top + getDocY() - docElem.offsetTop;
+		}
+	});
+
+	/**
+  * Creates a scroller from the provided container element (e.g., a DIV)
+  *
+  * @param {scrollContainer} The vertical position within the document.
+  * @param {defaultDuration} Optionally a value for default duration, used for each scroll method by default.
+  *        Ignored if 0 or null or undefined.
+  * @param {edgeOffset} Optionally a value for the edge offset, used by each scroll method by default. 
+  *        Ignored if null or undefined.
+  * @returns A scroller object, similar to `zenscroll` but controlling the provided element.
+  */
+	zenscroll.createScroller = function (scrollContainer, defaultDuration, edgeOffset) {
+		return makeScroller({
+			body: scrollContainer,
+			toY: function toY(y) {
+				scrollContainer.scrollTop = y;
+			},
+			getY: function getY() {
+				return scrollContainer.scrollTop;
+			},
+			getHeight: function getHeight() {
+				return Math.min(scrollContainer.clientHeight, window.innerHeight || docElem.clientHeight);
+			},
+			getTopOf: function getTopOf(elem) {
+				return elem.offsetTop;
+			}
+		}, defaultDuration, edgeOffset);
+	};
+
+	// Automatic link-smoothing on achors
+	// Exclude IE8- or when native is enabled or Zenscroll auto- is disabled
+	if ("addEventListener" in window && !window.noZensmooth && !isNativeSmoothScrollEnabledOn(document.body)) {
+
+		var isScrollRestorationSupported = "scrollRestoration" in history;
+
+		// On first load & refresh make sure the browser restores the position first
+		if (isScrollRestorationSupported) {
+			history.scrollRestoration = "auto";
+		}
+
+		window.addEventListener("load", function () {
+
+			if (isScrollRestorationSupported) {
+				// Set it to manual
+				setTimeout(function () {
+					history.scrollRestoration = "manual";
+				}, 9);
+				window.addEventListener("popstate", function (event) {
+					if (event.state && "zenscrollY" in event.state) {
+						zenscroll.toY(event.state.zenscrollY);
+					}
+				}, false);
+			}
+
+			// Add edge offset on first load if necessary
+			// This may not work on IE (or older computer?) as it requires more timeout, around 100 ms
+			if (window.location.hash) {
+				setTimeout(function () {
+					// Adjustment is only needed if there is an edge offset:
+					var edgeOffset = zenscroll.setup().edgeOffset;
+					if (edgeOffset) {
+						var targetElem = document.getElementById(window.location.href.split("#")[1]);
+						if (targetElem) {
+							var targetY = Math.max(0, zenscroll.getTopOf(targetElem) - edgeOffset);
+							var diff = zenscroll.getY() - targetY;
+							// Only do the adjustment if the browser is very close to the element:
+							if (0 <= diff && diff < 9) {
+								window.scrollTo(0, targetY);
+							}
+						}
+					}
+				}, 9);
+			}
+		}, false);
+
+		// Handling clicks on anchors
+		var RE_noZensmooth = new RegExp("(^|\\s)noZensmooth(\\s|$)");
+		window.addEventListener("click", function (event) {
+			var anchor = event.target;
+			while (anchor && anchor.tagName !== "A") {
+				anchor = anchor.parentNode;
+			}
+			// Let the browser handle the click if it wasn't with the primary button, or with some modifier keys:
+			if (!anchor || event.which !== 1 || event.shiftKey || event.metaKey || event.ctrlKey || event.altKey) {
+				return;
+			}
+			// Save the current scrolling position so it can be used for scroll restoration:
+			if (isScrollRestorationSupported) {
+				try {
+					history.replaceState({ zenscrollY: zenscroll.getY() }, "");
+				} catch (e) {
+					// Avoid the Chrome Security exception on file protocol, e.g., file://index.html
+				}
+			}
+			// Find the referenced ID:
+			var href = anchor.getAttribute("href") || "";
+			if (href.indexOf("#") === 0 && !RE_noZensmooth.test(anchor.className)) {
+				var targetY = 0;
+				var targetElem = document.getElementById(href.substring(1));
+				if (href !== "#") {
+					if (!targetElem) {
+						// Let the browser handle the click if the target ID is not found.
+						return;
+					}
+					targetY = zenscroll.getTopOf(targetElem);
+				}
+				event.preventDefault();
+				// By default trigger the browser's `hashchange` event...
+				var onDone = function onDone() {
+					window.location = href;
+				};
+				// ...unless there is an edge offset specified
+				var edgeOffset = zenscroll.setup().edgeOffset;
+				if (edgeOffset) {
+					targetY = Math.max(0, targetY - edgeOffset);
+					onDone = function onDone() {
+						history.pushState(null, "", href);
+					};
+				}
+				zenscroll.toY(targetY, null, onDone);
+			}
+		}, false);
+	}
+
+	return zenscroll;
+});
+
+/***/ }),
+/* 12 */,
+/* 13 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
 /*********************************************************************
 *  =MAP
 *********************************************************************/
-var w = window,
-    d = document,
-    e = d.documentElement,
-    g = d.getElementsByTagName('body')[0],
-    screen_width = w.innerWidth || e.clientWidth || g.clientWidth,
-    screen_height = w.inner;
 
-var contentString = '<div id="content">' + '<div id="siteNotice">' + 'Rua Hoffmann, 447 <br /> floresta - POA/RS' + '</div>' + '</div>';
-// console.log(contentString)
+var GoogleMaps = function () {
+    function GoogleMaps() {
+        _classCallCheck(this, GoogleMaps);
+    }
 
-var pos = new google.maps.LatLng(-30.029436, -51.214260),
+    _createClass(GoogleMaps, [{
+        key: 'init',
+        value: function init() {
+            this.gMapScript = document.createElement('script');
+            this.gMapScript.setAttribute('src', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCWspGMzOzQGZGj1lKmlreVLIB8GlOuiP8');
+            document.body.appendChild(this.gMapScript);
+        }
+    }, {
+        key: 'load',
+        value: function load() {
 
-// var map;
-map = new google.maps.Map(document.getElementById('map'), {
-    center: pos,
-    zoom: 16,
-    scrollwheel: false,
-    draggable: screen_width > 1024 ? true : false,
-    disableDefaultUI: true
+            var w = window,
+                d = document,
+                e = d.documentElement,
+                g = d.getElementsByTagName('body')[0],
+                screen_width = w.innerWidth || e.clientWidth || g.clientWidth,
+                screen_height = w.inner;
+
+            var contentString = '<div id="content">' + '<div id="siteNotice">' + 'Rua Hoffmann, 447 <br /> floresta - POA/RS' + '</div>' + '</div>';
+            // console.log(contentString)
+
+            var pos = new google.maps.LatLng(-30.029436, -51.214260),
+
+            // const map;
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: pos,
+                zoom: 16,
+                scrollwheel: false,
+                draggable: screen_width > 1024 ? true : false,
+                disableDefaultUI: true
+            });
+
+            var infowindow = new google.maps.InfoWindow({
+                content: contentString
+            });
+
+            var image = 'assets/img/pin.png';
+
+            var pinMarker = new google.maps.Marker({
+                position: pos,
+                map: map,
+                icon: image
+            });
+        }
+    }]);
+
+    return GoogleMaps;
+}();
+
+exports.default = GoogleMaps;
+
+/***/ }),
+/* 14 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
 });
+exports.default = onSections;
 
-var infowindow = new google.maps.InfoWindow({
-    content: contentString
+var _utils = __webpack_require__(0);
+
+var _maps = __webpack_require__(13);
+
+var _maps2 = _interopRequireDefault(_maps);
+
+var _contact = __webpack_require__(15);
+
+var _contact2 = _interopRequireDefault(_contact);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function onSections() {
+
+    var gMaps = new _maps2.default();
+    gMaps.init();
+
+    (0, _utils.all)('.section').forEach(function (section) {
+
+        var scroll = new _utils.ScrollHandler();
+
+        var _getElemOffset = (0, _utils.getElemOffset)(section),
+            top = _getElemOffset.top;
+
+        scroll.init({
+
+            after: function after(_) {
+
+                if (scroll.lastPosY >= top - 160) {
+                    section.classList.add('active');
+
+                    if (section.id === 'contato') {
+
+                        if (typeof google !== 'undefined') {
+                            gMaps.load();
+                            (0, _contact2.default)();
+                            scroll.stop();
+                        }
+                    } else {
+                        scroll.stop();
+                    }
+                }
+            }
+
+        });
+    });
+}
+
+/***/ }),
+/* 15 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
 });
-var image = 'assets/img/pin.png';
+exports.default = contact;
 
-var pinMarker = new google.maps.Marker({
-    position: pos,
-    map: map,
-    icon: image
-});
+var _utils = __webpack_require__(0);
 
-// console.log(infowindow)
+var emailsScript = document.createElement('script');
+emailsScript.setAttribute('src', 'https://cdn.emailjs.com/dist/email.min.js');
+document.body.appendChild(emailsScript);
+
+var opts = {
+	service: 'sendgrid',
+	template: 'normal'
+};
+
+function sendEmail(args) {
+
+	emailjs.send('' + opts.service, '' + opts.template, {
+		name: args.name,
+		phone: args.phone,
+		message: args.message
+	}).then(function (response) {
+		console.log("SUCCESS. status=%d, text=%s", response.status, response.text);
+	});
+}
+
+function validateEmail(email) {
+	var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+	return re.test(email);
+}
+
+function validatePhone(phone) {
+
+	if (!phone) return false;
+
+	var ph = phone.replace(/\D/g, '');
+
+	if (!(ph.length >= 10 && ph.length <= 11)) return false;
+
+	if (ph.length == 11 && parseInt(ph.substring(2, 3)) != 9) return false;
+
+	for (var n = 0; n < 10; n++) {
+		if (ph == new Array(11).join(n) || ph == new Array(12).join(n)) return false;
+	}
+
+	var codigosDDD = [11, 12, 13, 14, 15, 16, 17, 18, 19, 21, 22, 24, 27, 28, 31, 32, 33, 34, 35, 37, 38, 41, 42, 43, 44, 45, 46, 47, 48, 49, 51, 53, 54, 55, 61, 62, 64, 63, 65, 66, 67, 68, 69, 71, 73, 74, 75, 77, 79, 81, 82, 83, 84, 85, 86, 87, 88, 89, 91, 92, 93, 94, 95, 96, 97, 98, 99];
+
+	if (codigosDDD.indexOf(parseInt(ph.substring(0, 2))) == -1) return false;
+
+	if (new Date().getFullYear() < 2017) return true;
+	if (ph.length == 10 && [2, 3, 4, 5, 7].indexOf(parseInt(ph.substring(2, 3))) == -1) return false;
+
+	return true;
+}
+
+function validations() {
+
+	var name = (0, _utils.the)('#form-nome');
+	var email = (0, _utils.the)('#form-email');
+	var phone = (0, _utils.the)('#form-tel');
+	var msg = (0, _utils.the)('#form-message');
+	var errors = [];
+
+	if (name.value.length < 1) {
+		errors.push('name');
+	}
+
+	if (!validateEmail(email.value)) {
+		errors.push('email');
+	}
+
+	if (!validatePhone(phone.value)) {
+		errors.push('phone');
+	}
+
+	if (msg.value.length < 3) {
+		errors.push('message');
+	}
+
+	return errors;
+}
+
+function contact() {
+	emailjs.init("user_kCkHRSMU0h4BVVSiBUB1T");
+
+	var form = (0, _utils.the)('#form');
+
+	form.addEventListener('submit', function (_) {
+		console.log(validations());
+		//sendEmail()
+	});
+}
 
 /***/ })
 /******/ ]);

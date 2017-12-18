@@ -9,9 +9,6 @@
 </head>
 <body>
     <header>
-      <div class="space">
-
-      </div>
         <div id="hamburger-menu">
             <h1 class="logo-top">
                 <a href="#">
@@ -19,7 +16,7 @@
                 </a>
             </h1>
 
-            <div class="hamburger" id="hamburger-1">
+            <div class="hamburger lazy" id="hamburger-1">
               <span class="line"></span>
               <span class="line"></span>
               <span class="line"></span>
@@ -31,50 +28,20 @@
                     <img src="assets/img/logo-menu.png" alt="Rock & Burger">
                 </a>
             </h1>
-            <a href="#" class="burgers nav-item">
-                <svg role="link" title="Burgers" class="ribbon left">
-                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#ribbon-1"></use>
-                </svg>
+            <a href="#burgers" class="burgers nav-item">
                 <span>Burgers</span>
-                <svg role="link" title="Burgers" class="ribbon right">
-                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#ribbon-2"></use>
-                </svg>
             </a>
-            <a href="#" class="adicionais nav-item">
-                <svg role="link" title="Adicionais" class="ribbon left">
-                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#ribbon-1"></use>
-                </svg>
+            <a href="#adicionais" class="adicionais nav-item">
                 <span>Adicionais</span>
-                <svg role="link" title="Adicionais" class="ribbon right">
-                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#ribbon-2"></use>
-                </svg>
             </a>
-            <a href="#" class="petiscos nav-item">
-                <svg role="link" title="Petiscos" class="ribbon left">
-                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#ribbon-1"></use>
-                </svg>
+            <a href="#petiscos" class="petiscos nav-item">
                 <span>Petiscos</span>
-                <svg role="link" title="Petiscos" class="ribbon right">
-                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#ribbon-2"></use>
-                </svg>
             </a>
-            <a href="#" class="bebidas nav-item">
-                <svg role="link" title="Bebidas" class="ribbon left">
-                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#ribbon-1"></use>
-                </svg>
+            <a href="#bebidas" class="bebidas nav-item">
                 <span>Bebidas</span>
-                <svg role="link" title="Bebidas" class="ribbon right">
-                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#ribbon-2"></use>
-                </svg>
             </a>
-            <a href="#" class="fale-conosco nav-item">
-                <svg role="link" title="Fale Conosco" class="ribbon left">
-                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#ribbon-1"></use>
-                </svg>
+            <a href="#contato" class="fale-conosco nav-item">
                 <span>Fale Conosco</span>
-                <svg role="link" title="Fale Conosco" class="ribbon right">
-                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#ribbon-2"></use>
-                </svg>
             </a>
             <div class="phone-top">
                 <span>Delivery</span>(53) 3204.0506
@@ -85,7 +52,7 @@
         <div class="banner-top">
             <div class="container">
                 <svg role="link" title="Rock & Burger" class="logo-banner">
-                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#logo"></use>
+                    <use xlink:href="#logo"></use>
                 </svg>
                 <div class="phone-banner">
                     <span>Delivery</span><span>(53) 3204.0506</span>
@@ -97,28 +64,28 @@
     </header>
     <section class="cardapio" id="cardapio">
         <div class="container">
-            <div class="burger-wrp">
+            <div class="section burger-wrp" id="burgers">
                 <div class="section-title burgers">
                     <svg role="link" title="Burgers" class="hamburger-icon left">
-                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#hamburger-icon"></use>
+                        <use xlink:href="#hamburger-icon"></use>
                     </svg>
                     <svg role="link" title="Burgers" class="ribbon left">
-                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#ribbon-1"></use>
+                        <use xlink:href="#ribbon-1"></use>
                     </svg>
                     <h2>Burgers</h2>
                     <svg role="link" title="Burgers" class="ribbon right">
-                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#ribbon-2"></use>
+                        <use xlink:href="#ribbon-2"></use>
                     </svg>
                     <svg role="link" title="Burgers" class="hamburger-icon right">
-                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#hamburger-icon"></use>
+                        <use xlink:href="#hamburger-icon"></use>
                     </svg>
                 </div>
                 <p>
                     Burgers de <strong>Carne 100% Angus</strong>, acompanhados de fritas
                 </p>
                 <figure class="ramones-burger">
-                    <img src="assets/img/hamburgers/box-ramones.png" alt="" class="box">
-                    <img src="assets/img/hamburgers/hamburger-ramones.png" alt="" class="hamburger">
+                    <img  data-src="assets/img/hamburgers/box-ramones.png" alt="" class="box lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAT4AAAE2CAYAAAD4a/5dAAADKElEQVR42u3UQREAMAjAsGFj2MC/NdDBkUjoo1H5+wEcEsYHGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHyA8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxAcYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgcYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfYHzGBxgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB9gfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8gPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QHGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH2B8MgDGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8gPEZH2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHyA8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxAcYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgcYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfIDxGR9gfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGBxif8QHGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHyA8QEYH4DxARgfgPEBbDDjFrU2wRosCwAAAABJRU5ErkJggg==" />
+                    <img  data-src="assets/img/hamburgers/hamburger-ramones.png" alt="" class="hamburger lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAT4AAAE2CAYAAAD4a/5dAAADKElEQVR42u3UQREAMAjAsGFj2MC/NdDBkUjoo1H5+wEcEsYHGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHyA8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxAcYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgcYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfYHzGBxgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB9gfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8gPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QHGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH2B8MgDGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8gPEZH2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHyA8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxAcYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgcYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfIDxGR9gfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGBxif8QHGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHyA8QEYH4DxARgfgPEBbDDjFrU2wRosCwAAAABJRU5ErkJggg==" />
                     <figcaption>
                         <h3>The<br>Ramones</h3>
                         <span class="ingredients">(Pão, carne e queijo)</span>
@@ -127,8 +94,8 @@
                     </figcaption>
                 </figure>
                 <figure class="led-burger">
-                    <img src="assets/img/hamburgers/box-led.png" alt="" class="box">
-                    <img src="assets/img/hamburgers/hamburger-led.png" alt="" class="hamburger">
+                    <img  data-src="assets/img/hamburgers/box-led.png" alt="" class="box lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAT4AAAE2CAYAAAD4a/5dAAADKElEQVR42u3UQREAMAjAsGFj2MC/NdDBkUjoo1H5+wEcEsYHGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHyA8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxAcYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgcYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfYHzGBxgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB9gfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8gPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QHGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH2B8MgDGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8gPEZH2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHyA8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxAcYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgcYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfIDxGR9gfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGBxif8QHGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHyA8QEYH4DxARgfgPEBbDDjFrU2wRosCwAAAABJRU5ErkJggg==" />
+                    <img  data-src="assets/img/hamburgers/hamburger-led.png" alt="" class="hamburger lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAT4AAAE2CAYAAAD4a/5dAAADKElEQVR42u3UQREAMAjAsGFj2MC/NdDBkUjoo1H5+wEcEsYHGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHyA8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxAcYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgcYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfYHzGBxgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB9gfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8gPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QHGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH2B8MgDGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8gPEZH2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHyA8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxAcYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgcYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfIDxGR9gfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGBxif8QHGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHyA8QEYH4DxARgfgPEBbDDjFrU2wRosCwAAAABJRU5ErkJggg==" />
                     <figcaption>
                         <h3>The<br>Led Zeppelin</h3>
                         <span class="ingredients"> (Pão, carne, queijo, alface, tomate e maionese)</span>
@@ -137,8 +104,8 @@
                     </figcaption>
                 </figure>
                 <figure class="beatles-burger">
-                    <img src="assets/img/hamburgers/box-beatles.png" alt="" class="box">
-                    <img src="assets/img/hamburgers/hamburger-beatles.png" alt="" class="hamburger">
+                    <img  data-src="assets/img/hamburgers/box-beatles.png" alt="" class="box lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAT4AAAE2CAYAAAD4a/5dAAADKElEQVR42u3UQREAMAjAsGFj2MC/NdDBkUjoo1H5+wEcEsYHGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHyA8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxAcYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgcYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfYHzGBxgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB9gfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8gPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QHGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH2B8MgDGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8gPEZH2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHyA8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxAcYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgcYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfIDxGR9gfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGBxif8QHGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHyA8QEYH4DxARgfgPEBbDDjFrU2wRosCwAAAABJRU5ErkJggg==" />
+                    <img  data-src="assets/img/hamburgers/hamburger-beatles.png" alt="" class="hamburger lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAT4AAAE2CAYAAAD4a/5dAAADKElEQVR42u3UQREAMAjAsGFj2MC/NdDBkUjoo1H5+wEcEsYHGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHyA8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxAcYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgcYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfYHzGBxgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB9gfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8gPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QHGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH2B8MgDGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8gPEZH2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHyA8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxAcYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgcYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfIDxGR9gfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGBxif8QHGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHyA8QEYH4DxARgfgPEBbDDjFrU2wRosCwAAAABJRU5ErkJggg==" />
                     <figcaption>
                         <h3>The<br>Beatles</h3>
                         <span class="ingredients">(Pão, burger de frango, queijo,
@@ -148,8 +115,8 @@
                     </figcaption>
                 </figure>
                 <figure class="janis-burger">
-                    <img src="assets/img/hamburgers/box-janis.png" alt="" class="box">
-                    <img src="assets/img/hamburgers/hamburger-janis.png" alt="" class="hamburger">
+                    <img  data-src="assets/img/hamburgers/box-janis.png" alt="" class="box lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAT4AAAE2CAYAAAD4a/5dAAADKElEQVR42u3UQREAMAjAsGFj2MC/NdDBkUjoo1H5+wEcEsYHGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHyA8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxAcYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgcYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfYHzGBxgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB9gfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8gPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QHGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH2B8MgDGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8gPEZH2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHyA8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxAcYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgcYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfIDxGR9gfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGBxif8QHGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHyA8QEYH4DxARgfgPEBbDDjFrU2wRosCwAAAABJRU5ErkJggg==" />
+                    <img  data-src="assets/img/hamburgers/hamburger-janis.png" alt="" class="hamburger lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAT4AAAE2CAYAAAD4a/5dAAADKElEQVR42u3UQREAMAjAsGFj2MC/NdDBkUjoo1H5+wEcEsYHGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHyA8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxAcYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgcYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfYHzGBxgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB9gfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8gPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QHGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH2B8MgDGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8gPEZH2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHyA8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxAcYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgcYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfIDxGR9gfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGBxif8QHGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHyA8QEYH4DxARgfgPEBbDDjFrU2wRosCwAAAABJRU5ErkJggg==" />
                     <figcaption class="veggie">
                         <h3>Janis<br>Joplin<span>(veggie burger)</span></h3>
                         <span class="ingredients">(Pão, Burger Vegetariano, queijo minas padrão, alface, tomate e molho da casa)</span>
@@ -158,8 +125,8 @@
                     </figcaption>
                 </figure>
                 <figure class="elvis-burger">
-                    <img src="assets/img/hamburgers/box-elvis.png" alt="" class="box">
-                    <img src="assets/img/hamburgers/hamburger-elvis.png" alt="" class="hamburger">
+                    <img  data-src="assets/img/hamburgers/box-elvis.png" alt="" class="box lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAT4AAAE2CAYAAAD4a/5dAAADKElEQVR42u3UQREAMAjAsGFj2MC/NdDBkUjoo1H5+wEcEsYHGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHyA8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxAcYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgcYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfYHzGBxgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB9gfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8gPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QHGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH2B8MgDGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8gPEZH2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHyA8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxAcYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgcYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfIDxGR9gfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGBxif8QHGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHyA8QEYH4DxARgfgPEBbDDjFrU2wRosCwAAAABJRU5ErkJggg==" />
+                    <img  data-src="assets/img/hamburgers/hamburger-elvis.png" alt="" class="hamburger lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAT4AAAE2CAYAAAD4a/5dAAADKElEQVR42u3UQREAMAjAsGFj2MC/NdDBkUjoo1H5+wEcEsYHGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHyA8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxAcYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgcYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfYHzGBxgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB9gfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8gPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QHGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH2B8MgDGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8gPEZH2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHyA8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxAcYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgcYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfIDxGR9gfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGBxif8QHGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHyA8QEYH4DxARgfgPEBbDDjFrU2wRosCwAAAABJRU5ErkJggg==" />
                     <figcaption>
                         <h3>Elvis<br>The King</h3>
                         <span class="ingredients"> (Pão, carne, queijo, bacon, cebola, alface, tomate e maionese)</span>
@@ -168,8 +135,8 @@
                     </figcaption>
                 </figure>
                 <figure class="hendrix-burger">
-                    <img src="assets/img/hamburgers/box-hendrix.png" alt="" class="box">
-                    <img src="assets/img/hamburgers/hamburger-hendrix.png" alt="" class="hamburger">
+                    <img  data-src="assets/img/hamburgers/box-hendrix.png" alt="" class="box lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAT4AAAE2CAYAAAD4a/5dAAADKElEQVR42u3UQREAMAjAsGFj2MC/NdDBkUjoo1H5+wEcEsYHGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHyA8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxAcYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgcYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfYHzGBxgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB9gfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8gPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QHGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH2B8MgDGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8gPEZH2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHyA8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxAcYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgcYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfIDxGR9gfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGBxif8QHGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHyA8QEYH4DxARgfgPEBbDDjFrU2wRosCwAAAABJRU5ErkJggg==" />
+                    <img  data-src="assets/img/hamburgers/hamburger-hendrix.png" alt="" class="hamburger lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAT4AAAE2CAYAAAD4a/5dAAADKElEQVR42u3UQREAMAjAsGFj2MC/NdDBkUjoo1H5+wEcEsYHGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHyA8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxAcYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgcYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfYHzGBxgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB9gfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8gPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QHGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH2B8MgDGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8gPEZH2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHyA8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxAcYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgcYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfIDxGR9gfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGBxif8QHGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHyA8QEYH4DxARgfgPEBbDDjFrU2wRosCwAAAABJRU5ErkJggg==" />
                     <figcaption>
                         <h3>The<br>Hendrix</h3>
                         <span class="ingredients">(Pão, carne, queijo, bacon, cebola roxa, picles, alface, tomate e molho da casa)</span>
@@ -178,8 +145,8 @@
                     </figcaption>
                 </figure>
                 <figure class="bowie-burger">
-                    <img src="assets/img/hamburgers/box-bowie.png" alt="" class="box">
-                    <img src="assets/img/hamburgers/hamburger-bowie.png" alt="" class="hamburger">
+                    <img  data-src="assets/img/hamburgers/box-bowie.png" alt="" class="box lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAT4AAAE2CAYAAAD4a/5dAAADKElEQVR42u3UQREAMAjAsGFj2MC/NdDBkUjoo1H5+wEcEsYHGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHyA8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxAcYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgcYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfYHzGBxgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB9gfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8gPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QHGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH2B8MgDGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8gPEZH2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHyA8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxAcYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgcYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfIDxGR9gfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGBxif8QHGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHyA8QEYH4DxARgfgPEBbDDjFrU2wRosCwAAAABJRU5ErkJggg==" />
+                    <img  data-src="assets/img/hamburgers/hamburger-bowie.png" alt="" class="hamburger lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAT4AAAE2CAYAAAD4a/5dAAADKElEQVR42u3UQREAMAjAsGFj2MC/NdDBkUjoo1H5+wEcEsYHGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHyA8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxAcYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgcYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfYHzGBxgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB9gfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8gPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QHGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH2B8MgDGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8gPEZH2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHyA8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxAcYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgcYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfIDxGR9gfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGBxif8QHGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHyA8QEYH4DxARgfgPEBbDDjFrU2wRosCwAAAABJRU5ErkJggg==" />
                     <figcaption>
                         <h3>The<br>Bowie</h3>
                         <span class="ingredients">(Pão, carne, queijo cheddar, bacon, cebola caramelizada, picles e maionese)</span>
@@ -188,8 +155,8 @@
                     </figcaption>
                 </figure>
                 <figure class="kiss-burger">
-                    <img src="assets/img/hamburgers/box-kiss.png" alt="" class="box">
-                    <img src="assets/img/hamburgers/hamburger-kiss.png" alt="" class="hamburger">
+                    <img  data-src="assets/img/hamburgers/box-kiss.png" alt="" class="box lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAT4AAAE2CAYAAAD4a/5dAAADKElEQVR42u3UQREAMAjAsGFj2MC/NdDBkUjoo1H5+wEcEsYHGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHyA8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxAcYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgcYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfYHzGBxgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB9gfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8gPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QHGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH2B8MgDGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8gPEZH2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHyA8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxAcYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgcYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfIDxGR9gfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGBxif8QHGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHyA8QEYH4DxARgfgPEBbDDjFrU2wRosCwAAAABJRU5ErkJggg==" />
+                    <img  data-src="assets/img/hamburgers/hamburger-kiss.png" alt="" class="hamburger lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAT4AAAE2CAYAAAD4a/5dAAADKElEQVR42u3UQREAMAjAsGFj2MC/NdDBkUjoo1H5+wEcEsYHGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHyA8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxAcYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgcYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfYHzGBxgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB9gfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8gPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QHGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH2B8MgDGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8gPEZH2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHyA8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxAcYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgcYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfIDxGR9gfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGBxif8QHGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHGB+A8QEYH4DxARgfgPEBGB+A8QEYH4DxARgfgPEBGB+A8QEYH2B8AMYHYHwAxgdgfADGB2B8AMYHYHwAxgdgfADGB2B8AMYHYHyA8QEYH4DxARgfgPEBbDDjFrU2wRosCwAAAABJRU5ErkJggg==" />
                     <figcaption>
                         <h3>The Kiss</h3>
                         <span class="ingredients">(Pão, carne, queijo cheddar, bacon, cebola crispy e katchup umami)</span>
@@ -198,349 +165,315 @@
                     </figcaption>
                 </figure>
             </div>
-            <div class="cardapio-wrp">
+            <div class="section cardapio-wrp" id="adicionais">
                 <div class="section-title adicionais">
                     <svg role="link" title="Adicionais" class="adicionais-icon">
-                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#adicionais-icon-2"></use>
+                        <use xlink:href="#adicionais-icon-2"></use>
                     </svg>
                     <svg role="link" title="Adicionais" class="ribbon left">
-                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#ribbon-1"></use>
+                        <use xlink:href="#ribbon-1"></use>
                     </svg>
                     <h2>Adicionais</h2>
                     <svg role="link" title="Adicionais" class="ribbon right">
-                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#ribbon-2"></use>
+                        <use xlink:href="#ribbon-2"></use>
                     </svg>
                     <svg role="link" title="Adicionais" class="adicionais-icon">
-                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#adicionais-icon"></use>
+                        <use xlink:href="#adicionais-icon"></use>
                     </svg>
                 </div>
                 <div class="col">
                     <div class="row">
                         <span>Carne</span>
-                        <span> ................................................... </span>
                         <span>6.00</span>
                     </div>
                     <div class="row">
                         <span>Queijo Prato</span>
-                        <span> ......................................... </span>
                         <span>2.00</span>
                     </div>
                     <div class="row">
                         <span>Queijo Cheddar</span>
-                        <span> .................................... </span>
                         <span>2.00</span>
                     </div>
                     <div class="row">
                         <span>Queijo Minas Padrão</span>
-                        <span> ........................... </span>
                         <span>2.00</span>
                     </div>
                     <div class="row">
                         <span>Queijo Gorgonzola</span>
-                        <span> ............................... </span>
                         <span>3.00</span>
                     </div>
                 </div>
                 <div class="col">
                     <div class="row">
                         <span>Bacon</span>
-                        <span> ................................................... </span>
                         <span>6.00</span>
                     </div>
                     <div class="row">
                         <span>Cebola Crispy</span>
-                        <span> ...................................... </span>
                         <span>4.00</span>
                     </div>
                     <div class="row">
                         <span>Ovo</span>
-                        <span> ...................................................... </span>
                         <span>2.00</span>
                     </div>
                     <div class="row">
                         <span>M.4 Queijos</span>
-                        <span> .......................................... </span>
                         <span>5.00</span>
                     </div>
                     <div class="row">
                         <span>M.Cheddar</span>
-                        <span> ........................................... </span>
                         <span>5.00</span>
                     </div>
                 </div>
                 <div class="col">
                     <div class="row">
                         <span>M.Gorgonzola</span>
-                        <span> ................................ </span>
                         <span>6.00</span>
                     </div>
                     <div class="row">
                         <span>M. da Casa</span>
-                        <span> .................................... </span>
                         <span>2.00</span>
                     </div>
                     <div class="row">
                         <span>Mostarda Artesanal</span>
-                        <span> ....................... </span>
                         <span>2.00</span>
                     </div>
                     <div class="row">
                         <span>Katchup Umami Artesanal</span>
-                        <span> ............. </span>
                         <span>2.00</span>
                     </div>
                     <div class="row">
                         <span>Maionese Artesanal</span>
-                        <span> ....................... </span>
                         <span>2.00</span>
                     </div>
                 </div>
             </div>
-            <div class="cardapio-wrp">
+            <div class="section cardapio-wrp" id="petiscos">
                 <div class="section-title petiscos">
                     <svg role="link" title="Petiscos" class="petiscos-icon left">
-                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#petiscos-icon"></use>
+                        <use xlink:href="#petiscos-icon"></use>
                     </svg>
                     <svg role="link" title="Petiscos" class="ribbon left">
-                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#ribbon-1"></use>
+                        <use xlink:href="#ribbon-1"></use>
                     </svg>
                     <h2>Petiscos</h2>
                     <svg role="link" title="Petiscos" class="ribbon right">
-                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#ribbon-2"></use>
+                        <use xlink:href="#ribbon-2"></use>
                     </svg>
                     <svg role="link" title="Petiscos" class="petiscos-icon right">
-                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#petiscos-icon"></use>
+                        <use xlink:href="#petiscos-icon"></use>
                     </svg>
                 </div>
                 <div class="col">
                     <h3>Santana’s Home Fries</h3>
-                    <div class="row row-0">
+                    <div class="name">
                         <span>Fritas</span>
                     </div>
                     <div class="row">
                         <span>600g</span>
-                        <span> ................................................. </span>
                         <span>$18.00</span>
                     </div>
                     <div class="row">
                         <span>300g</span>
-                        <span> ................................................... </span>
                         <span>$9.00</span>
                     </div>
-                    <div class="row row-3">
+                    <div class="row type">
                         <span>300g de Fritas<br>+ Cheddar e Farofa<br>de Bacon</span>
-                        <span> .......................................... </span>
                         <span>$13.00</span>
                     </div>
                     <div class="row row-3">
                         <span>300g de Fritas<br>+ Cebola Crispy, Cheddar <br>e Farofa de Bacon</span>
-                        <span> ........................... </span>
                         <span>$17.00</span>
                     </div>
                     <div class="row">
-                        <h3>Sandwich <br>Lennon’s <br>cold turkey<span> ..............</span><span>$12.00</span></h3>
-                        <p>
-                            Pão de forma, peito de perú defumado, queijo minas padrão, alface, tomate, azeitonas recheadas c/ pimentões, azeite extra virgem e molho da casa.
-                        </p>
+                        <h3>Sandwich <br>Lennon’s <br>cold turkey</h3>
+                        <span>$12.00</span>
+                    </div>
+                    <div class="name">
+                    <p>
+                        Pão de forma, peito de perú defumado, queijo minas padrão, alface, tomate, azeitonas recheadas c/ pimentões, azeite extra
+                        virgem e molho da casa.
+                    </p>
                     </div>
                 </div>
                 <div class="col">
                     <h3>Sweet Fries o’mine</h3>
-                    <div class="row row-0">
+                    <div class="name">
                         <span>Fritas Doces</span>
                     </div>
                     <div class="row">
                         <span>600g</span>
-                        <span>............................................</span>
                         <span>$22.00</span>
                     </div>
                     <div class="row">
                         <span>300g</span>
-                        <span> ............................................</span>
                         <span>$11.00</span>
                     </div>
-                    <div class="row row-3">
+                    <div class="row type">
                         <span>300g de Fritas Doces <br>+ Cheddar e Farofa <br>de Bacon</span>
-                        <span> .................................... </span>
                         <span>$15.00</span>
                     </div>
                     <div class="row row-3">
                         <span>300g de Fritas Doces <br>+ Cebola Crispy, Cheddar <br>e Farofa de Bacon</span>
-                        <span> ...................... </span>
                         <span>$19.00</span>
                     </div>
                     <div class="row">
-                        <h3>Sandwich <br>Sex Pistols’ God Save<br>the Royal Ham<span>.........</span> <span>$12.00</span></h3>
+                        <h3>Sandwich <br>Sex Pistols’ God Save<br>the Royal Ham</h3>
+                        <span>$12.00</span>
+                    </div>
+                    <div class="name">
                         <p>
-                            Pão de forma, presunto royale, queijo minas padrão, alface, tomate, azeitonas recheadas c/ pimentões, azeite extra virgem e molho da casa.
+                            Pão de forma, presunto royale, queijo minas padrão, alface, tomate, azeitonas recheadas c/ pimentões, azeite extra virgem
+                            e molho da casa.
                         </p>
                     </div>
                 </div>
                 <div class="col">
                     <h3>Nirvana’s big cheese</h3>
-                    <div class="row row-0">
+                    <div class="name">
                         <span>Queijo Empanado</span>
                     </div>
                     <div class="row row-margin">
                         <span>200g</span>
-                        <span> ............................................</span>
                         <span>$16.00</span>
                     </div>
                     <h3>Beatle’s Glass Onion</h3>
-                    <div class="row row-0">
+                    <div class="name">
                         <span>Anéis de Cebola Empanados</span>
                     </div>
                     <div class="row row-margin">
                         <span>200g</span>
-                        <span> ..............................................</span>
                         <span>$9.00</span>
                     </div>
                     <h3>Cake’s Fashion Nugget</h3>
-                    <div class="row row-0">
+                    <div class="name">
                         <span>Nuggets artesanais de frangocom recheio de queijo cheddar</span>
                     </div>
                     <div class="row row-margin">
                         <span>275g</span>
-                        <span> ............................................</span>
                         <span>$16.00</span>
                     </div>
                     <h3>Jerry’s greatmeatballs of fire</h3>
-                    <div class="row">
+                    <div class="name">
                         <span>Bolinhas de Carne recheadas com queijo Brie</span>
                     </div>
                     <div class="row row-margin">
                         <span>275g</span>
-                        <span> .............................................</span>
                         <span>$21.00</span>
                     </div>
                 </div>
             </div>
-            <p class="sobremesa">
+            <p class="section sobremesa">
                 Para sobremesas, consulte cardápio no Burger Bar!
             </p>
-            <div class="cardapio-wrp">
+            <div class="section cardapio-wrp" id="bebidas">
                 <div class="section-title bebidas">
                     <svg role="link" title="Bebidas" class="bebidas-icon left">
-                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#bebidas-icon"></use>
+                        <use xlink:href="#bebidas-icon"></use>
                     </svg>
                     <svg role="link" title="Bebidas" class="ribbon left">
-                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#ribbon-1"></use>
+                        <use xlink:href="#ribbon-1"></use>
                     </svg>
                     <h2>Bebidas</h2>
                     <svg role="link" title="Bebidas" class="ribbon right">
-                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#ribbon-2"></use>
+                        <use xlink:href="#ribbon-2"></use>
                     </svg>
                     <svg role="link" title="Bebidas" class="bebidas-icon right">
-                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#bebidas-icon"></use>
+                        <use xlink:href="#bebidas-icon"></use>
                     </svg>
                 </div>
                 <div class="col">
                     <div class="row">
                         <span>Chopp 300 ml</span>
-                        <span> ....................................</span>
                         <span>$8.00</span>
                     </div>
                     <div class="row">
                         <span>Chopp 500 ml</span>
-                        <span> ..................................</span>
                         <span>$13.00</span>
                     </div>
                     <div class="row">
                         <span>Refrigerantes</span>
-                        <span> .....................................</span>
                         <span>$5.00</span>
                     </div>
                     <div class="row">
                         <span>Sucos</span>
-                        <span> .................................................</span>
                         <span>$5.00</span>
                     </div>
                     <div class="row">
                         <span>Agua Mineral s/gás</span>
-                        <span>............................</span>
                         <span>$4.00</span>
                     </div>
                     <div class="row">
                         <span>Agua Mineral c/gás</span>
-                        <span>............................</span>
                         <span>$4.00</span>
                     </div>
                 </div>
                 <div class="col">
                     <div class="row">
                         <span>Milk Shake</span>
-                        <span>.......................................</span>
                         <span>$12.00</span>
                     </div>
                     <div class="row">
                         <span>Sorvodka</span>
-                        <span> .........................................</span>
                         <span>$21.00</span>
                     </div>
                     <div class="row">
                         <span>Vodka nacional</span>
-                        <span> ..................................</span>
                         <span>$9.00</span>
                     </div>
                     <div class="row">
                         <span>Vodka Importada</span>
-                        <span> .............................</span>
                         <span>$14.00</span>
                     </div>
                     <div class="row">
                         <span>Wisky 8</span>
-                        <span> ............................................</span>
                         <span>$14.00</span>
                     </div>
                     <div class="row">
                         <span>Wisky 12</span>
-                        <span> ..........................................</span>
                         <span>$16.00</span>
                     </div>
                 </div>
                 <div class="col">
                     <div class="row">
                         <span>Heineken</span>
-                        <span>.......................................</span>
                         <span>$8.00</span>
                     </div>
                     <div class="row">
                         <span>Stella Artois</span>
-                        <span>...................................</span>
                         <span>$8.00</span>
                     </div>
                     <div class="row">
                         <span>Budweiser</span>
-                        <span>......................................</span>
                         <span>$8.00</span>
                     </div>
                     <div class="row">
                         <span>Eisenbahn</span>
-                        <span> ......................................</span>
                         <span>$9.00</span>
                     </div>
-                    <div class="row">
-                        <p>Cervejas Artesanais <span>(consulte cardápio no Burger Bar)</span></p>
+                    <div class="name">
+                         <p>Cervejas Artesanais</p>
+                        <small>(consulte cardápio no Burger Bar)</small>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <section class="contato" id="contato">
+    <section class="section contato" id="contato">
         <div class="container">
             <div class="section-title fale-conosco">
                 <svg role="link" title="Fale Conosco" class="fale-conosco-icon left">
-                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#fale-conosco-icon"></use>
+                    <use xlink:href="#fale-conosco-icon"></use>
                 </svg>
                 <svg role="link" title="Fale Conosco" class="ribbon left">
-                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#ribbon-1"></use>
+                    <use xlink:href="#ribbon-1"></use>
                 </svg>
                 <h2>Fale Conosco</h2>
                 <svg role="link" title="Fale Conosco" class="ribbon right">
-                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#ribbon-2"></use>
+                    <use xlink:href="#ribbon-2"></use>
                 </svg>
                 <svg role="link" title="Fale Conosco" class="fale-conosco-icon right">
-                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#fale-conosco-icon"></use>
+                    <use xlink:href="#fale-conosco-icon"></use>
                 </svg>
             </div>
             <p class="fale-conosco-sub">
@@ -555,7 +488,7 @@
                 <div class="contato-container">
                     <p class="line">
                         <svg role="link" title="Telefone" class="phone-icon">
-                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#phone-icon"></use>
+                            <use xlink:href="#phone-icon"></use>
                         </svg>
                         <span>(53) 3204.0506</span>
                         <img src="assets/img/whatsapp.png" alt="" class="whatsapp-icon">
@@ -563,35 +496,44 @@
                     </p>
                     <p class="line">
                         <svg role="link" title="Email" class="email-icon">
-                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#email-icon"></use>
+                            <use xlink:href="#email-icon"></use>
                         </svg>
                         <span>contato@rockandburger.com.br</span>
                     </p>
                     <p class="address-line line">
                         <svg role="link" title="Endereço" class="address-icon">
-                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#pin-icon"></use>
+                            <use xlink:href="#pin-icon"></use>
                         </svg>
                         <span>Av. Atlântica, 254 - Praia do CassinoRio Grande / RS - CEP 96207-424</span>
                     </p>
-                    <form action="">
+                    <form action="" id="form">
                         <p>
-                            <input type="text" placeholder="Nome">
+                            <input id="form-nome" type="text" placeholder="Nome">
                         </p>
                         <p>
-                            <input type="email" placeholder="Email">
+                            <input id="form-email" type="email" placeholder="Email">
                         </p>
                         <p>
-                            <input type="tel" placeholder="Fone">
+                            <input id="form-tel" type="tel" placeholder="Fone">
                         </p>
                         <p>
-                            <textarea name="" id="" cols="30" rows="10" placeholder="Mensagem"></textarea>
+                            <textarea name="" id="form-message" cols="30" rows="10" placeholder="Mensagem"></textarea>
                         </p>
-                        <p><input type="submit" value="Enviar"></p>
+                        <p>
+                            <button id="form-submit" type="submit">Enviar</button>
+                        </p>
                     </form>
                 </div>
             </div>
         </div>
     </section>
+
+    <footer>
+        <div class="container" style="height: 200px;">
+
+
+        </div>
+    </footer>
 
     <svg class="sprite">
         <symbol id="ribbon-1" viewBox="0 0 66.5 67">
@@ -753,7 +695,8 @@
             <path fill="#FFF" d="M667.864 621.35a17.009 17.009 0 0 1-13.307-6.416c-7.518-9.436-183.983-232.592-183.983-358.687 0-108.782 88.509-197.291 197.29-197.291 108.782 0 197.291 88.508 197.291 197.291 0 125.81-176.459 349.231-183.977 358.681a17.018 17.018 0 0 1-13.314 6.422zm0-528.378c-90.025 0-163.274 73.249-163.274 163.275 0 95.509 122.144 265.614 163.268 320.175C708.976 521.82 831.14 351.538 831.14 256.247c0-90.026-73.249-163.275-163.276-163.275zm0 250.395c-48.043 0-87.12-39.077-87.12-87.121s39.077-87.121 87.12-87.121c48.044 0 87.121 39.077 87.121 87.121s-39.084 87.121-87.121 87.121zm0-140.226c-29.28 0-53.104 23.825-53.104 53.105 0 29.28 23.824 53.105 53.104 53.105 29.281 0 53.105-23.825 53.105-53.105.001-29.28-23.823-53.105-53.105-53.105z"/>
         </symbol>
     </svg>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWspGMzOzQGZGj1lKmlreVLIB8GlOuiP8"></script>
+
     <script src="public/script.js" charset="utf-8"></script>
+
 </body>
 </html>

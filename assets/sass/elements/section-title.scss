@@ -4,16 +4,16 @@
     align-items: center;
     position: relative;
     z-index: 3;
-    padding: 65px 0 0;
-    margin-bottom: 20px;
+    padding: 80px 0 0;
+    margin-bottom: 30px;
     width: 100%;
+
     h2 {
         color: $c6;
         font-size: 4.689rem;
         text-align: center;
         font-family: $titleFont;
         // position: absolute;
-        line-height: 0.35;
         background: $c2;
         padding: 0 20px;
         letter-spacing: .5rem;
@@ -23,7 +23,9 @@
         height: 66.8px;
         display: flex;
         align-items: flex-end;
+        line-height: 0.2em;
     }
+
     .hamburger-icon {
         width: 66px;
         height: 66px;
@@ -34,6 +36,7 @@
         width: 82px;
         height: 82px;
     }
+
     .hamburger-icon {
         &.left {
           transform: rotate(-15deg);
