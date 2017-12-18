@@ -5,7 +5,6 @@
     padding: 0 0 120px;
     box-shadow: -10px 30px 60px rgba($cBlack, 0.7);
 
-
     .burger-wrp {
         margin: 0 -20px;
         display: flex;
@@ -19,12 +18,14 @@
             width: 32%;
             min-width: 370px;
             cursor: pointer;
+            opacity: 0;
 
             svg {
                 z-index: 1;
                 position: absolute;
                 right: 0;
             }
+
             .box {
                 z-index: 2;
                 position: relative;
@@ -60,7 +61,6 @@
               }
 
             }
-
 
             &.ramones-burger{
                 .hamburger {
@@ -206,10 +206,96 @@
                   }
                 }
             }
+
             @media(max-width: 450px) {
-                max-width: 90%;
-                min-width: 100%;
+                min-width: 90%;
+                width: 90%;
+                margin: 0 5%;
+
+                .box{
+                    width: 90%;
+                    height: auto;
+                }
+
+                .hamburger{
+                    width: 70%;
+                    height: auto;
+                }
+
+                figcaption{
+                    left: 0;
+                    height: 100%;
+                    width: 90%;
+                    padding: 14px;
+
+                    .ingredients {
+                        margin-bottom: 65px;
+                    }
+
+                    .price,
+                    .including {
+                        margin-bottom: 25px;
+                    }
+
+                    .price{
+                        margin-right: 10px;
+                    }
+
+                    &.veggie .ingredients{
+                        margin: 108px auto 0;
+                    }
+
+
+                }
+
+                &.beatles-burger figcaption {
+                    .ingredients {
+                        margin-bottom: 55px;
+                    }
+
+      
+                }
+
+
+                &.beatles-burger{
+                    .hamburger {
+                        width: 75%;
+                    }
+                }
+
+                &.hendrix-burger figcaption{
+                    .ingredients {
+                        margin-bottom: 50px;
+                    }
+                }
+
+                &.bowie-burger figcaption{
+                    .ingredients {
+                        margin-bottom: 50px;
+                    }
+                }
+
+
+                &.led-burger{
+                    .hamburger{
+                        width: 60%;
+                    }
+                }
+
+
             }
+
+            $steps:10;
+            $decrease:10;
+
+            @for $i from 0 through $steps {
+                &:nth-child(#{$i}) {
+                    transform: translate3d(0, unquote( ($i * 5) + '% '), 0);
+                    transition: transform 0.4s unquote( 0.1 + ( $i / 25) + 's ') $transition,
+                    opacity 0.2s unquote( 0.1 + ( $i / 25) + 's ') $transition1;
+                }
+            }
+
         }
 
         p {
@@ -225,6 +311,14 @@
                 font-weight: 900;
             }
         }
+
+        &.active{
+            figure{
+                opacity: 1;
+                transform: translate3d(0, 0, 0);
+            }
+        }
+
     }
     .cardapio-wrp {
         display: flex;
@@ -262,7 +356,7 @@
             margin: 0 auto 13px;
             text-transform: uppercase;
             background: $c3;
-
+            
             @media(max-width: 1233px) {
               margin: 0 0 13px;
               width: 100%;

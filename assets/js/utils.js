@@ -30,7 +30,10 @@ const getElemOffset = elem => {
     }
   } while ((elem = elem.offsetParent) !== null)
 
-  return {height,top}
+  const bottom = top + height
+  const right  = left + width
+  
+  return {height, width, top, left, bottom, right}
 
 }
 
@@ -95,12 +98,17 @@ class ScrollHandler {
 
 const elementIsVisibleInViewport = (el, partiallyVisible = false) => {
 
-  const { top, left, bottom, right } = el.getBoundingClientRect()
+  const { left, bottom, right, top } = el.getBoundingClientRect()
+  
+  if(el.id === 'contato'){
+    console.log(top)
+  }
 
   return partiallyVisible
     ? ((top > 0 && top < innerHeight) || (bottom > 0 && bottom < innerHeight)) &&
     ((left > 0 && left < innerWidth) || (right > 0 && right < innerWidth))
     : top >= 0 && left >= 0 && bottom <= innerHeight && right <= innerWidth
+
 }
 
 export { doc, the, all, animation, getElemOffset, ScrollHandler, elementIsVisibleInViewport}

@@ -35,6 +35,4 @@ export default function menuSticky() {
         after: () => menuSticky(scrollPos.lastPosY)
     })
 
-    
-
 }

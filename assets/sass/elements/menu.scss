@@ -1,7 +1,7 @@
 nav {
   position: fixed;
   left: 50%;
-    transform: translate3d(-50%, 0, 0);
+  transform: translate3d(-50%, 0, 0);
   width: 100%;
   height: 80px;
   display: flex;
@@ -30,6 +30,10 @@ nav {
 
     a {
       height: 28px;
+
+      &:nth-child(1){
+        filter: drop-shadow(0 5px 2px rgba(black, 0));
+      }
     }
   }
 
@@ -41,6 +45,7 @@ nav {
       }
     }
   }
+
   a {
     position: relative;
     font-family: $titleFont;
@@ -53,12 +58,24 @@ nav {
     align-items: center;
     text-transform: uppercase;
     filter: drop-shadow(0 5px 2px rgba(black, 0.4));
+    transform: scale(0);
+    opacity: 0;
+
+    $steps:10;
+    $decrease:10;
+    @for $i from 0 through $steps {
+      &:nth-child(#{$i}) {
+        transform: translate3d(0, unquote( ($i * 5) + '% '), 0);
+        animation: showUp 0.4s unquote( 0.1 + ( $i / 15) + 's ') $transition forwards;
+      }
+    }
+
     span {
       height: 28px;
       background: $c2;
       display: block;
       z-index: 2;
-      line-height: 2em;
+      line-height: 1.4em;
       pointer-events: none;
     }
     &:before,
@@ -81,7 +98,7 @@ nav {
     }
     &.fale-conosco {
       span {
-        width: 150px;
+        width: 152px;
       }
     }
     &:hover {
@@ -114,35 +131,43 @@ nav {
     flex-wrap: wrap;
     position: fixed;
     right: 0;
+    left: unset;
     top: 0;
     z-index: 19;
     background: $c1;
     padding: 20px 10px;
     display: block;
     box-shadow: 1px 0 9px 1px $cBlack;
-    transform: translateX(150%) translateY(79px);
-    opacity: 0;
-    transition: all .8s;
-    display: none;
+    transform: translate3d(110%, 80px, 0);
+    opacity: 1;
+    transition: transform .4s $transition1, opacity 0.45s linear;
+    animation: none;
+
     .logo-top {
       display: none !important;
     }
+
     &.openned {
-      transform: translateX(0) translateY(79px);
-      transition: all .8s;
-      opacity: 1;
+     transform: translate3d(0, 80px, 0);
     }
+
     a {
       width: 100%;
-      margin-bottom: 30px;
-      svg {
+      margin: 0 0 30px;
+      
+      &:after, &:before {
         display: none;
       }
+
       span {
         padding: 20px 10px;
         line-height: 0.5;
         width: 100%;
+        background: none;
+        filter: drop-shadow(0 0 0 rgba(black, 0));
+        color: $c2;
       }
+
       &.fale-conosco {
         span {
           width: 100%;
@@ -196,16 +221,10 @@ nav {
 }
 
 #hamburger-1.is-active .line:nth-child(1) {
-  -webkit-transform: translateY(13px) rotate(45deg);
-  -ms-transform: translateY(13px) rotate(45deg);
-  -o-transform: translateY(13px) rotate(45deg);
   transform: translateY(13px) rotate(45deg);
 }
 
 #hamburger-1.is-active .line:nth-child(3) {
-  -webkit-transform: translateY(-13px) rotate(-45deg);
-  -ms-transform: translateY(-13px) rotate(-45deg);
-  -o-transform: translateY(-13px) rotate(-45deg);
   transform: translateY(-13px) rotate(-45deg);
 }
 
@@ -249,5 +268,16 @@ nav {
   100% {
     transform:translate3d(-50%, 0, 0);
     opacity: 1
+  }
+}
+
+@keyframes showUp {
+  0% {
+    transform: scale3d(0.5, 0.5, 1);
+    opacity: 0;
+  }
+  100% {
+    transform : scale3d(1, 1, 1);
+    opacity: 1;
   }
 }

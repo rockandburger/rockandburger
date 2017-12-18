@@ -5,19 +5,11 @@ import menuSticky from './menuSticky'
 import lazyLoad from './lazyLoad'
 import onSections from './sections'
 import zenscroll from 'zenscroll'
+import hamburger from './hamburger'
 import domready from 'domready'
 
 domready( () => {
 
-  // handle the menu on mobile;
-  // const menu = the('#menu')
-  // const hamburger = the('#hamburger-1')
-
-  // hamburger.addEventListener('click', function() {
-  //   menu.classList.toggle('openned')
-  //   this.classList.toggle('is-active')
-  // }, false)
-  
   // start parallax 
   parallax()
 
@@ -30,5 +22,6 @@ domready( () => {
   // when sections are reached
   onSections()
 
+  hamburger()
   
 })
