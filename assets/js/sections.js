@@ -41,10 +41,10 @@ export default function onSections() {
 
         }
 
-        // if (elementIsVisibleInViewport(section, true)){
-        //     action(section)
-        // }
-        
+        if (elementIsVisibleInViewport(section, true)){
+            action(section)
+        }
+
         scroll.init({
 
             after: _ => {

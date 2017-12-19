@@ -1332,9 +1332,9 @@ function onSections() {
             }
         }
 
-        // if (elementIsVisibleInViewport(section, true)){
-        //     action(section)
-        // }
+        if ((0, _utils.elementIsVisibleInViewport)(section, true)) {
+            action(section);
+        }
 
         scroll.init({
 
@@ -1444,10 +1444,6 @@ var _utils = __webpack_require__(0);
 
 var _contactHelpers = __webpack_require__(12);
 
-var emailsScript = document.createElement('script');
-emailsScript.setAttribute('src', 'https://cdn.emailjs.com/dist/email.min.js');
-document.body.appendChild(emailsScript);
-
 var opts = {
 	service: 'sendgrid',
 	template: 'normal'
@@ -1467,10 +1463,24 @@ function sendEmail(args) {
 }
 
 function comemore() {
-	alert('hey');
+
+	var modal = _utils.doc.createElement('div');
+	modal.classList.add('modal');
+
+	modal.innerText = 'Mensagem Enviada!';
+
+	_utils.doc.body.appendChild(modal);
+
+	setInterval(function (_) {
+		return modal.remove();
+	}, 1200);
 }
 
 function contact() {
+
+	var emailsScript = document.createElement('script');
+	emailsScript.setAttribute('src', 'https://cdn.emailjs.com/dist/email.min.js');
+	document.body.appendChild(emailsScript);
 
 	var form = (0, _utils.the)('#form');
 
@@ -1491,13 +1501,13 @@ function contact() {
 		one: 'user_FdLry3bEaHitVXIzllzcl',
 		thom: 'user_kCkHRSMU0h4BVVSiBUB1T'
 
-		// init the plugin
-	};emailjs.init(users.one);
-
-	// listeners
-	form.addEventListener('submit', function (_) {
+		// listeners
+	};form.addEventListener('submit', function (_) {
 
 		_.preventDefault();
+
+		// init the plugin
+		emailjs.init(users.one);
 
 		var args = {
 			name: elements.name.value,

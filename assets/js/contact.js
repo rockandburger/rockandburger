@@ -1,14 +1,13 @@
 import {
 	the,
 	all,
+	doc,
 	elementIsVisibleInViewport
 } from './utils'
 
 import {validations, typing, fuck} from './contactHelpers'
 
-const emailsScript = document.createElement('script')
-emailsScript.setAttribute('src', 'https://cdn.emailjs.com/dist/email.min.js')
-document.body.appendChild(emailsScript)
+
 
 const opts = {
 	service: 'sendgrid',
@@ -30,10 +29,23 @@ function sendEmail(args){
 }
 
 function comemore(){
-	alert('hey')
+
+	const modal = doc.createElement('div')
+	modal.classList.add('modal')
+
+	modal.innerText = 'Mensagem Enviada!'
+
+	doc.body.appendChild(modal)
+
+	setInterval( _ => modal.remove(), 1200)
+
 }
 
 export default function contact() {
+
+	const emailsScript = document.createElement('script')
+	emailsScript.setAttribute('src', 'https://cdn.emailjs.com/dist/email.min.js')
+	document.body.appendChild(emailsScript)
 
 	const form = the('#form')
 
@@ -53,14 +65,14 @@ export default function contact() {
 		thom: 'user_kCkHRSMU0h4BVVSiBUB1T'
 	}
 
-	// init the plugin
-	emailjs.init(users.one)
-
 	// listeners
 	form.addEventListener('submit', _ => {
 		
 		_.preventDefault()
 
+		// init the plugin
+		emailjs.init(users.one)
+		
 		const args = {
 			name: elements.name.value,
 			email: elements.email.value,
