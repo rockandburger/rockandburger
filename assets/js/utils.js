@@ -99,10 +99,6 @@ class ScrollHandler {
 const elementIsVisibleInViewport = (el, partiallyVisible = false) => {
 
   const { left, bottom, right, top } = el.getBoundingClientRect()
-  
-  if(el.id === 'contato'){
-    console.log(top)
-  }
 
   return partiallyVisible
     ? ((top > 0 && top < innerHeight) || (bottom > 0 && bottom < innerHeight)) &&

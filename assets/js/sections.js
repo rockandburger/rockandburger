@@ -23,7 +23,6 @@ export default function onSections() {
 
         function action(section) {
 
-            console.log(section.id)
             section.classList.add('active')
 
             if (section.id === 'contato') {
@@ -47,7 +46,6 @@ export default function onSections() {
         scroll.init({
 
             after: _ => {
-                //|| scroll.lastPosY >= (top - 160)
 
                 if (elementIsVisibleInViewport(section, true)) {
                     action(section)
