@@ -459,12 +459,39 @@
         }
 
        }
+       
+
+       .row, .name{
+            &:before {
+                position: absolute;
+                top: 0;
+                left: 0;
+                content: '';
+                height: 100%;
+                width: 100%;
+                background: $c3;
+                z-index: 999;
+                transform-origin: left;
+                transition: transform 1.2s $transition;
+            }
+
+            $steps:10;
+            $decrease:10;
+            @for $i from 0 through $steps {
+                &:nth-child(#{$i}) {
+                    &:before {
+                        transition: transform 0.4s unquote( 0.4 + ( $i / 25) + 's ') $transition1;
+                    }
+                }
+            }
+       }
 
         .row {
             position: relative;
             margin: 0 0 5px;
             width: 100%;
             line-height: 1.2em;
+
 
             span {
                 position: relative;
@@ -530,6 +557,14 @@
         font-family: $contentFont;
         text-align: center;
     }
+
+    .active {
+            .col .row:before,
+            .col .name:before {
+            transform: scale3d(0, 1, 1);
+        }
+    }
+
 }
 #adicionais-icon, #adicionais-icon-2 {
     g {
