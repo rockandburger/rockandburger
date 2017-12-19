@@ -1,0 +1,55 @@
+footer{
+    padding: 20px;
+    background: $c3;
+
+    > div{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        @media(max-width: 450px) {
+            flex-wrap: wrap;
+        }
+
+    }
+
+    .logo{
+        color: $cWhite;
+        line-height: 1.2em;
+        font-size: em(13px);
+
+        svg{
+            position: relative;
+            top: 8px;
+        }
+
+        @media(max-width: 450px) {
+            span{
+                margin-top: 10px;
+                display: block;
+            }
+        }
+
+
+    }
+
+    .logo-footer{
+        margin-right: 10px;
+        width:90px;
+        height: 24px;
+        fill: $cWhite;
+    }
+
+    .fuerza-logo{
+        width: 70px;
+        height: 25px;
+        fill: $cWhite;
+
+        @media(max-width: 450px) {
+            margin-top: 30px;
+        }
+
+
+    }
+
+}

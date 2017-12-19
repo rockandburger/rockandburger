@@ -1,6 +1,6 @@
 svg:not(.dflt) {
 
-  path{
+  path:not(.noinh) {
     fill: inherit;
     stroke: inherit;
   }

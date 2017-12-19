@@ -8,13 +8,36 @@
 }
 .map-container {
     // width: 525px;
+    opacity: 0;
+    transform: translate3d(-5%, 3%, 0);
+    transition: transform 0.3s 0.2s ease-in,
+    opacity 0.4s 0.2s linear;
+
 
     @media(max-width: 1200px) {
-      margin-bottom: 20px;
+      margin: 0 auto 50px;
     }
+
+    .active &{
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+
 }
+
 .contato-container {
-    width: 445px;
+    width: 45%;
+    opacity: 0;
+    transform: translate3d(0, 15%, 0);
+    transition: transform 0.3s ease-in,
+    opacity 0.4s  linear;
+
+
+    .active & {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+
 
     p {
         font-family: $contentFont;
@@ -32,7 +55,6 @@
         }
 
         input {
-            border: 1px solid $cWhite;
             background: rgba(0, 0, 0, .4);
             width: 100%;
             border-radius: 5px;
@@ -41,7 +63,9 @@
             font-size: 0.873rem;
             font-weight: 400;
             color: $cWhite;
+            border: 1px solid $cWhite;
             font-family: $contentFont;
+
         }
         textarea {
             border: 1px solid $cWhite;
@@ -50,8 +74,46 @@
             border-radius: 5px;
             max-height: 140px;
             padding: 15px 13px;
+            font-size: 0.873rem;
+            color: $cWhite;
+
+            + span{
+                margin-top: -5px;
+            }
         }
-        input[type=submit] {
+
+        .error-msg{
+            display: block;
+            font-size: em(11px);
+            letter-spacing: 0.5pt;
+            background: $c1;
+            padding: 2px 5px;
+            border-radius: 0 0 5px 5px;
+        }
+
+        textarea, input{
+            margin: 0;
+
+            &.error {
+                background-image: url(../assets/img/errorSvg.svg);
+                background-repeat: no-repeat;
+                background-position: calc(100% - 8px) 8px;
+                border: 1px solid $c1;
+                border-radius: 5px 5px 0 0;
+            }
+
+            &:focus{
+                background-image: none;
+                border: 1px solid $cWhite;
+                border-radius: 5px;
+
+                + span{
+                    display: none;
+                }
+            }
+        }
+
+        button[type=submit] {
             background: $c5;
             border: none;
             width: 184px;
@@ -64,6 +126,7 @@
             margin-left: auto;
             align-items: center;
             cursor: pointer;
+            border-radius: 5px;
             transition: background .5s;
 
             &:hover {
@@ -98,18 +161,37 @@
         }
     }
     form {
+        
         margin-top: 14px;
+
+        @media(max-width: 450px) {
+            margin: 0 auto;
+            width: 94%;
+        }
+
     }
+
+    @media(max-width: 450px) {
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    @media(max-width: 1100px) {
+        margin: 0 auto;
+        width: 90%;
+        max-width: 445px;
+    }
+
 }
+
 .contato-content {
+    margin: 30px auto 0;
+    max-width: 1024px;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-
-    @media(max-width: 1200px) {
-      justify-content: center;
-    }
 }
+
 .phone-icon {
     width: 25px;
     height: 25px;
@@ -129,20 +211,64 @@
     height: 25px;
     width: 25px;
 }
+
 .line {
+    margin-bottom: 20px;
     display: flex;
     align-items: center;
-    flex-wrap: wrap;
+    color: $cWhite;
+
+    >div {
+        margin-right: 20px;
+    }
+
+    svg{
+        margin-right: 10px;
+    }
 
     @media(max-width: 400px) {
+     margin: 0 auto 10px;
+     width: 96%;
+     font-size: 13px;   
+     flex-wrap: wrap;
+     align-items: flex-start;
+
+     > div{
+        display: flex;
+        align-items: center;
+        width: 100%;
+        margin-bottom: 10px;
+        color: $cWhite;
+
+
+     }
+
       span {
+        font-size: 14px;
         width: 80%;
-        margin: 8px 0;
+        margin:0;
+        color: $cWhite;
       }
+      
+      svg{
+          margin-right: 10px;
+      }
+
       .whatsapp-icon {
-        margin-top: 16px;
+        position: relative;
+        margin-right: 10px;
+        top: 2px;
       }
+
+
+      &.address-line{
+          margin-top: 20px;
+      }
+
     }
+
+
+
 }
 .address-line {
     svg {

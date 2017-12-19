@@ -1,8 +1,22 @@
 .contato {
-    background: url(~/assets/img/bg-contato.png);
+    position: relative;
+    background: url(../assets/img/bg-contato.jpg);
     background-attachment: fixed;
     padding-bottom: 133px;
+
+    // &:before{
+    //     position: absolute;
+    //     top: 0;
+    //     left: 0;
+    //     content: '';
+    //     width: 100%;
+    //     height: 10px;
+    //     // background: rgba($cBlack, 0.4);
+    //     box-shadow: 10px 13px 10px rgba($cBlack, 0.8);
+    // }
+
 }
+
 header {
     background: #000;
 }
@@ -12,7 +26,7 @@ header {
   height: 520px;
   border-radius: 50%;
   border: 12px solid #ca272c;
-
+  
     @media(max-width: 600px) {
       width: 400px;
       height: 400px;
@@ -23,6 +37,7 @@ header {
       height: 300px;
     }
 }
+
 #map {
   width: 520px;
   height: 520px;
@@ -36,6 +51,7 @@ header {
     height: 300px;
   }
 }
+
 .gmnoprint {
     display: none !important;
 }

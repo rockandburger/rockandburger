@@ -1,130 +1,107 @@
 .cardapio {
+    position: relative;
+    z-index: 9;
     background: $c3;
     padding: 0 0 120px;
+    box-shadow: -10px 30px 60px rgba($cBlack, 0.7);
 
     .burger-wrp {
+        margin: 0 -20px;
         display: flex;
+        flex-flow: row wrap;
         justify-content: center;
         flex-wrap: wrap;
 
         figure {
             position: relative;
-            width: 33%;
-            max-width: 370px;
+            margin-bottom: 15px;
+            width: 32%;
             min-width: 370px;
+            cursor: pointer;
+            opacity: 0;
 
             svg {
                 z-index: 1;
                 position: absolute;
                 right: 0;
             }
+
             .box {
                 z-index: 2;
                 position: relative;
             }
+            
             .hamburger {
-              position: absolute;
-              left: 0;
-              top: 50%;
-              // margin-top: -111px;
-              transform: translateX(110px);
-              z-index: 1;
-            }
-            &.elvis-burger {
+               position: absolute;
+               left: 0;
+               top: 50%;
+               transition: transform .2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+               transform: translate3d(38%, -53%, 0);
+               z-index: 1;
+               cursor: pointer
+             }
+
+            &:hover {
+            
               .hamburger {
-                transform: translateX(55px) translateY(-121px);
-                transition: transform .5s;
-              }
-              &:hover {
-                .hamburger {
-                  transform: translateX(70px) translateY(-121px);
-                  transition: transform .5s;
-                }
+               transform: translate3d(44%, -53%, 0);
               }
             }
-            &.janis-burger {
-              .hamburger {
-                transform: translateX(55px) translateY(-120px);
-                transition: transform .5s;
-              }
-              &:hover {
-                .hamburger {
-                  transform: translateX(78px) translateY(-120px);
-                  transition: transform .5s;
-                }
-              }
-            }
-            &.ramones-burger {
-              .hamburger {
-                transform: translateX(70px) translateY(-110px);
-                transition: transform .5s;
-              }
-              &:hover {
-                .hamburger {
-                  transform: translateX(100px) translateY(-110px);
-                  transition: transform .5s;
-                }
-              }
-            }
+
             &.led-burger {
+
               .hamburger {
-                transform: translateX(100px) translateY(-128px);
-                transition: transform .5s;
+               transform: translate3d(65%, -52%, 0);
               }
+
               &:hover {
                 .hamburger {
-                  transition: transform .5s;
-                  transform: translateX(125px) translateY(-128px);
+                  transform: translate3d(71%, -52%, 0);
                 }
+              }
+
+            }
+
+            &.ramones-burger{
+                .hamburger {
+                    transform: translate3d(50%, -52%, 0);
+                }
+
+                &:hover {
+                    .hamburger {
+                        transform: translate3d(56%, -52%, 0);
+                    }
+                }
+            }
+
+            &.hendrix-burger{
+
+              .hamburger {
+                transform: translate3d(45%, -52%, 0);
+              }
+
+              &:hover {
+                .hamburger {
+                  transform: translate3d(51%, -52%, 0);
+                }
+              }
+
+            }
+
+            &.kiss-burger{
+              .hamburger {
+                  transform: translate3d(41%, -52%, 0);
+              }
+
+              &:hover {
+                  .hamburger {
+                      transform: translate3d(47%, -52%, 0);
+                  }
               }
             }
-            &.beatles-burger {
-              .hamburger {
-                transform: translateX(65px) translateY(-123px);
-                transition: transform .5s;
-              }
-              &:hover {
-                .hamburger {
-                  transform: translateX(90px) translateY(-123px);
-                  transition: transform .5s;
-                }
-              }
-            }
-            &.hendrix-burger {
-              .hamburger {
-                transform: translateX(74px) translateY(-128px);
-                  transition: transform .5s;
-              }
-              &:hover {
-                .hamburger {
-                  transform: translateX(104px) translateY(-128px);
-                  transition: transform .5s;
-                }
-              }
-            }
-            &.bowie-burger {
-              .hamburger {
-                transform: translateX(55px) translateY(-111px);
-                transition: transform .5s;
-              }
-              &:hover {
-                .hamburger {
-                  transform: translateX(75px) translateY(-111px);
-                  transition: transform .5s;
-                }
-              }
-            }
-            &.kiss-burger {
-              .hamburger {
-                transform: translateX(63px) translateY(-122px);
-                  transition: transform .5s;
-              }
-              &:hover {
-                .hamburger {
-                  transform: translateX(90px) translateY(-122px);
-                  transition: transform .5s;
-                }
-              }
+
+            img.loaded +  figcaption{
+                opacity: 1;
             }
 
             figcaption {
@@ -141,6 +118,7 @@
                 flex-wrap: wrap;
                 justify-content: center;
                 align-items: flex-start;
+                opacity: 0;
 
                 h3 {
                     font-size: 2.319rem;
@@ -163,7 +141,7 @@
                     font-weight: 400;
                     text-align: center;
                     font-family: $contentFont;
-                    margin-bottom: 100px;
+                    margin-bottom: 110px;
                     display: flex;
                     justify-content: center;
                     width: 100%;
@@ -218,20 +196,177 @@
                       margin-top: 10px;
                     }
                     .ingredients {
-                        margin: 113px auto 0;
+                        margin: 158px auto 0;
                     }
                 }
+
+                &.kiss-burger{
+                  .ingredients {
+                    margin: 158px auto 0;
+                  }
+                }
             }
+
+            @media(max-width: 770px){
+                min-width: 0;
+                width: 40%;
+
+                .hamburger {
+                    width: 70%;
+                    height: auto;
+                }
+
+                .box {
+                    width: 90%;
+                    height: auto;
+                }
+
+                .hamburger {
+                    width: 70%;
+                    height: auto;
+                }
+
+                &.led-burger {
+                    .hamburger {
+                        width: 60%;
+                    }
+                }
+
+                &.ramones-burger {
+                    
+                    figcaption{
+
+                    }
+
+                    .ingredients {
+                        margin-bottom: 40px;
+                    }
+
+                    .hamburger{
+                        width: 62%;
+                        transform: translate3d(62%, -52%, 0);
+                    }
+
+                }
+
+
+                &.beatles-burger {
+
+                    .ingredients {
+                        margin-bottom: 48px;
+                    }
+
+                    .hamburger {
+                        width: 62%;
+                        transform: translate3d(65%, -52%, 0);
+                    }
+
+                }
+
+
+                &.bowie-burger figcaption {
+                    .ingredients {
+                        margin-bottom: 40px;
+                    }
+                }
+
+                &.hendrix-burger figcaption {
+                    .ingredients {
+                        margin-bottom: 40px;
+                    }
+                }
+
+                &.beatles-burger figcaption {
+                    .ingredients {
+                        margin-bottom: 48px;
+                    }
+                }
+
+                figcaption {
+                    left: 0;
+                    height: 100%;
+                    width: 90%;
+                    padding: 14px;
+
+                    .ingredients {
+                        margin-bottom: 65px;
+                    }
+
+                    .price,
+                    .including {
+                        margin-bottom: 25px;
+                    }
+
+                    .price {
+                        margin-right: 10px;
+                    }
+
+                    &.veggie .ingredients {
+                        margin: 108px auto 0;
+                    }
+
+                }
+            }
+
             @media(max-width: 450px) {
-                max-width: 90%;
-                min-width: 100%;
+                min-width: 90%;
+                width: 90%;
+                margin: 0 5%;
+
+                &.beatles-burger figcaption {
+                    .ingredients {
+                        margin-bottom: 55px;
+                    }
+                }
+
+
+                &.beatles-burger{
+                    .hamburger {
+                        width: 75%;
+                    }
+                }
+
+                &.hendrix-burger figcaption{
+                    .ingredients {
+                        margin-bottom: 50px;
+                    }
+                }
+
+                &.bowie-burger figcaption{
+                    .ingredients {
+                        margin-bottom: 50px;
+                    }
+                }
+
+
+                &.led-burger{
+                    .hamburger{
+                        width: 60%;
+                    }
+                }
+
+
             }
+
+            $steps:10;
+            $decrease:10;
+
+            @for $i from 0 through $steps {
+                &:nth-child(#{$i}) {
+                    transform: translate3d(0, unquote( ($i * 5) + '% '), 0);
+                    transition: transform 0.4s unquote( 0.1 + ( $i / 25) + 's ') $transition,
+                    opacity 0.2s unquote( 0.1 + ( $i / 25) + 's ') $transition1;
+                }
+            }
+
         }
+
         p {
             text-align: center;
             color: $cWhite;
             font-family: $contentFont;
             font-size: 1.492rem;
+            letter-spacing: 1pt;
             width: 100%;
             margin: 0 auto 35px;
 
@@ -239,6 +374,14 @@
                 font-weight: 900;
             }
         }
+
+        &.active{
+            figure{
+                opacity: 1;
+                transform: translate3d(0, 0, 0);
+            }
+        }
+
     }
     .cardapio-wrp {
         display: flex;
@@ -251,43 +394,41 @@
         }
     }
     .col {
+        position: relative;
+        padding: 0 20px;
         width: 33%;
-        min-width: 349px;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
+
         @media(max-width: 1233px) {
             margin: 0 10px 20px;
             width: 45%;
-          }
-
-          @media(max-width: 450px) {
-            min-width: 100%;
-          }
-
-        span {
-            font-family: $contentFont;
-            color: $cWhite;
-            font-size: 1.12rem;
-            font-weight: 400;
-            line-height: .7;
-
-            @media(max-width: 450px) {
-              font-size: .92rem;
-            }
         }
+
+        @media(max-width: 450px) {
+            min-width: 100%;
+        }
+
         h3 {
+            position: relative;
             color: $c2;
+            z-index: 2;
+            display: inline;
             font-family: $titleFont;
             font-size: 1.751rem;
             letter-spacing: .1rem;
-            line-height: .9;
+            line-height: .9em;
             margin: 0 auto 13px;
             text-transform: uppercase;
+            background: $c3;
+            
             @media(max-width: 1233px) {
               margin: 0 0 13px;
               width: 100%;
             }
+
+            span{
+                right: 0;
+            }
+
         }
         p {
             font-size: 1.125rem;
@@ -295,26 +436,119 @@
             font-family: $contentFont;
             color: $cWhite;
             letter-spacing: .1rem;
-            width: 85%;
+        }
+    
+       .name {
+            margin: 8px 0;
+            font-family: $contentFont;
+            color: $cWhite;
+            font-weight: 700;
+            font-size: 1.12rem;
+
+        p{
+            margin-bottom: 0;
+            line-height: 1.2em;
         }
 
+        small {
+            position: relative;
+            top: -6px;
+            color: $cWhite;
+            font-weight: 700;
+            font-size: em(12px);
+        }
+
+       }
+       
+
+       .row, .name{
+            &:before {
+                position: absolute;
+                top: 0;
+                left: 0;
+                content: '';
+                height: 100%;
+                width: 100%;
+                background: $c3;
+                z-index: 999;
+                transform-origin: left;
+                transition: transform 1.2s $transition;
+            }
+
+            $steps:10;
+            $decrease:10;
+            @for $i from 0 through $steps {
+                &:nth-child(#{$i}) {
+                    &:before {
+                        transition: transform 0.4s unquote( 0.4 + ( $i / 25) + 's ') $transition1;
+                    }
+                }
+            }
+       }
+
         .row {
-            margin: 0 0 8px;
+            position: relative;
+            margin: 0 0 5px;
             width: 100%;
+            line-height: 1.2em;
+
+
+            span {
+                position: relative;
+                z-index: 2;
+                font-family: $contentFont;
+                color: $cWhite;
+                font-size: 1.12rem;
+                font-weight: 500;
+                background: $c3;
+                &:last-child {
+                    position: absolute;
+                    right: 0;
+                    bottom: 0;
+                    padding-left: 2px;
+                }
+                @media(max-width: 450px) {
+                    font-size: .92rem;
+                }
+            }
 
             &.row-0 {
                 margin: 0 0 11px;
-            }
-            &.row-3 {
-                margin: 25px 0;
-                span {
-                    line-height: 1.1;
+                &:after {
+                    content: initial;
                 }
             }
-            &.row-margin {
-                margin: 0 0 45px;
+
+            &.type{
+                margin: 23px 0;
             }
+
+            &.row-3 {
+                margin: 0 0 40px;
+                span {
+                    line-height: 1.1em;
+                }
+            }
+
+            &.row-margin {
+                margin: 0 0 38px;
+            }
+
+            &:after{
+                content:"............................................................................................................................................................";
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                z-index: 1;
+                color: $cWhite;
+                white-space: nowrap;
+                overflow: hidden;
+                // border-bottom: 1px dotted $cWhite;
+            }
+
         }
+
     }
     .sobremesa {
         font-size: 1.354rem;
@@ -323,6 +557,14 @@
         font-family: $contentFont;
         text-align: center;
     }
+
+    .active {
+            .col .row:before,
+            .col .name:before {
+            transform: scale3d(0, 1, 1);
+        }
+    }
+
 }
 #adicionais-icon, #adicionais-icon-2 {
     g {
