@@ -207,22 +207,82 @@
                 }
             }
 
-            @media(max-width: 450px) {
-                min-width: 90%;
-                width: 90%;
-                margin: 0 5%;
+            @media(max-width: 770px){
+                min-width: 0;
+                width: 40%;
 
-                .box{
-                    width: 90%;
-                    height: auto;
-                }
-
-                .hamburger{
+                .hamburger {
                     width: 70%;
                     height: auto;
                 }
 
-                figcaption{
+                .box {
+                    width: 90%;
+                    height: auto;
+                }
+
+                .hamburger {
+                    width: 70%;
+                    height: auto;
+                }
+
+                &.led-burger {
+                    .hamburger {
+                        width: 60%;
+                    }
+                }
+
+                &.ramones-burger {
+                    
+                    figcaption{
+
+                    }
+
+                    .ingredients {
+                        margin-bottom: 40px;
+                    }
+
+                    .hamburger{
+                        width: 62%;
+                        transform: translate3d(62%, -52%, 0);
+                    }
+
+                }
+
+
+                &.beatles-burger {
+
+                    .ingredients {
+                        margin-bottom: 48px;
+                    }
+
+                    .hamburger {
+                        width: 62%;
+                        transform: translate3d(65%, -52%, 0);
+                    }
+
+                }
+
+
+                &.bowie-burger figcaption {
+                    .ingredients {
+                        margin-bottom: 40px;
+                    }
+                }
+
+                &.hendrix-burger figcaption {
+                    .ingredients {
+                        margin-bottom: 40px;
+                    }
+                }
+
+                &.beatles-burger figcaption {
+                    .ingredients {
+                        margin-bottom: 48px;
+                    }
+                }
+
+                figcaption {
                     left: 0;
                     height: 100%;
                     width: 90%;
@@ -237,23 +297,26 @@
                         margin-bottom: 25px;
                     }
 
-                    .price{
+                    .price {
                         margin-right: 10px;
                     }
 
-                    &.veggie .ingredients{
+                    &.veggie .ingredients {
                         margin: 108px auto 0;
                     }
 
-
                 }
+            }
+
+            @media(max-width: 450px) {
+                min-width: 90%;
+                width: 90%;
+                margin: 0 5%;
 
                 &.beatles-burger figcaption {
                     .ingredients {
                         margin-bottom: 55px;
                     }
-
-      
                 }
 
 

@@ -15,15 +15,13 @@
 
 
     @media(max-width: 1200px) {
-      margin-bottom: 20px;
+      margin: 0 auto 50px;
     }
 
     .active &{
         opacity: 1;
         transform: translate3d(0, 0, 0);
     }
-
-
 
 }
 
