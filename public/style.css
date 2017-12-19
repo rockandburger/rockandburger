@@ -463,7 +463,20 @@ nav a:active {
   z-index: 3;
   padding: 80px 0 0;
   margin-bottom: 30px;
-  width: 100%; }
+  width: 100%;
+  -webkit-transform-origin: center;
+          transform-origin: center;
+  opacity: 0;
+  -webkit-transform: scale3d(0.7, 0.7, 1);
+          transform: scale3d(0.7, 0.7, 1);
+  -webkit-transition: opacity 0.5s 0.2s linear, 0.5s -webkit-transform cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: opacity 0.5s 0.2s linear, 0.5s -webkit-transform cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: 0.5s transform cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.5s 0.2s linear;
+  transition: 0.5s transform cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.5s 0.2s linear, 0.5s -webkit-transform cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+.active .section-title {
+    opacity: 1;
+    -webkit-transform: scale3d(1, 1, 1);
+            transform: scale3d(1, 1, 1); }
 .section-title h2 {
     color: #2b1211;
     font-size: 4.689rem;
@@ -1020,7 +1033,7 @@ p {
       margin: 0 auto 35px; }
 .cardapio .burger-wrp p strong {
         font-weight: 900; }
-.cardapio .burger-wrp.active figure {
+.cardapio .burger-wrp.active.all-loaded figure {
       opacity: 1;
       -webkit-transform: translate3d(0, 0, 0);
               transform: translate3d(0, 0, 0); }
@@ -1100,8 +1113,8 @@ p {
       width: 100%;
       background: #341b1a;
       z-index: 999;
-      -webkit-transform-origin: left;
-              transform-origin: left;
+      -webkit-transform-origin: right;
+              transform-origin: right;
       -webkit-transition: -webkit-transform 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       transition: -webkit-transform 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       transition: transform 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -1279,7 +1292,18 @@ a[href^="https://maps.google.com/maps"] {
   font-size: 1.501rem;
   font-weight: 700;
   text-align: center;
-  margin-bottom: 42px; }
+  margin-bottom: 42px;
+  opacity: 0;
+  -webkit-transform: translate3d(10px, 0, 0);
+          transform: translate3d(10px, 0, 0);
+  -webkit-transition: opacity 0.4s 0.2s linear, -webkit-transform 0.3s 0.2s ease-in;
+  transition: opacity 0.4s 0.2s linear, -webkit-transform 0.3s 0.2s ease-in;
+  transition: transform 0.3s 0.2s ease-in, opacity 0.4s 0.2s linear;
+  transition: transform 0.3s 0.2s ease-in, opacity 0.4s 0.2s linear, -webkit-transform 0.3s 0.2s ease-in; }
+.active .fale-conosco-sub {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 30, 0);
+            transform: translate3d(0, 30, 0); }
 .map-container {
   opacity: 0;
   -webkit-transform: translate3d(-5%, 3%, 0);
@@ -1549,7 +1573,8 @@ header {
   height: 475px;
   border-bottom: 12px solid #f1c646; }
 header .banner-top {
-    padding: 60px 0; }
+    padding: 60px 0;
+    background: url("../assets/img/banner-header.jpg") no-repeat; }
 header .banner-top .container {
       position: relative; }
 header .banner-top img {

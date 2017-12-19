@@ -375,7 +375,7 @@
             }
         }
 
-        &.active{
+        &.active.all-loaded {
             figure{
                 opacity: 1;
                 transform: translate3d(0, 0, 0);
@@ -471,7 +471,7 @@
                 width: 100%;
                 background: $c3;
                 z-index: 999;
-                transform-origin: left;
+                transform-origin: right;
                 transition: transform 1.2s $transition;
             }
 
