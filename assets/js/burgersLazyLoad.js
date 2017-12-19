@@ -46,8 +46,9 @@ export default function burgersLazyLoad() {
 
     })
 
-
     imagesloaded(lazzys, function () {
         the('.burger-wrp').classList.add('all-loaded')
     })
+
+
 }
