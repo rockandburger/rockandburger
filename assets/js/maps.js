@@ -9,7 +9,6 @@ class GoogleMaps{
         this.gMapScript.setAttribute('src', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCWspGMzOzQGZGj1lKmlreVLIB8GlOuiP8')
         document.body.appendChild(this.gMapScript)
     }
-
     load(){
 
         const w = window,
