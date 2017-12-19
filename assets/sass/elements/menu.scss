@@ -101,7 +101,7 @@ nav {
         width: 152px;
       }
     }
-    &:hover {
+    &:hover, &.actual{
       span {
         background: $cWhite;
       }

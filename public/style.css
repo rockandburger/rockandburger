@@ -283,13 +283,13 @@ nav a:after {
       border-left: 15px solid #f1c646; }
 nav a.fale-conosco span {
       width: 152px; }
-nav a:hover span {
+nav a:hover span, nav a.actual span {
       background: #fff; }
-nav a:hover:before, nav a:hover:after {
+nav a:hover:before, nav a:hover:after, nav a.actual:before, nav a.actual:after {
       border-color: #fff; }
-nav a:hover:before {
+nav a:hover:before, nav a.actual:before {
       border-left: solid 13px transparent; }
-nav a:hover:after {
+nav a:hover:after, nav a.actual:after {
       border-right: solid 13px transparent; }
 nav a:active {
       -webkit-filter: drop-shadow(0 5px 2px transparent);
@@ -724,6 +724,9 @@ p {
             justify-content: center;
     -ms-flex-wrap: wrap;
         flex-wrap: wrap; }
+@media (max-width: 770px) {
+      .cardapio .burger-wrp {
+        margin: 0; } }
 .cardapio .burger-wrp figure {
       position: relative;
       margin-bottom: 15px;

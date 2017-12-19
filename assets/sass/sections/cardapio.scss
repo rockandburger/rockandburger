@@ -12,6 +12,10 @@
         justify-content: center;
         flex-wrap: wrap;
 
+        @media(max-width: 770px) {
+            margin: 0;
+        }
+
         figure {
             position: relative;
             margin-bottom: 15px;
@@ -100,7 +104,7 @@
               }
             }
 
-            img.loaded +  figcaption{
+            img.loaded + figcaption{
                 opacity: 1;
             }
 

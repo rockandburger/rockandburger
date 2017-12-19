@@ -191,7 +191,9 @@ var elementIsVisibleInViewport = function elementIsVisibleInViewport(el) {
       right = _el$getBoundingClient.right,
       top = _el$getBoundingClient.top;
 
-  return partiallyVisible ? (top > 0 && top < innerHeight || bottom > 0 && bottom < innerHeight) && (left > 0 && left < innerWidth || right > 0 && right < innerWidth) : top >= 0 && left >= 0 && bottom <= innerHeight && right <= innerWidth;
+  var is = partiallyVisible ? (top > 0 && top < innerHeight || bottom > 0 && bottom < innerHeight) && (left > 0 && left < innerWidth || right > 0 && right < innerWidth) : top >= 0 && left >= 0 && bottom <= innerHeight && right <= innerWidth;
+
+  return is;
 };
 
 exports.doc = doc;
@@ -239,6 +241,10 @@ var _hamburger = __webpack_require__(14);
 
 var _hamburger2 = _interopRequireDefault(_hamburger);
 
+var _markOnMenu = __webpack_require__(17);
+
+var _markOnMenu2 = _interopRequireDefault(_markOnMenu);
+
 var _domready = __webpack_require__(15);
 
 var _domready2 = _interopRequireDefault(_domready);
@@ -260,6 +266,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
   (0, _sections2.default)();
 
   (0, _hamburger2.default)();
+
+  (0, _markOnMenu2.default)();
 });
 
 /***/ }),
@@ -1324,9 +1332,9 @@ function onSections() {
             }
         }
 
-        if ((0, _utils.elementIsVisibleInViewport)(section, true)) {
-            action(section);
-        }
+        // if (elementIsVisibleInViewport(section, true)){
+        //     action(section)
+        // }
 
         scroll.init({
 
@@ -2063,6 +2071,63 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     loaded ? setTimeout(fn, 0) : fns.push(fn);
   };
 });
+
+/***/ }),
+/* 16 */,
+/* 17 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = markOnMenu;
+
+var _utils = __webpack_require__(0);
+
+function markOnMenu() {
+
+    var anchors = [];
+
+    (0, _utils.all)('.nav-item').forEach(function (item) {
+        var href = item.getAttribute('href').replace('#', '');
+        anchors.push({ href: href, item: item });
+    });
+
+    (0, _utils.all)('.section').forEach(function (section) {
+
+        var scroll = new _utils.ScrollHandler();
+
+        var _getElemOffset = (0, _utils.getElemOffset)(section),
+            top = _getElemOffset.top;
+
+        function action(section) {
+
+            if (top - 120 < scroll.lastPosY) {
+
+                var id = section.id;
+                var found = anchors.find(function (anchor) {
+                    return id === anchor.href;
+                });
+
+                if (found) {
+                    anchors.forEach(function (anchor) {
+                        return anchor.item.classList.remove('actual');
+                    });
+                    found.item.classList.add('actual');
+                }
+            }
+        }
+
+        scroll.init({
+            after: function after(_) {
+                return action(section);
+            }
+        });
+    });
+}
 
 /***/ })
 /******/ ]);

@@ -6,6 +6,7 @@ import burgersLazyLoad from './burgersLazyLoad'
 import onSections from './sections'
 import zenscroll from 'zenscroll'
 import hamburger from './hamburger'
+import markOnMenu from './markOnMenu'
 import domready from 'domready'
 
 domready( () => {
@@ -23,5 +24,7 @@ domready( () => {
   onSections()
 
   hamburger()
+
+  markOnMenu()
   
 })
