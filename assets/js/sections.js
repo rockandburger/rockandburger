@@ -15,6 +15,8 @@ export default function onSections() {
     const gMaps = new GoogleMaps()
     gMaps.init()
 
+    const wh = window.innerHeight
+
     all('.section').forEach(section => {
 
         const scroll = new ScrollHandler()
@@ -53,7 +55,7 @@ export default function onSections() {
                     action(section)
                 }
 
-                if (section.id === 'contato' && scroll.lastPosY >= (getElemOffset(section).top - 160) ){
+                if (section.id === 'contato' && scroll.lastPosY >= (getElemOffset(section).top - (getElemOffset(section).top / 5)  )){
                     action(section)
                 }
 
