@@ -4,16 +4,27 @@
     align-items: center;
     position: relative;
     z-index: 3;
-    padding: 65px 0 0;
-    margin-bottom: 20px;
+    padding: 80px 0 0;
+    margin-bottom: 30px;
     width: 100%;
+    transform-origin: center;
+    opacity: 0;
+    transform: scale3d(0.7, 0.7, 1);
+    transition: 0.5s transform $transition, opacity 0.5s 0.2s linear;
+
+
+    .active &{
+      opacity: 1;
+       transform: scale3d(1, 1, 1);
+    }
+
+
     h2 {
         color: $c6;
         font-size: 4.689rem;
         text-align: center;
         font-family: $titleFont;
         // position: absolute;
-        line-height: 0.35;
         background: $c2;
         padding: 0 20px;
         letter-spacing: .5rem;
@@ -23,7 +34,9 @@
         height: 66.8px;
         display: flex;
         align-items: flex-end;
+        line-height: 0.75em;
     }
+
     .hamburger-icon {
         width: 66px;
         height: 66px;
@@ -34,53 +47,75 @@
         width: 82px;
         height: 82px;
     }
-    .hamburger-icon {
-        &.left {
-          transform: rotate(-15deg);
-        }
-        &.right {
-          transform: rotate(15deg);
-        }
-    }
+
     .petiscos-icon {
         width: 60px;
         height: 80px;
         fill: $c2;
-
-        &.left {
-            transform: rotate(-15deg);
-        }
-
-        &.right {
-            transform: rotate(15deg);
-        }
     }
     .bebidas-icon {
         width: 42px;
         height: 90px;
         fill: $c2;
-
-        &.left {
-            transform: rotate(-15deg);
-        }
-
-        &.right {
-            transform: rotate(15deg);
-        }
     }
     .fale-conosco-icon {
         fill: $c2;
         width: 47px;
         height: 72px;
+    }
+
+    .fale-conosco-icon,
+    .hamburger-icon,
+    .adicionais-icon,
+    .petiscos-icon,
+    .bebidas-icon {
+      transform-origin: center;
+      opacity: 0;
+
+      &.left {
+        transform: rotate(-15deg) scale3d(0.5, 0.5, 1);
+      }
+
+      &.right {
+        transform: rotate(15deg) scale3d(0.5, 0.5, 1);
+      }
+      
+    }
+
+    .active & {
+
+
+      .fale-conosco-icon {
+        opacity: 1;
 
         &.left {
-            transform: rotate(-15deg);
+          animation: rocking-left 1s $transition1 forwards;
         }
 
         &.right {
-            transform: rotate(15deg);
+          animation: rocking-right 1s $transition1 forwards;
         }
+
+      }
+
+      .hamburger-icon,
+      .adicionais-icon,
+      .petiscos-icon,
+      .bebidas-icon{
+        animation: food-left 0.8s $transition1 forwards;
+
+        &.left {
+          animation: food-left 0.8s $transition1 forwards;
+        }
+
+        &.right {
+          animation: food-right 0.85s $transition1 forwards;
+        }
+
+      }
+
     }
+
     .ribbon {
         width: 66px;
         height: 70px;
@@ -95,15 +130,17 @@
             left: -30px;
         }
     }
+
     &.petiscos {
       .ribbon {
         height: 72px;
       }
     }
+
     @media(max-width: 990px) {
       h2 {
         height: 45px;
-        line-height: .55;
+        line-height: 1em;
         font-size: 2.5rem;
       }
       .ribbon {
@@ -178,4 +215,63 @@
         letter-spacing: 0;
       }
     }
+}
+
+
+@keyframes rocking-left {
+
+  0%{
+    transform: rotate(-30deg);
+  }
+
+  25% {
+    transform: rotate(-15deg);
+  }
+
+  50% {
+    transform: rotate(-30deg);
+  }
+
+  100% {
+    transform: rotate(-15deg);
+  }
+
+}
+
+@keyframes rocking-right {
+  0% {
+    transform: rotate(30deg);
+  }
+  25% {
+    transform: rotate(15deg);
+  }
+  50% {
+    transform: rotate(30deg);
+  }
+  100% {
+    transform: rotate(15deg);
+  }
+}
+
+
+@keyframes food-left{
+  0% {
+    transform : scale3d(0.5, 0.5, 1) rotate(-15deg);
+    opacity: 1;
+  }
+  100% {
+    transform : scale3d(1, 1, 1) rotate(-15deg);
+    opacity: 1;
+  }
+}
+
+@keyframes food-right {
+  0% {
+    transform:scale3d(0.5, 0.5, 1) rotate(15deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale3d(1, 1, 1) rotate(15deg);
+    opacity: 1;
+  }
 }

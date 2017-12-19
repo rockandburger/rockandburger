@@ -26,52 +26,48 @@ const styles = {
   test: /\.scss$/,
   use: extractSass.extract({
     use: [
-
       {
         loader: 'css-loader',
-        options: {
-          sourceMap: true,
+        options: { 
+          url: false,
+          sourceMap: true
         }
-      },
-      {
+      }, {
         loader: 'postcss-loader',
-        options: {
-          sourceMap: true,
-        }
-      },
-      {
+        options: { sourceMap: true }
+      }, {
         loader: 'sass-loader',
         options: {
           sourceMap: true,
           importer: globImporter()
         }
-      }
-    ]
+      }]
   })
 }
 
 // development
 const browserSync = new BrowserSyncPlugin({
   host: 'localhost',
-  files: ["**/*.html", "./public/**/*.js"],
+  files: ["**/*.html", "./**/*.js"],
   server: {
     baseDir: ['./']
   }
-}, {reload: false})
+}, { reload: false })
 
-const gaze = new Gaze("./public/*.css");
-gaze.on('all', () => browserSync.browserSync.reload("./public/*.css"))
+const gaze = new Gaze("./public/style.css");
+gaze.on('all', () => browserSync.browserSync.reload("./public/style.css"))
 
 // webpack configuration
 module.exports = {
   entry: {
-    script:path.resolve(__dirname, 'assets/js/main.js'),
-    style:path.resolve(__dirname, 'assets/sass/style.scss')
+    script: path.resolve(__dirname, 'assets/js/main.js'),
+    style: path.resolve(__dirname, 'assets/sass/style.scss')
   },
   output: {
     filename: '[name].js',
     path: path.resolve(__dirname, 'public')
   },
+
   module: {
     loaders: [styles, scripts]
   },

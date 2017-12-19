@@ -1,8 +1,10 @@
 .contato {
-    background: url(~/assets/img/bg-contato.png);
+    position: relative;
+    background: url(../assets/img/bg-contato.jpg);
     background-attachment: fixed;
     padding-bottom: 133px;
 }
+
 header {
     background: #000;
 }
@@ -12,7 +14,7 @@ header {
   height: 520px;
   border-radius: 50%;
   border: 12px solid #ca272c;
-
+  
     @media(max-width: 600px) {
       width: 400px;
       height: 400px;
@@ -23,6 +25,7 @@ header {
       height: 300px;
     }
 }
+
 #map {
   width: 520px;
   height: 520px;
@@ -36,6 +39,7 @@ header {
     height: 300px;
   }
 }
+
 .gmnoprint {
     display: none !important;
 }

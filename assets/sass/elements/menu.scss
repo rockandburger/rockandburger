@@ -1,164 +1,173 @@
 nav {
+  position: fixed;
+  left: 50%;
+  transform: translate3d(-50%, 0, 0);
+  width: 100%;
+  height: 80px;
+  display: flex;
+  padding: 0;
+  justify-content: center;
+  align-items: center;
+  max-width: 848px;
+  margin: 0 auto;
+  padding: 25px 0 0;
+  transition: transform 0.2s cubic-bezier(.175, .885, .32, .775), opacity linear;
+
+  &.fixed {
+    background: $c8;
+    max-width: none;
+    z-index: 20;
+    padding: 0;
+    opacity: 0;
+    box-shadow: 0 1px 6px 0px $cBlack;
+    transform: translate3d(-50%, -100%, 0);
+    animation: menuScrollDown .3s .3s cubic-bezier(.175, .885, .32, .775) forwards;
+
+    .logo-top,
+    .phone-top {
+      display: block;
+    }
+
+    a {
+      height: 28px;
+
+      &:nth-child(1){
+        filter: drop-shadow(0 5px 2px rgba(black, 0));
+      }
+    }
+  }
+
+  h1 {
+    a {
+      &:before,
+      &:after {
+        display: none;
+      }
+    }
+  }
+
+  a {
+    position: relative;
+    font-family: $titleFont;
+    color: $cBlack;
+    font-size: 1.387rem;
+    text-align: center;
+    margin: 0 30px;
     display: flex;
     justify-content: center;
     align-items: center;
-    max-width: 848px;
-    margin: 0 auto;
-    padding: 25px 0 0;
-    transition: all .8s;
-    // animation: unsticky 1200ms forwards;
+    text-transform: uppercase;
+    filter: drop-shadow(0 5px 2px rgba(black, 0.4));
+    transform: scale(0);
+    opacity: 0;
 
-
-    &.fixed {
-      position: fixed;
-      width: 100%;
-      height: 80px;
-      background: $c8;
-      max-width: none;
-      z-index: 20;
-      padding: 0;
-      box-shadow: 0 1px 6px 0px $cBlack;
-      animation: sticky 1200ms forwards;
-
-      .logo-top, .phone-top {
-        display: block;
-      }
-
-      // @media(max-width: 1279px) {
-      //     width: 300px;
-      //     height: 100vh;
-      //     flex-wrap: wrap;
-      //     position: fixed;
-      //     right: 0;
-      //     top: 0;
-      //     z-index: 19;
-      //     background: $c1;
-      //     padding: 20px 10px;
-      //     display: block;
-      //     box-shadow: 1px 0 9px 1px $cBlack;
-      //     transform: translateX(150%) translateY(79px);
-      //     opacity: 0;
-      //     transition: transform .8s;
-      //     .logo-top {
-      //       display: none;
-      //     }
-      //
-      //     &.openned {
-      //       transform: translateX(0) translateY(79px);
-      //       transition: all .8s;
-      //       opacity: 1;
-      //
-      //     }
-      //
-      //     a {
-      //       width: 100%;
-      //       margin-bottom: 30px;
-      //
-      //       svg {
-      //         display: none;
-      //       }
-      //       span {
-      //         padding: 20px 10px;
-      //         line-height: 0.5;
-      //         width: 100%;
-      //       }
-      //       &.fale-conosco {
-      //         span {
-      //           width: 100%;
-      //         }
-      //       }
-      //     }
-      // }
-
-      a {
-        height: 28px;
+    $steps:10;
+    $decrease:10;
+    @for $i from 0 through $steps {
+      &:nth-child(#{$i}) {
+        transform: translate3d(0, unquote( ($i * 5) + '% '), 0);
+        animation: showUp 0.4s unquote( 0.1 + ( $i / 15) + 's ') $transition forwards;
       }
     }
-    a {
-        font-family: $titleFont;
-        color: $cBlack;
-        font-size: 1.387rem;
-        line-height: 0.315;
-        text-align: center;
-        position: relative;
-        margin: 0;
-        height: 28px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        text-transform: uppercase;
 
-        span {
-            // display: flex;
-            height: 100%;
-            // justify-content: center;
-            // align-items: center;
-            background: $c2;
-            position: relative;
-            z-index: 4;
-            line-height: 1.7;
-        }
-        .ribbon {
-          height: 28px;
-          width: 28px;
-          fill: $c2;
-          position: relative;
-          z-index: 3;
-
-          &.left {
-            transform: translateX(3px);
-          }
-          &.right {
-            transform: translateX(-3px);
-          }
-        }
-        &.fale-conosco {
-            span {
-                width: 150px;
-            }
-        }
+    span {
+      height: 28px;
+      background: $c2;
+      display: block;
+      z-index: 2;
+      line-height: 1.4em;
+      pointer-events: none;
     }
-
+    &:before,
+    &:after {
+      position: absolute;
+      border-top: 14px solid $c2;
+      border-bottom: 14px solid $c2;
+      content: '';
+      z-index: 1;
+    }
+    &:before {
+      left: -20px;
+      border-left: solid 13px transparent;
+      border-right: 15px solid $c2;
+    }
+    &:after {
+      right: -20px;
+      border-right: solid 13px transparent;
+      border-left: 15px solid $c2;
+    }
+    &.fale-conosco {
+      span {
+        width: 152px;
+      }
+    }
+    &:hover {
+      span {
+        background: $cWhite;
+      }
+      &:before,
+      &:after {
+        border-color: $cWhite;
+      }
+      &:before {
+        border-left: solid 13px transparent;
+      }
+      &:after {
+        border-right: solid 13px transparent;
+      }
+    }
+    &:active {
+      filter: drop-shadow(0 5px 2px rgba(black, 0));
+      transform: translate3d(0, 1px, 0)
+    }
+  }
 }
+
 @media(max-width: 1100px) {
-  nav, nav.fixed {
+  nav,
+  nav.fixed {
     width: 300px;
     height: 100vh;
     flex-wrap: wrap;
     position: fixed;
     right: 0;
+    left: unset;
     top: 0;
     z-index: 19;
     background: $c1;
     padding: 20px 10px;
     display: block;
     box-shadow: 1px 0 9px 1px $cBlack;
-    transform: translateX(150%) translateY(79px);
-    opacity: 0;
-    transition: all .8s;
+    transform: translate3d(110%, 80px, 0);
+    opacity: 1;
+    transition: transform .4s $transition1, opacity 0.45s linear;
+    animation: none;
 
     .logo-top {
       display: none !important;
     }
-    
+
     &.openned {
-      transform: translateX(0) translateY(79px);
-      transition: all .8s;
-      opacity: 1;
+     transform: translate3d(0, 80px, 0);
     }
 
     a {
       width: 100%;
-      margin-bottom: 30px;
-
-      svg {
+      margin: 0 0 30px;
+      
+      &:after, &:before {
         display: none;
       }
+
       span {
         padding: 20px 10px;
         line-height: 0.5;
         width: 100%;
+        background: none;
+        filter: drop-shadow(0 0 0 rgba(black, 0));
+        color: $c2;
       }
+
       &.fale-conosco {
         span {
           width: 100%;
@@ -184,13 +193,12 @@ nav {
   .logo-top {
     display: block;
   }
-
   @media(max-width: 1100px) {
     display: flex;
   }
 }
 
-.hamburger .line{
+.hamburger .line {
   width: 50px;
   height: 5px;
   background-color: $c2;
@@ -201,41 +209,40 @@ nav {
   transition: all 0.3s ease-in-out;
 }
 
-.hamburger:hover{
+.hamburger:hover {
   cursor: pointer;
 }
 
+
 /* ONE */
 
-#hamburger-1.is-active .line:nth-child(2){
+#hamburger-1.is-active .line:nth-child(2) {
   opacity: 0;
 }
 
-#hamburger-1.is-active .line:nth-child(1){
-  -webkit-transform: translateY(13px) rotate(45deg);
-  -ms-transform: translateY(13px) rotate(45deg);
-  -o-transform: translateY(13px) rotate(45deg);
+#hamburger-1.is-active .line:nth-child(1) {
   transform: translateY(13px) rotate(45deg);
 }
 
-#hamburger-1.is-active .line:nth-child(3){
-  -webkit-transform: translateY(-13px) rotate(-45deg);
-  -ms-transform: translateY(-13px) rotate(-45deg);
-  -o-transform: translateY(-13px) rotate(-45deg);
+#hamburger-1.is-active .line:nth-child(3) {
   transform: translateY(-13px) rotate(-45deg);
 }
+
 .phone-top {
   font-family: $titleFont;
   color: $cWhite;
   text-transform: uppercase;
   font-size: 19px;
+  text-align: center;
   line-height: .8;
-  margin: 0 20px;
+  letter-spacing: 1pt;
+  margin: 20px 20px 0;
   display: none;
-
   span {
     display: block;
     font-size: 24px;
+    letter-spacing: 2pt;
+    pointer-events: none;
   }
   @media (max-width: 1280px) {
     margin: 0 0 0 7px;
@@ -244,28 +251,33 @@ nav {
     display: none !important;
   }
 }
+
 .logo-top {
   margin: 0 20px;
   display: none;
-
   @media(max-width: 1145px) {
     margin: 0 10px 0 0;
   }
 }
-@keyframes sticky {
-    0% {
-        top: -100px;
-    }
-    100% {
-        top: 0;
-    }
+
+@keyframes menuScrollDown {
+  0% {
+    opacity: 0;
+    transform: translate3d(-50%, -100%, 0);
+  }
+  100% {
+    transform:translate3d(-50%, 0, 0);
+    opacity: 1
+  }
 }
 
-@keyframes unsticky {
-    0% {
-        top: -100px;
-    }
-    100% {
-        top: 0;
-    }
+@keyframes showUp {
+  0% {
+    transform: scale3d(0.5, 0.5, 1);
+    opacity: 0;
+  }
+  100% {
+    transform : scale3d(1, 1, 1);
+    opacity: 1;
+  }
 }

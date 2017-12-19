@@ -73,6 +73,11 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
 var doc = document;
 var the = doc.querySelector.bind(doc);
 var all = doc.querySelectorAll.bind(doc);
@@ -101,7 +106,92 @@ var getElemOffset = function getElemOffset(elem) {
     }
   } while ((elem = elem.offsetParent) !== null);
 
-  return { height: height, top: top };
+  var bottom = top + height;
+  var right = left + width;
+
+  return { height: height, width: width, top: top, left: left, bottom: bottom, right: right };
+};
+
+var ScrollHandler = function () {
+  // Needs Animation variable from common.js file
+  function ScrollHandler() {
+    _classCallCheck(this, ScrollHandler);
+
+    this.lastPosY = window.pageYOffset;
+    this.loop();
+  }
+
+  _createClass(ScrollHandler, [{
+    key: "init",
+    value: function init(options) {
+      this.after = options.after || function () {};
+      this.before = options.before || function () {};
+      this.max = options.max || 0;
+      this.min = options.min || 0;
+    }
+  }, {
+    key: "callback",
+    value: function callback() {
+
+      if (this.lastPosY >= this.max) {
+        this.after();
+      }
+
+      if (this.lastPosY <= this.min) {
+        this.before();
+      }
+    }
+  }, {
+    key: "loop",
+    value: function loop() {
+
+      var scrollTop = window.pageYOffset;
+
+      if (this.lastPosY === scrollTop) {
+        animation(this.loop.bind(this));
+        return;
+      } else {
+        this.lastPosY = scrollTop;
+        this.callback();
+        animation(this.loop.bind(this));
+      }
+    }
+  }, {
+    key: "stop",
+    value: function stop() {
+      var name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+
+
+      if (name) {
+
+        this[name] = function () {
+          return null;
+        };
+      } else {
+
+        this.after = function () {
+          return null;
+        };
+        this.before = function () {
+          return null;
+        };
+      }
+    }
+  }]);
+
+  return ScrollHandler;
+}();
+
+var elementIsVisibleInViewport = function elementIsVisibleInViewport(el) {
+  var partiallyVisible = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+
+  var _el$getBoundingClient = el.getBoundingClientRect(),
+      left = _el$getBoundingClient.left,
+      bottom = _el$getBoundingClient.bottom,
+      right = _el$getBoundingClient.right,
+      top = _el$getBoundingClient.top;
+
+  return partiallyVisible ? (top > 0 && top < innerHeight || bottom > 0 && bottom < innerHeight) && (left > 0 && left < innerWidth || right > 0 && right < innerWidth) : top >= 0 && left >= 0 && bottom <= innerHeight && right <= innerWidth;
 };
 
 exports.doc = doc;
@@ -109,6 +199,8 @@ exports.the = the;
 exports.all = all;
 exports.animation = animation;
 exports.getElemOffset = getElemOffset;
+exports.ScrollHandler = ScrollHandler;
+exports.elementIsVisibleInViewport = elementIsVisibleInViewport;
 
 /***/ }),
 /* 1 */
@@ -123,47 +215,51 @@ var _fontLoader = __webpack_require__(2);
 
 var _fontLoader2 = _interopRequireDefault(_fontLoader);
 
+var _parallax = __webpack_require__(4);
+
+var _parallax2 = _interopRequireDefault(_parallax);
+
+var _menuSticky = __webpack_require__(5);
+
+var _menuSticky2 = _interopRequireDefault(_menuSticky);
+
+var _burgersLazyLoad = __webpack_require__(6);
+
+var _burgersLazyLoad2 = _interopRequireDefault(_burgersLazyLoad);
+
+var _sections = __webpack_require__(9);
+
+var _sections2 = _interopRequireDefault(_sections);
+
+var _zenscroll = __webpack_require__(13);
+
+var _zenscroll2 = _interopRequireDefault(_zenscroll);
+
+var _hamburger = __webpack_require__(14);
+
+var _hamburger2 = _interopRequireDefault(_hamburger);
+
 var _domready = __webpack_require__(15);
 
 var _domready2 = _interopRequireDefault(_domready);
 
-var _maps = __webpack_require__(17);
-
-var _maps2 = _interopRequireDefault(_maps);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var hamburger = document.querySelector('#hamburger-1');
-var menu = document.querySelector('#menu');
-var header = document.querySelector('header');
-var hHeight = header.offsetHeight;
-var mHeight = menu.offsetHeight;
-var parallax = document.querySelector('.contato');
 (0, _domready2.default)(function () {
 
-  hamburger.addEventListener('click', function () {
-    menu.classList.toggle('openned');
-    this.classList.toggle('is-active');
-  }, false);
-});
-function parallaxTriger() {
-  parallax.style.backgroundPosition = 'center ' + window.scrollY * -2 / 3 + 'px';
-}
-function menuSticky() {
-  if (window.pageYOffset > hHeight) {
-    menu.classList.add('fixed');
-    header.classList.add('fixed');
-    // console.log(window.pageYOffset > hHeight)
-    // header.style.marginTop = nHeight+"px";
-  } else {
-    menu.classList.remove('fixed');
-    header.classList.remove('fixed');
-    // header.style.marginTop = 0;
-  }
-}
-window.addEventListener('scroll', function () {
-  parallaxTriger();
-  menuSticky();
+  // start parallax 
+  (0, _parallax2.default)();
+
+  // menu fixed on scroll
+  (0, _menuSticky2.default)();
+
+  //Lazy load
+  (0, _burgersLazyLoad2.default)();
+
+  // when sections are reached
+  (0, _sections2.default)();
+
+  (0, _hamburger2.default)();
 });
 
 /***/ }),
@@ -550,17 +646,1388 @@ var __WEBPACK_AMD_DEFINE_RESULT__;
 })();
 
 /***/ }),
-/* 4 */,
-/* 5 */,
-/* 6 */,
-/* 7 */,
-/* 8 */,
-/* 9 */,
-/* 10 */,
-/* 11 */,
-/* 12 */,
-/* 13 */,
-/* 14 */,
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = parallax;
+
+var _utils = __webpack_require__(0);
+
+function parallax() {
+
+    // parallax
+    var parallax = new _utils.ScrollHandler();
+    var bg = (0, _utils.the)('.contato');
+
+    parallax.init({
+        after: function after() {
+            var y = parallax.lastPosY * -2 / 3 + 'px';
+            bg.style.backgroundPosition = 'center ' + y;
+        }
+    });
+}
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = menuSticky;
+
+var _utils = __webpack_require__(0);
+
+function menuSticky() {
+
+    var menu = (0, _utils.the)('#menu');
+    var header = (0, _utils.the)('header');
+
+    if (window.pageYOffset > 0) {
+        menu.classList.add('fixed');
+        header.classList.add('fixed');
+    }
+
+    function menuSticky(y) {
+
+        if (y > 5) {
+            menu.classList.add('fixed');
+            header.classList.add('fixed');
+        } else {
+            menu.classList.remove('fixed');
+            header.classList.remove('fixed');
+        }
+    }
+
+    var scrollPos = new _utils.ScrollHandler();
+
+    scrollPos.init({
+        after: function after() {
+            return menuSticky(scrollPos.lastPosY);
+        }
+    });
+}
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = burgersLazyLoad;
+
+var _utils = __webpack_require__(0);
+
+var _imagesloaded = __webpack_require__(7);
+
+var _imagesloaded2 = _interopRequireDefault(_imagesloaded);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function burgersLazyLoad() {
+
+    var lazzys = (0, _utils.all)('.lazy');
+
+    var load = function load(img) {
+        img.src = img.dataset.src;
+        img.classList.add('loaded');
+    };
+
+    var watch = function watch(img) {
+
+        var scroll = new _utils.ScrollHandler();
+
+        scroll.init({
+            after: function after() {
+
+                if ((0, _utils.elementIsVisibleInViewport)(img, true)) {
+                    load(img);
+                    scroll.stop();
+                }
+            }
+        });
+    };
+
+    lazzys.forEach(function (lazy) {
+
+        if ((0, _utils.elementIsVisibleInViewport)(lazy, true)) {
+            load(lazy);
+        } else {
+            watch(lazy);
+        }
+    });
+
+    (0, _imagesloaded2.default)(lazzys, function () {
+        (0, _utils.the)('.burger-wrp').classList.add('all-loaded');
+    });
+}
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+/*!
+ * imagesLoaded v4.1.3
+ * JavaScript is all like "You images are done yet or what?"
+ * MIT License
+ */
+
+(function (window, factory) {
+  'use strict';
+  // universal module definition
+
+  /*global define: false, module: false, require: false */
+
+  if (true) {
+    // AMD
+    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(8)], __WEBPACK_AMD_DEFINE_RESULT__ = (function (EvEmitter) {
+      return factory(window, EvEmitter);
+    }).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+  } else if ((typeof module === 'undefined' ? 'undefined' : _typeof(module)) == 'object' && module.exports) {
+    // CommonJS
+    module.exports = factory(window, require('ev-emitter'));
+  } else {
+    // browser global
+    window.imagesLoaded = factory(window, window.EvEmitter);
+  }
+})(typeof window !== 'undefined' ? window : undefined,
+
+// --------------------------  factory -------------------------- //
+
+function factory(window, EvEmitter) {
+
+  'use strict';
+
+  var $ = window.jQuery;
+  var console = window.console;
+
+  // -------------------------- helpers -------------------------- //
+
+  // extend objects
+  function extend(a, b) {
+    for (var prop in b) {
+      a[prop] = b[prop];
+    }
+    return a;
+  }
+
+  // turn element or nodeList into an array
+  function makeArray(obj) {
+    var ary = [];
+    if (Array.isArray(obj)) {
+      // use object if already an array
+      ary = obj;
+    } else if (typeof obj.length == 'number') {
+      // convert nodeList to array
+      for (var i = 0; i < obj.length; i++) {
+        ary.push(obj[i]);
+      }
+    } else {
+      // array of single index
+      ary.push(obj);
+    }
+    return ary;
+  }
+
+  // -------------------------- imagesLoaded -------------------------- //
+
+  /**
+   * @param {Array, Element, NodeList, String} elem
+   * @param {Object or Function} options - if function, use as callback
+   * @param {Function} onAlways - callback function
+   */
+  function ImagesLoaded(elem, options, onAlways) {
+    // coerce ImagesLoaded() without new, to be new ImagesLoaded()
+    if (!(this instanceof ImagesLoaded)) {
+      return new ImagesLoaded(elem, options, onAlways);
+    }
+    // use elem as selector string
+    if (typeof elem == 'string') {
+      elem = document.querySelectorAll(elem);
+    }
+
+    this.elements = makeArray(elem);
+    this.options = extend({}, this.options);
+
+    if (typeof options == 'function') {
+      onAlways = options;
+    } else {
+      extend(this.options, options);
+    }
+
+    if (onAlways) {
+      this.on('always', onAlways);
+    }
+
+    this.getImages();
+
+    if ($) {
+      // add jQuery Deferred object
+      this.jqDeferred = new $.Deferred();
+    }
+
+    // HACK check async to allow time to bind listeners
+    setTimeout(function () {
+      this.check();
+    }.bind(this));
+  }
+
+  ImagesLoaded.prototype = Object.create(EvEmitter.prototype);
+
+  ImagesLoaded.prototype.options = {};
+
+  ImagesLoaded.prototype.getImages = function () {
+    this.images = [];
+
+    // filter & find items if we have an item selector
+    this.elements.forEach(this.addElementImages, this);
+  };
+
+  /**
+   * @param {Node} element
+   */
+  ImagesLoaded.prototype.addElementImages = function (elem) {
+    // filter siblings
+    if (elem.nodeName == 'IMG') {
+      this.addImage(elem);
+    }
+    // get background image on element
+    if (this.options.background === true) {
+      this.addElementBackgroundImages(elem);
+    }
+
+    // find children
+    // no non-element nodes, #143
+    var nodeType = elem.nodeType;
+    if (!nodeType || !elementNodeTypes[nodeType]) {
+      return;
+    }
+    var childImgs = elem.querySelectorAll('img');
+    // concat childElems to filterFound array
+    for (var i = 0; i < childImgs.length; i++) {
+      var img = childImgs[i];
+      this.addImage(img);
+    }
+
+    // get child background images
+    if (typeof this.options.background == 'string') {
+      var children = elem.querySelectorAll(this.options.background);
+      for (i = 0; i < children.length; i++) {
+        var child = children[i];
+        this.addElementBackgroundImages(child);
+      }
+    }
+  };
+
+  var elementNodeTypes = {
+    1: true,
+    9: true,
+    11: true
+  };
+
+  ImagesLoaded.prototype.addElementBackgroundImages = function (elem) {
+    var style = getComputedStyle(elem);
+    if (!style) {
+      // Firefox returns null if in a hidden iframe https://bugzil.la/548397
+      return;
+    }
+    // get url inside url("...")
+    var reURL = /url\((['"])?(.*?)\1\)/gi;
+    var matches = reURL.exec(style.backgroundImage);
+    while (matches !== null) {
+      var url = matches && matches[2];
+      if (url) {
+        this.addBackground(url, elem);
+      }
+      matches = reURL.exec(style.backgroundImage);
+    }
+  };
+
+  /**
+   * @param {Image} img
+   */
+  ImagesLoaded.prototype.addImage = function (img) {
+    var loadingImage = new LoadingImage(img);
+    this.images.push(loadingImage);
+  };
+
+  ImagesLoaded.prototype.addBackground = function (url, elem) {
+    var background = new Background(url, elem);
+    this.images.push(background);
+  };
+
+  ImagesLoaded.prototype.check = function () {
+    var _this = this;
+    this.progressedCount = 0;
+    this.hasAnyBroken = false;
+    // complete if no images
+    if (!this.images.length) {
+      this.complete();
+      return;
+    }
+
+    function onProgress(image, elem, message) {
+      // HACK - Chrome triggers event before object properties have changed. #83
+      setTimeout(function () {
+        _this.progress(image, elem, message);
+      });
+    }
+
+    this.images.forEach(function (loadingImage) {
+      loadingImage.once('progress', onProgress);
+      loadingImage.check();
+    });
+  };
+
+  ImagesLoaded.prototype.progress = function (image, elem, message) {
+    this.progressedCount++;
+    this.hasAnyBroken = this.hasAnyBroken || !image.isLoaded;
+    // progress event
+    this.emitEvent('progress', [this, image, elem]);
+    if (this.jqDeferred && this.jqDeferred.notify) {
+      this.jqDeferred.notify(this, image);
+    }
+    // check if completed
+    if (this.progressedCount == this.images.length) {
+      this.complete();
+    }
+
+    if (this.options.debug && console) {
+      console.log('progress: ' + message, image, elem);
+    }
+  };
+
+  ImagesLoaded.prototype.complete = function () {
+    var eventName = this.hasAnyBroken ? 'fail' : 'done';
+    this.isComplete = true;
+    this.emitEvent(eventName, [this]);
+    this.emitEvent('always', [this]);
+    if (this.jqDeferred) {
+      var jqMethod = this.hasAnyBroken ? 'reject' : 'resolve';
+      this.jqDeferred[jqMethod](this);
+    }
+  };
+
+  // --------------------------  -------------------------- //
+
+  function LoadingImage(img) {
+    this.img = img;
+  }
+
+  LoadingImage.prototype = Object.create(EvEmitter.prototype);
+
+  LoadingImage.prototype.check = function () {
+    // If complete is true and browser supports natural sizes,
+    // try to check for image status manually.
+    var isComplete = this.getIsImageComplete();
+    if (isComplete) {
+      // report based on naturalWidth
+      this.confirm(this.img.naturalWidth !== 0, 'naturalWidth');
+      return;
+    }
+
+    // If none of the checks above matched, simulate loading on detached element.
+    this.proxyImage = new Image();
+    this.proxyImage.addEventListener('load', this);
+    this.proxyImage.addEventListener('error', this);
+    // bind to image as well for Firefox. #191
+    this.img.addEventListener('load', this);
+    this.img.addEventListener('error', this);
+    this.proxyImage.src = this.img.src;
+  };
+
+  LoadingImage.prototype.getIsImageComplete = function () {
+    return this.img.complete && this.img.naturalWidth !== undefined;
+  };
+
+  LoadingImage.prototype.confirm = function (isLoaded, message) {
+    this.isLoaded = isLoaded;
+    this.emitEvent('progress', [this, this.img, message]);
+  };
+
+  // ----- events ----- //
+
+  // trigger specified handler for event type
+  LoadingImage.prototype.handleEvent = function (event) {
+    var method = 'on' + event.type;
+    if (this[method]) {
+      this[method](event);
+    }
+  };
+
+  LoadingImage.prototype.onload = function () {
+    this.confirm(true, 'onload');
+    this.unbindEvents();
+  };
+
+  LoadingImage.prototype.onerror = function () {
+    this.confirm(false, 'onerror');
+    this.unbindEvents();
+  };
+
+  LoadingImage.prototype.unbindEvents = function () {
+    this.proxyImage.removeEventListener('load', this);
+    this.proxyImage.removeEventListener('error', this);
+    this.img.removeEventListener('load', this);
+    this.img.removeEventListener('error', this);
+  };
+
+  // -------------------------- Background -------------------------- //
+
+  function Background(url, element) {
+    this.url = url;
+    this.element = element;
+    this.img = new Image();
+  }
+
+  // inherit LoadingImage prototype
+  Background.prototype = Object.create(LoadingImage.prototype);
+
+  Background.prototype.check = function () {
+    this.img.addEventListener('load', this);
+    this.img.addEventListener('error', this);
+    this.img.src = this.url;
+    // check if image is already complete
+    var isComplete = this.getIsImageComplete();
+    if (isComplete) {
+      this.confirm(this.img.naturalWidth !== 0, 'naturalWidth');
+      this.unbindEvents();
+    }
+  };
+
+  Background.prototype.unbindEvents = function () {
+    this.img.removeEventListener('load', this);
+    this.img.removeEventListener('error', this);
+  };
+
+  Background.prototype.confirm = function (isLoaded, message) {
+    this.isLoaded = isLoaded;
+    this.emitEvent('progress', [this, this.element, message]);
+  };
+
+  // -------------------------- jQuery -------------------------- //
+
+  ImagesLoaded.makeJQueryPlugin = function (jQuery) {
+    jQuery = jQuery || window.jQuery;
+    if (!jQuery) {
+      return;
+    }
+    // set local variable
+    $ = jQuery;
+    // $().imagesLoaded()
+    $.fn.imagesLoaded = function (options, callback) {
+      var instance = new ImagesLoaded(this, options, callback);
+      return instance.jqDeferred.promise($(this));
+    };
+  };
+  // try making plugin
+  ImagesLoaded.makeJQueryPlugin();
+
+  // --------------------------  -------------------------- //
+
+  return ImagesLoaded;
+});
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+/**
+ * EvEmitter v1.1.0
+ * Lil' event emitter
+ * MIT License
+ */
+
+/* jshint unused: true, undef: true, strict: true */
+
+(function (global, factory) {
+  // universal module definition
+  /* jshint strict: false */ /* globals define, module, window */
+  if (true) {
+    // AMD - RequireJS
+    !(__WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
+				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
+				(__WEBPACK_AMD_DEFINE_FACTORY__.call(exports, __webpack_require__, exports, module)) :
+				__WEBPACK_AMD_DEFINE_FACTORY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+  } else if ((typeof module === 'undefined' ? 'undefined' : _typeof(module)) == 'object' && module.exports) {
+    // CommonJS - Browserify, Webpack
+    module.exports = factory();
+  } else {
+    // Browser globals
+    global.EvEmitter = factory();
+  }
+})(typeof window != 'undefined' ? window : undefined, function () {
+
+  "use strict";
+
+  function EvEmitter() {}
+
+  var proto = EvEmitter.prototype;
+
+  proto.on = function (eventName, listener) {
+    if (!eventName || !listener) {
+      return;
+    }
+    // set events hash
+    var events = this._events = this._events || {};
+    // set listeners array
+    var listeners = events[eventName] = events[eventName] || [];
+    // only add once
+    if (listeners.indexOf(listener) == -1) {
+      listeners.push(listener);
+    }
+
+    return this;
+  };
+
+  proto.once = function (eventName, listener) {
+    if (!eventName || !listener) {
+      return;
+    }
+    // add event
+    this.on(eventName, listener);
+    // set once flag
+    // set onceEvents hash
+    var onceEvents = this._onceEvents = this._onceEvents || {};
+    // set onceListeners object
+    var onceListeners = onceEvents[eventName] = onceEvents[eventName] || {};
+    // set flag
+    onceListeners[listener] = true;
+
+    return this;
+  };
+
+  proto.off = function (eventName, listener) {
+    var listeners = this._events && this._events[eventName];
+    if (!listeners || !listeners.length) {
+      return;
+    }
+    var index = listeners.indexOf(listener);
+    if (index != -1) {
+      listeners.splice(index, 1);
+    }
+
+    return this;
+  };
+
+  proto.emitEvent = function (eventName, args) {
+    var listeners = this._events && this._events[eventName];
+    if (!listeners || !listeners.length) {
+      return;
+    }
+    // copy over to avoid interference if .off() in listener
+    listeners = listeners.slice(0);
+    args = args || [];
+    // once stuff
+    var onceListeners = this._onceEvents && this._onceEvents[eventName];
+
+    for (var i = 0; i < listeners.length; i++) {
+      var listener = listeners[i];
+      var isOnce = onceListeners && onceListeners[listener];
+      if (isOnce) {
+        // remove listener
+        // remove before trigger to prevent recursion
+        this.off(eventName, listener);
+        // unset once flag
+        delete onceListeners[listener];
+      }
+      // trigger listener
+      listener.apply(this, args);
+    }
+
+    return this;
+  };
+
+  proto.allOff = function () {
+    delete this._events;
+    delete this._onceEvents;
+  };
+
+  return EvEmitter;
+});
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = onSections;
+
+var _utils = __webpack_require__(0);
+
+var _maps = __webpack_require__(10);
+
+var _maps2 = _interopRequireDefault(_maps);
+
+var _contact = __webpack_require__(11);
+
+var _contact2 = _interopRequireDefault(_contact);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function onSections() {
+
+    var gMaps = new _maps2.default();
+    gMaps.init();
+
+    var wh = window.innerHeight;
+
+    (0, _utils.all)('.section').forEach(function (section) {
+
+        var scroll = new _utils.ScrollHandler();
+
+        // const { top } = getElemOffset(section)
+
+        function action(section) {
+
+            section.classList.add('active');
+
+            if (section.id === 'contato') {
+
+                if (typeof google !== 'undefined') {
+                    gMaps.load();
+                    (0, _contact2.default)();
+                    scroll.stop();
+                }
+            } else {
+                scroll.stop();
+            }
+        }
+
+        if ((0, _utils.elementIsVisibleInViewport)(section, true)) {
+            action(section);
+        }
+
+        scroll.init({
+
+            after: function after(_) {
+
+                if ((0, _utils.elementIsVisibleInViewport)(section, true)) {
+                    action(section);
+                }
+
+                if (section.id === 'contato' && scroll.lastPosY >= (0, _utils.getElemOffset)(section).top - (0, _utils.getElemOffset)(section).top / 5) {
+                    action(section);
+                }
+            }
+
+        });
+    });
+}
+
+/***/ }),
+/* 10 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+/*********************************************************************
+*  =MAP
+*********************************************************************/
+
+var GoogleMaps = function () {
+    function GoogleMaps() {
+        _classCallCheck(this, GoogleMaps);
+    }
+
+    _createClass(GoogleMaps, [{
+        key: 'init',
+        value: function init() {
+            this.gMapScript = document.createElement('script');
+            this.gMapScript.setAttribute('src', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCWspGMzOzQGZGj1lKmlreVLIB8GlOuiP8');
+            document.body.appendChild(this.gMapScript);
+        }
+    }, {
+        key: 'load',
+        value: function load() {
+
+            var w = window,
+                d = document,
+                e = d.documentElement,
+                g = d.getElementsByTagName('body')[0],
+                screen_width = w.innerWidth || e.clientWidth || g.clientWidth,
+                screen_height = w.inner;
+
+            var contentString = '<div id="content">' + '<div id="siteNotice">' + 'Av. Atlântica, 254<br /> Praia do Cassino' + '</div>' + '</div>';
+            // console.log(contentString)
+
+            var pos = new google.maps.LatLng(-32.181694, -52.157056),
+
+            // const map;
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: pos,
+                zoom: 16,
+                scrollwheel: false,
+                draggable: screen_width > 1024 ? true : false,
+                disableDefaultUI: true
+            });
+
+            var infowindow = new google.maps.InfoWindow({
+                content: contentString
+            });
+
+            var image = 'assets/img/pin.png';
+
+            var pinMarker = new google.maps.Marker({
+                position: pos,
+                map: map,
+                icon: image
+            });
+        }
+    }]);
+
+    return GoogleMaps;
+}();
+
+exports.default = GoogleMaps;
+
+/***/ }),
+/* 11 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+exports.default = contact;
+
+var _utils = __webpack_require__(0);
+
+var _contactHelpers = __webpack_require__(12);
+
+var emailsScript = document.createElement('script');
+emailsScript.setAttribute('src', 'https://cdn.emailjs.com/dist/email.min.js');
+document.body.appendChild(emailsScript);
+
+var opts = {
+	service: 'sendgrid',
+	template: 'normal'
+};
+
+function sendEmail(args) {
+
+	emailjs.send('' + opts.service, '' + opts.template, {
+		name: args.name,
+		phone: args.phone,
+		email: args.email,
+		message: args.msg
+	}).then(function (response) {
+		comemore();
+		console.log("SUCCESS. status=%d, text=%s", response.status, response.text);
+	});
+}
+
+function comemore() {
+	alert('hey');
+}
+
+function contact() {
+
+	var form = (0, _utils.the)('#form');
+
+	var elements = {
+		name: (0, _utils.the)('#form-name'),
+		email: (0, _utils.the)('#form-email'),
+		phone: (0, _utils.the)('#form-phone'),
+		msg: (0, _utils.the)('#form-msg')
+	};
+
+	var inputs = Object.entries(elements) || false;
+
+	inputs.forEach(function (input) {
+		return (0, _contactHelpers.typing)(input);
+	});
+
+	var users = {
+		one: 'user_FdLry3bEaHitVXIzllzcl',
+		thom: 'user_kCkHRSMU0h4BVVSiBUB1T'
+
+		// init the plugin
+	};emailjs.init(users.one);
+
+	// listeners
+	form.addEventListener('submit', function (_) {
+
+		_.preventDefault();
+
+		var args = {
+			name: elements.name.value,
+			email: elements.email.value,
+			phone: elements.phone.value,
+			msg: elements.msg.value
+		};
+
+		var errors = (0, _contactHelpers.validations)(args);
+
+		if (errors.length === 0) {
+			sendEmail(args);
+		} else {
+			errors.forEach(function (error) {
+				return (0, _contactHelpers.fuck)(error, elements);
+			});
+		}
+	});
+}
+
+/***/ }),
+/* 12 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+function validateEmail(email) {
+    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
+}
+
+function validatePhone(phone) {
+
+    if (!phone) return false;
+
+    var ph = phone.replace(/\D/g, '');
+
+    if (!(ph.length >= 10 && ph.length <= 11)) return false;
+
+    if (ph.length == 11 && parseInt(ph.substring(2, 3)) != 9) return false;
+
+    for (var n = 0; n < 10; n++) {
+        if (ph == new Array(11).join(n) || ph == new Array(12).join(n)) return false;
+    }
+
+    var codigosDDD = [11, 12, 13, 14, 15, 16, 17, 18, 19, 21, 22, 24, 27, 28, 31, 32, 33, 34, 35, 37, 38, 41, 42, 43, 44, 45, 46, 47, 48, 49, 51, 53, 54, 55, 61, 62, 64, 63, 65, 66, 67, 68, 69, 71, 73, 74, 75, 77, 79, 81, 82, 83, 84, 85, 86, 87, 88, 89, 91, 92, 93, 94, 95, 96, 97, 98, 99];
+
+    if (codigosDDD.indexOf(parseInt(ph.substring(0, 2))) == -1) return false;
+
+    if (new Date().getFullYear() < 2017) return true;
+    if (ph.length == 10 && [2, 3, 4, 5, 7].indexOf(parseInt(ph.substring(2, 3))) == -1) return false;
+
+    return true;
+}
+
+function validations(args) {
+    var which = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'all';
+
+
+    var errors = [];
+
+    if ('name' in args && args.name.length < 1) {
+        errors.push('name');
+    }
+
+    if ('email' in args && !validateEmail(args.email)) {
+        errors.push('email');
+    }
+
+    if ('phone' in args && !validatePhone(args.phone)) {
+        errors.push('phone');
+    }
+
+    if ('msg' in args && args.msg.length < 3) {
+        errors.push('msg');
+    }
+
+    return errors;
+}
+
+// messages erros
+var msgs = {
+    phone: 'Preencha com um telefone válido',
+    msg: 'Nos diga algo',
+    email: 'Preencha com um email válido',
+    name: 'Precisamos saber seu nome',
+    flags: []
+};
+
+var hasMsg = function hasMsg(has) {
+    return msgs.flags.indexOf(has) > -1;
+};
+
+function typing(input) {
+
+    var key = input[0];
+    var el = input[1];
+    var elements = {};
+
+    el.addEventListener('keyup', function (_) {
+
+        elements[key] = el.value;
+        var errors = validations(elements);
+
+        if (errors.length == 0) {
+
+            el.classList.remove('error');
+
+            if (hasMsg(key)) {
+                el.parentNode.querySelector('.error-msg').remove();
+                msgs.flags = msgs.flags.filter(function (e) {
+                    return e !== key;
+                });
+            }
+        }
+    });
+}
+
+function fuck(error, elements) {
+
+    elements[error].classList.add('error');
+
+    if (!hasMsg(error)) {
+        msgs.flags.push(error);
+        var errorSpan = '<span class="error-msg">' + msgs[error] + '</span>';
+        elements[error].parentNode.insertAdjacentHTML('beforeend', errorSpan);
+    }
+}
+
+exports.validations = validations;
+exports.typing = typing;
+exports.fuck = fuck;
+
+/***/ }),
+/* 13 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+/**
+ * Zenscroll 4.0.0
+ * https://github.com/zengabor/zenscroll/
+ *
+ * Copyright 2015–2017 Gabor Lenard
+ *
+ * This is free and unencumbered software released into the public domain.
+ * 
+ * Anyone is free to copy, modify, publish, use, compile, sell, or
+ * distribute this software, either in source code form or as a compiled
+ * binary, for any purpose, commercial or non-commercial, and by any
+ * means.
+ * 
+ * In jurisdictions that recognize copyright laws, the author or authors
+ * of this software dedicate any and all copyright interest in the
+ * software to the public domain. We make this dedication for the benefit
+ * of the public at large and to the detriment of our heirs and
+ * successors. We intend this dedication to be an overt act of
+ * relinquishment in perpetuity of all present and future rights to this
+ * software under copyright law.
+ * 
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+ * IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+ * OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ * ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ * OTHER DEALINGS IN THE SOFTWARE.
+ * 
+ * For more information, please refer to <http://unlicense.org>
+ * 
+ */
+
+/*jshint devel:true, asi:true */
+
+/*global define, module */
+
+(function (root, factory) {
+	if (true) {
+		!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory()),
+				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
+				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	} else if ((typeof module === "undefined" ? "undefined" : _typeof(module)) === "object" && module.exports) {
+		module.exports = factory();
+	} else {
+		(function install() {
+			// To make sure Zenscroll can be referenced from the header, before `body` is available
+			if (document && document.body) {
+				root.zenscroll = factory();
+			} else {
+				// retry 9ms later
+				setTimeout(install, 9);
+			}
+		})();
+	}
+})(undefined, function () {
+	"use strict";
+
+	// Detect if the browser already supports native smooth scrolling (e.g., Firefox 36+ and Chrome 49+) and it is enabled:
+
+	var isNativeSmoothScrollEnabledOn = function isNativeSmoothScrollEnabledOn(elem) {
+		return "getComputedStyle" in window && window.getComputedStyle(elem)["scroll-behavior"] === "smooth";
+	};
+
+	// Exit if it’s not a browser environment:
+	if (typeof window === "undefined" || !("document" in window)) {
+		return {};
+	}
+
+	var makeScroller = function makeScroller(container, defaultDuration, edgeOffset) {
+
+		// Use defaults if not provided
+		defaultDuration = defaultDuration || 999; //ms
+		if (!edgeOffset && edgeOffset !== 0) {
+			// When scrolling, this amount of distance is kept from the edges of the container:
+			edgeOffset = 9; //px
+		}
+
+		// Handling the life-cycle of the scroller
+		var scrollTimeoutId;
+		var setScrollTimeoutId = function setScrollTimeoutId(newValue) {
+			scrollTimeoutId = newValue;
+		};
+
+		/**
+   * Stop the current smooth scroll operation immediately
+   */
+		var stopScroll = function stopScroll() {
+			clearTimeout(scrollTimeoutId);
+			setScrollTimeoutId(0);
+		};
+
+		var getTopWithEdgeOffset = function getTopWithEdgeOffset(elem) {
+			return Math.max(0, container.getTopOf(elem) - edgeOffset);
+		};
+
+		/**
+   * Scrolls to a specific vertical position in the document.
+   *
+   * @param {targetY} The vertical position within the document.
+   * @param {duration} Optionally the duration of the scroll operation.
+   *        If not provided the default duration is used.
+   * @param {onDone} An optional callback function to be invoked once the scroll finished.
+   */
+		var scrollToY = function scrollToY(targetY, duration, onDone) {
+			stopScroll();
+			if (duration === 0 || duration && duration < 0 || isNativeSmoothScrollEnabledOn(container.body)) {
+				container.toY(targetY);
+				if (onDone) {
+					onDone();
+				}
+			} else {
+				var startY = container.getY();
+				var distance = Math.max(0, targetY) - startY;
+				var startTime = new Date().getTime();
+				duration = duration || Math.min(Math.abs(distance), defaultDuration);
+				(function loopScroll() {
+					setScrollTimeoutId(setTimeout(function () {
+						// Calculate percentage:
+						var p = Math.min(1, (new Date().getTime() - startTime) / duration);
+						// Calculate the absolute vertical position:
+						var y = Math.max(0, Math.floor(startY + distance * (p < 0.5 ? 2 * p * p : p * (4 - p * 2) - 1)));
+						container.toY(y);
+						if (p < 1 && container.getHeight() + y < container.body.scrollHeight) {
+							loopScroll();
+						} else {
+							setTimeout(stopScroll, 99); // with cooldown time
+							if (onDone) {
+								onDone();
+							}
+						}
+					}, 9));
+				})();
+			}
+		};
+
+		/**
+   * Scrolls to the top of a specific element.
+   *
+   * @param {elem} The element to scroll to.
+   * @param {duration} Optionally the duration of the scroll operation.
+   * @param {onDone} An optional callback function to be invoked once the scroll finished.
+   */
+		var scrollToElem = function scrollToElem(elem, duration, onDone) {
+			scrollToY(getTopWithEdgeOffset(elem), duration, onDone);
+		};
+
+		/**
+   * Scrolls an element into view if necessary.
+   *
+   * @param {elem} The element.
+   * @param {duration} Optionally the duration of the scroll operation.
+   * @param {onDone} An optional callback function to be invoked once the scroll finished.
+   */
+		var scrollIntoView = function scrollIntoView(elem, duration, onDone) {
+			var elemHeight = elem.getBoundingClientRect().height;
+			var elemBottom = container.getTopOf(elem) + elemHeight;
+			var containerHeight = container.getHeight();
+			var y = container.getY();
+			var containerBottom = y + containerHeight;
+			if (getTopWithEdgeOffset(elem) < y || elemHeight + edgeOffset > containerHeight) {
+				// Element is clipped at top or is higher than screen.
+				scrollToElem(elem, duration, onDone);
+			} else if (elemBottom + edgeOffset > containerBottom) {
+				// Element is clipped at the bottom.
+				scrollToY(elemBottom - containerHeight + edgeOffset, duration, onDone);
+			} else if (onDone) {
+				onDone();
+			}
+		};
+
+		/**
+   * Scrolls to the center of an element.
+   *
+   * @param {elem} The element.
+   * @param {duration} Optionally the duration of the scroll operation.
+   * @param {offset} Optionally the offset of the top of the element from the center of the screen.
+   * @param {onDone} An optional callback function to be invoked once the scroll finished.
+   */
+		var scrollToCenterOf = function scrollToCenterOf(elem, duration, offset, onDone) {
+			scrollToY(Math.max(0, container.getTopOf(elem) - container.getHeight() / 2 + (offset || elem.getBoundingClientRect().height / 2)), duration, onDone);
+		};
+
+		/**
+   * Changes default settings for this scroller.
+   *
+   * @param {newDefaultDuration} Optionally a new value for default duration, used for each scroll method by default.
+   *        Ignored if null or undefined.
+   * @param {newEdgeOffset} Optionally a new value for the edge offset, used by each scroll method by default. Ignored if null or undefined.
+   * @returns An object with the current values.
+   */
+		var setup = function setup(newDefaultDuration, newEdgeOffset) {
+			if (newDefaultDuration === 0 || newDefaultDuration) {
+				defaultDuration = newDefaultDuration;
+			}
+			if (newEdgeOffset === 0 || newEdgeOffset) {
+				edgeOffset = newEdgeOffset;
+			}
+			return {
+				defaultDuration: defaultDuration,
+				edgeOffset: edgeOffset
+			};
+		};
+
+		return {
+			setup: setup,
+			to: scrollToElem,
+			toY: scrollToY,
+			intoView: scrollIntoView,
+			center: scrollToCenterOf,
+			stop: stopScroll,
+			moving: function moving() {
+				return !!scrollTimeoutId;
+			},
+			getY: container.getY,
+			getTopOf: container.getTopOf
+		};
+	};
+
+	var docElem = document.documentElement;
+	var getDocY = function getDocY() {
+		return window.scrollY || docElem.scrollTop;
+	};
+
+	// Create a scroller for the document:
+	var zenscroll = makeScroller({
+		body: document.scrollingElement || document.body,
+		toY: function toY(y) {
+			window.scrollTo(0, y);
+		},
+		getY: getDocY,
+		getHeight: function getHeight() {
+			return window.innerHeight || docElem.clientHeight;
+		},
+		getTopOf: function getTopOf(elem) {
+			return elem.getBoundingClientRect().top + getDocY() - docElem.offsetTop;
+		}
+	});
+
+	/**
+  * Creates a scroller from the provided container element (e.g., a DIV)
+  *
+  * @param {scrollContainer} The vertical position within the document.
+  * @param {defaultDuration} Optionally a value for default duration, used for each scroll method by default.
+  *        Ignored if 0 or null or undefined.
+  * @param {edgeOffset} Optionally a value for the edge offset, used by each scroll method by default. 
+  *        Ignored if null or undefined.
+  * @returns A scroller object, similar to `zenscroll` but controlling the provided element.
+  */
+	zenscroll.createScroller = function (scrollContainer, defaultDuration, edgeOffset) {
+		return makeScroller({
+			body: scrollContainer,
+			toY: function toY(y) {
+				scrollContainer.scrollTop = y;
+			},
+			getY: function getY() {
+				return scrollContainer.scrollTop;
+			},
+			getHeight: function getHeight() {
+				return Math.min(scrollContainer.clientHeight, window.innerHeight || docElem.clientHeight);
+			},
+			getTopOf: function getTopOf(elem) {
+				return elem.offsetTop;
+			}
+		}, defaultDuration, edgeOffset);
+	};
+
+	// Automatic link-smoothing on achors
+	// Exclude IE8- or when native is enabled or Zenscroll auto- is disabled
+	if ("addEventListener" in window && !window.noZensmooth && !isNativeSmoothScrollEnabledOn(document.body)) {
+
+		var isScrollRestorationSupported = "scrollRestoration" in history;
+
+		// On first load & refresh make sure the browser restores the position first
+		if (isScrollRestorationSupported) {
+			history.scrollRestoration = "auto";
+		}
+
+		window.addEventListener("load", function () {
+
+			if (isScrollRestorationSupported) {
+				// Set it to manual
+				setTimeout(function () {
+					history.scrollRestoration = "manual";
+				}, 9);
+				window.addEventListener("popstate", function (event) {
+					if (event.state && "zenscrollY" in event.state) {
+						zenscroll.toY(event.state.zenscrollY);
+					}
+				}, false);
+			}
+
+			// Add edge offset on first load if necessary
+			// This may not work on IE (or older computer?) as it requires more timeout, around 100 ms
+			if (window.location.hash) {
+				setTimeout(function () {
+					// Adjustment is only needed if there is an edge offset:
+					var edgeOffset = zenscroll.setup().edgeOffset;
+					if (edgeOffset) {
+						var targetElem = document.getElementById(window.location.href.split("#")[1]);
+						if (targetElem) {
+							var targetY = Math.max(0, zenscroll.getTopOf(targetElem) - edgeOffset);
+							var diff = zenscroll.getY() - targetY;
+							// Only do the adjustment if the browser is very close to the element:
+							if (0 <= diff && diff < 9) {
+								window.scrollTo(0, targetY);
+							}
+						}
+					}
+				}, 9);
+			}
+		}, false);
+
+		// Handling clicks on anchors
+		var RE_noZensmooth = new RegExp("(^|\\s)noZensmooth(\\s|$)");
+		window.addEventListener("click", function (event) {
+			var anchor = event.target;
+			while (anchor && anchor.tagName !== "A") {
+				anchor = anchor.parentNode;
+			}
+			// Let the browser handle the click if it wasn't with the primary button, or with some modifier keys:
+			if (!anchor || event.which !== 1 || event.shiftKey || event.metaKey || event.ctrlKey || event.altKey) {
+				return;
+			}
+			// Save the current scrolling position so it can be used for scroll restoration:
+			if (isScrollRestorationSupported) {
+				try {
+					history.replaceState({ zenscrollY: zenscroll.getY() }, "");
+				} catch (e) {
+					// Avoid the Chrome Security exception on file protocol, e.g., file://index.html
+				}
+			}
+			// Find the referenced ID:
+			var href = anchor.getAttribute("href") || "";
+			if (href.indexOf("#") === 0 && !RE_noZensmooth.test(anchor.className)) {
+				var targetY = 0;
+				var targetElem = document.getElementById(href.substring(1));
+				if (href !== "#") {
+					if (!targetElem) {
+						// Let the browser handle the click if the target ID is not found.
+						return;
+					}
+					targetY = zenscroll.getTopOf(targetElem);
+				}
+				event.preventDefault();
+				// By default trigger the browser's `hashchange` event...
+				var onDone = function onDone() {
+					window.location = href;
+				};
+				// ...unless there is an edge offset specified
+				var edgeOffset = zenscroll.setup().edgeOffset;
+				if (edgeOffset) {
+					targetY = Math.max(0, targetY - edgeOffset);
+					onDone = function onDone() {
+						history.pushState(null, "", href);
+					};
+				}
+				zenscroll.toY(targetY, null, onDone);
+			}
+		}, false);
+	}
+
+	return zenscroll;
+});
+
+/***/ }),
+/* 14 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = hamburger;
+
+var _utils = __webpack_require__(0);
+
+function hamburger() {
+
+    var burger = (0, _utils.the)('#hamburger-1');
+    var menu = (0, _utils.the)('#menu');
+
+    burger.addEventListener('click', function (_) {
+        menu.classList.toggle('openned');
+        burger.classList.toggle('is-active');
+    });
+}
+
+/***/ }),
 /* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -596,51 +2063,6 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     loaded ? setTimeout(fn, 0) : fns.push(fn);
   };
 });
-
-/***/ }),
-/* 16 */,
-/* 17 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/*********************************************************************
-*  =MAP
-*********************************************************************/
-var w = window,
-    d = document,
-    e = d.documentElement,
-    g = d.getElementsByTagName('body')[0],
-    screen_width = w.innerWidth || e.clientWidth || g.clientWidth,
-    screen_height = w.inner;
-
-var contentString = '<div id="content">' + '<div id="siteNotice">' + 'Rua Hoffmann, 447 <br /> floresta - POA/RS' + '</div>' + '</div>';
-// console.log(contentString)
-
-var pos = new google.maps.LatLng(-30.029436, -51.214260),
-
-// var map;
-map = new google.maps.Map(document.getElementById('map'), {
-    center: pos,
-    zoom: 16,
-    scrollwheel: false,
-    draggable: screen_width > 1024 ? true : false,
-    disableDefaultUI: true
-});
-
-var infowindow = new google.maps.InfoWindow({
-    content: contentString
-});
-var image = 'assets/img/pin.png';
-
-var pinMarker = new google.maps.Marker({
-    position: pos,
-    map: map,
-    icon: image
-});
-
-// console.log(infowindow)
 
 /***/ })
 /******/ ]);
