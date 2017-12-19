@@ -60,67 +60,11 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _utils = __webpack_require__(1);
-
-var _fontLoader = __webpack_require__(2);
-
-var _fontLoader2 = _interopRequireDefault(_fontLoader);
-
-var _domready = __webpack_require__(4);
-
-var _domready2 = _interopRequireDefault(_domready);
-
-var _maps = __webpack_require__(5);
-
-var _maps2 = _interopRequireDefault(_maps);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var hamburger = document.querySelector('#hamburger-1');
-var menu = document.querySelector('#menu');
-var header = document.querySelector('header');
-var hHeight = header.offsetHeight;
-var mHeight = menu.offsetHeight;
-var parallax = document.querySelector('.contato');
-(0, _domready2.default)(function () {
-
-  hamburger.addEventListener('click', function () {
-    menu.classList.toggle('openned');
-    this.classList.toggle('is-active');
-  }, false);
-});
-function parallaxTriger() {
-  parallax.style.backgroundPosition = 'center ' + window.scrollY * -2 / 3 + 'px';
-}
-function menuSticky() {
-  if (window.pageYOffset > hHeight) {
-    menu.classList.add('fixed');
-    header.classList.add('fixed');
-    // console.log(window.pageYOffset > hHeight)
-    // header.style.marginTop = nHeight+"px";
-  } else {
-    menu.classList.remove('fixed');
-    header.classList.remove('fixed');
-    // header.style.marginTop = 0;
-  }
-}
-window.addEventListener('scroll', function () {
-  parallaxTriger();
-  menuSticky();
-});
-
-/***/ }),
-/* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -165,6 +109,62 @@ exports.the = the;
 exports.all = all;
 exports.animation = animation;
 exports.getElemOffset = getElemOffset;
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _utils = __webpack_require__(0);
+
+var _fontLoader = __webpack_require__(2);
+
+var _fontLoader2 = _interopRequireDefault(_fontLoader);
+
+var _domready = __webpack_require__(15);
+
+var _domready2 = _interopRequireDefault(_domready);
+
+var _maps = __webpack_require__(17);
+
+var _maps2 = _interopRequireDefault(_maps);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var hamburger = document.querySelector('#hamburger-1');
+var menu = document.querySelector('#menu');
+var header = document.querySelector('header');
+var hHeight = header.offsetHeight;
+var mHeight = menu.offsetHeight;
+var parallax = document.querySelector('.contato');
+(0, _domready2.default)(function () {
+
+  hamburger.addEventListener('click', function () {
+    menu.classList.toggle('openned');
+    this.classList.toggle('is-active');
+  }, false);
+});
+function parallaxTriger() {
+  parallax.style.backgroundPosition = 'center ' + window.scrollY * -2 / 3 + 'px';
+}
+function menuSticky() {
+  if (window.pageYOffset > hHeight) {
+    menu.classList.add('fixed');
+    header.classList.add('fixed');
+    // console.log(window.pageYOffset > hHeight)
+    // header.style.marginTop = nHeight+"px";
+  } else {
+    menu.classList.remove('fixed');
+    header.classList.remove('fixed');
+    // header.style.marginTop = 0;
+  }
+}
+window.addEventListener('scroll', function () {
+  parallaxTriger();
+  menuSticky();
+});
 
 /***/ }),
 /* 2 */
@@ -550,7 +550,18 @@ var __WEBPACK_AMD_DEFINE_RESULT__;
 })();
 
 /***/ }),
-/* 4 */
+/* 4 */,
+/* 5 */,
+/* 6 */,
+/* 7 */,
+/* 8 */,
+/* 9 */,
+/* 10 */,
+/* 11 */,
+/* 12 */,
+/* 13 */,
+/* 14 */,
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -587,7 +598,8 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 });
 
 /***/ }),
-/* 5 */
+/* 16 */,
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
