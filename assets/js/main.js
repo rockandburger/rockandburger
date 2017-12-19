@@ -2,7 +2,7 @@ import {the, all, doc} from './utils'
 import fonts from './vendors/fontLoader'
 import parallax from './parallax'
 import menuSticky from './menuSticky'
-import lazyLoad from './lazyLoad'
+import burgersLazyLoad from './burgersLazyLoad'
 import onSections from './sections'
 import zenscroll from 'zenscroll'
 import hamburger from './hamburger'
@@ -17,7 +17,7 @@ domready( () => {
   menuSticky()
 
   //Lazy load
-  lazyLoad()
+  burgersLazyLoad()
 
   // when sections are reached
   onSections()

@@ -8,15 +8,18 @@ import {
     elementIsVisibleInViewport
 } from './utils'
 
+import imagesloaded from 'imagesloaded'
 
-export default function lazyLoad() {
+export default function burgersLazyLoad() {
+
+    const lazzys = all('.lazy')
 
     const load = img => {
         img.src = img.dataset.src
         img.classList.add('loaded')
     }
 
-    const watch = img => {    
+    const watch = img => {
     
         const scroll = new ScrollHandler()
 
@@ -33,7 +36,7 @@ export default function lazyLoad() {
 
     }
 
-    all('.lazy').forEach(lazy => {
+    lazzys.forEach(lazy => {
 
         if (elementIsVisibleInViewport(lazy, true)){
             load(lazy)
@@ -43,4 +46,8 @@ export default function lazyLoad() {
 
     })
 
+
+    imagesloaded(lazzys, function () {
+        the('.burger-wrp').classList.add('all-loaded')
+    })
 }
