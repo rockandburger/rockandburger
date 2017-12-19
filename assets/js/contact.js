@@ -48,8 +48,13 @@ export default function contact() {
 
 	inputs.forEach(input => typing(input))
 
+	const users = {
+		one: 'user_FdLry3bEaHitVXIzllzcl',
+		thom: 'user_kCkHRSMU0h4BVVSiBUB1T'
+	}
+
 	// init the plugin
-	emailjs.init("user_kCkHRSMU0h4BVVSiBUB1T")
+	emailjs.init(users.one)
 
 	// listeners
 	form.addEventListener('submit', _ => {
