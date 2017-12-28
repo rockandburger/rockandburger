@@ -12,4 +12,9 @@ export default function hamburger() {
     })
 
 
+    menu.addEventListener('click', _ => {
+        menu.classList.toggle('openned')
+        burger.classList.toggle('is-active')
+    })
+
 }
