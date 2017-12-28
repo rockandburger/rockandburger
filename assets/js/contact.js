@@ -37,7 +37,7 @@ function comemore(){
 
 	doc.body.appendChild(modal)
 
-	setInterval( _ => modal.remove(), 1200)
+	setInterval( _ => modal.remove(), 2000)
 
 }
 

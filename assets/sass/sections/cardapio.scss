@@ -237,10 +237,6 @@
                 }
 
                 &.ramones-burger {
-                    
-                    figcaption{
-
-                    }
 
                     .ingredients {
                         margin-bottom: 40px;
@@ -317,36 +313,92 @@
                 width: 90%;
                 margin: 0 5%;
 
-                &.beatles-burger figcaption {
-                    .ingredients {
-                        margin-bottom: 55px;
-                    }
-                }
-
-
-                &.beatles-burger{
+                &.ramones-burger {
                     .hamburger {
+                        transform: translate3d(40%, -53%, 0);
                         width: 75%;
                     }
                 }
 
+                &.led-burger {
+                    figcaption .ingredients {
+                        margin-bottom: 20px;
+                    }
+                    .hamburger {
+                        transform: translate3d(45%, -50%, 0);
+                        width: 70%;
+                    }
+                }
+
+                &.beatles-burger {
+                    figcaption .ingredients {
+                        margin-bottom: 20px;
+                    }
+
+                    .hamburger { 
+                        width: 78%;
+                        transform: translate3d(38%, -50%, 0);
+                    }
+                }
+
+                &.janis-burger {
+
+                    figcaption .ingredients {
+                        margin: 90px auto 15px;
+                    }
+
+                    .hamburger {
+                        transform: translate3d(40%, -53%, 0);
+                        width: 75%;
+                    }
+                }
+
+                &.elvis-burger {
+                    .ingredients {
+                        margin-bottom: 10px;
+                    }
+                    .hamburger {
+                        transform: translate3d(40%, -52%, 0);
+                        width: 75%;
+                    }
+                }
+
+
                 &.hendrix-burger figcaption{
                     .ingredients {
-                        margin-bottom: 50px;
+                        margin-bottom: 25px;
+                    }
+
+                    .hamburger {
+                        width: 80%;
+                        transform: translate3d(40%, -53%, 0);
                     }
                 }
 
-                &.bowie-burger figcaption{
-                    .ingredients {
-                        margin-bottom: 50px;
+
+
+                &.bowie-burger  {
+                    figcaption .ingredients {
+                        margin-bottom: 20px;
                     }
+
+                    .hamburger {
+                        transform: translate3d(38%, -53%, 0);
+                        width: 75%;
+                    }
+
                 }
 
-
-                &.led-burger{
-                    .hamburger{
-                        width: 60%;
+                &.kiss-burger{
+                    figcaption .ingredients {
+                        margin-bottom: 20px;
                     }
+
+                   .hamburger {
+                       transform: translate3d(40%, -53%, 0);
+                       width: 75%;
+                   }
+
                 }
 
 

@@ -32,6 +32,8 @@ export default function markOnMenu() {
                 if(found){
                     anchors.forEach(anchor => anchor.item.classList.remove('actual'))
                     found.item.classList.add('actual')
+                }else{
+                    anchors.forEach(anchor => anchor.item.classList.remove('actual'))
                 }
 
             }
