@@ -26,7 +26,7 @@ class GoogleMaps{
             '</div>'
         // console.log(contentString)
 
-        const pos = new google.maps.LatLng(-32.181694, -52.157056),
+        const pos = new google.maps.LatLng(-32.181939, -52.157113),
             // const map;
             map = new google.maps.Map(document.getElementById('map'), {
                 center: pos,
