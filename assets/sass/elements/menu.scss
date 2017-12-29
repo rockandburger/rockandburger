@@ -1,3 +1,8 @@
+.logo-menu {
+  width: 170px;
+  height: auto;
+}
+
 nav {
   position: fixed;
   left: 50%;
@@ -12,11 +17,6 @@ nav {
   margin: 0 auto;
   padding: 25px 0 0;
   transition: transform 0.2s cubic-bezier(.175, .885, .32, .775), opacity linear;
-
-  .logo-menu{
-    width: 170px;
-    height: auto;
-  }
 
   &.fixed {
     background: $c8;
