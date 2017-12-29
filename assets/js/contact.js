@@ -2,7 +2,8 @@ import {
 	the,
 	all,
 	doc,
-	elementIsVisibleInViewport
+	elementIsVisibleInViewport,
+	forEach
 } from './utils'
 
 import {validations, typing, fuck} from './contactHelpers'
@@ -58,7 +59,9 @@ export default function contact() {
 
 	const inputs = Object.entries(elements) || false
 
-	inputs.forEach(input => typing(input))
+	// inputs.forEach(input => typing(input))
+
+	forEach(inputs, input => typing(input) )
 
 	const users = {
 		one: 'user_FdLry3bEaHitVXIzllzcl',
@@ -85,7 +88,8 @@ export default function contact() {
 		if (errors.length === 0){
 			sendEmail(args)
 		}else{
-			errors.forEach(error => fuck(error, elements))
+			
+			forEach(errors, error => fuck(error, elements))
 		}
 
 	})

@@ -5,7 +5,8 @@ import {
     animation,
     ScrollHandler,
     getElemOffset,
-    elementIsVisibleInViewport
+    elementIsVisibleInViewport,
+    forEach
 } from './utils'
 
 import imagesloaded from 'imagesloaded'
@@ -36,14 +37,12 @@ export default function burgersLazyLoad() {
 
     }
 
-    lazzys.forEach(lazy => {
-
-        if (elementIsVisibleInViewport(lazy, true)){
+    forEach(lazzys, lazy => {
+        if (elementIsVisibleInViewport(lazy, true)) {
             load(lazy)
-        }else{
-            watch(lazy)  
-        }
-
+        } else {
+            watch(lazy)
+        }    
     })
 
     imagesloaded(lazzys, function () {

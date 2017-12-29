@@ -4,6 +4,7 @@ import {
     ScrollHandler,
     getElemOffset,
     elementIsVisibleInViewport,
+    forEach
 } from './utils'
 
 
@@ -11,12 +12,13 @@ export default function markOnMenu() {
 
     const anchors = []
 
-    all('.nav-item').forEach(item => {
+
+    forEach(all('.nav-item'), item=> {
         const href = item.getAttribute('href').replace('#', '')
         anchors.push({ href, item })
     })
 
-    all('.section').forEach(section => {
+    forEach(all('.section'), section => {
 
         const scroll = new ScrollHandler()
 
@@ -29,16 +31,15 @@ export default function markOnMenu() {
                 const id = section.id
                 const found = anchors.find(anchor => id === anchor.href)
 
-                if(found){
-                    anchors.forEach(anchor => anchor.item.classList.remove('actual'))
+                if (found) {
+                    forEach(anchors, anchor => anchor.item.classList.remove('actual'))
                     found.item.classList.add('actual')
-                }else{
-                    anchors.forEach(anchor => anchor.item.classList.remove('actual'))
+                } else {
+                    forEach(anchors, anchor => anchor.item.classList.remove('actual'))
                 }
 
             }
         }
-
 
         scroll.init({
             after: _ => action(section)

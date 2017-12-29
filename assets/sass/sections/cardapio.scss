@@ -211,8 +211,8 @@
                 }
             }
 
-            @media(max-width: 770px){
-                min-width: 0;
+            @media(max-width: 780px){
+                min-width: auto;
                 width: 40%;
 
                 .hamburger {
@@ -234,12 +234,17 @@
                     .hamburger {
                         width: 60%;
                     }
+
+                    .ingredients {
+                        margin-bottom: 30px;
+                    }
+
                 }
 
                 &.ramones-burger {
 
-                    .ingredients {
-                        margin-bottom: 40px;
+                    figcaption .ingredients {
+                        margin-bottom: 20px;
                     }
 
                     .hamburger{
@@ -253,7 +258,7 @@
                 &.beatles-burger {
 
                     .ingredients {
-                        margin-bottom: 48px;
+                        margin-bottom: 25px;
                     }
 
                     .hamburger {
@@ -263,24 +268,36 @@
 
                 }
 
+                &.kiss-burger {
+                    .ingredients {
+                        margin-bottom: 20px;
+                    }
+                }
+
+                &.elvis-burger {
+                    .ingredients {
+                        margin-bottom: 10px;
+                    }
+                }
 
                 &.bowie-burger figcaption {
                     .ingredients {
-                        margin-bottom: 40px;
+                        margin-bottom: 30px;
                     }
                 }
 
                 &.hendrix-burger figcaption {
                     .ingredients {
-                        margin-bottom: 40px;
+                        margin-bottom: 30px;
                     }
                 }
 
-                &.beatles-burger figcaption {
-                    .ingredients {
-                        margin-bottom: 48px;
+                &.janis-burger {
+                    figcaption .ingredients {
+                        margin: 50px auto 5px;
                     }
                 }
+
 
                 figcaption {
                     left: 0;

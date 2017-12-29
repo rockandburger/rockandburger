@@ -110,4 +110,9 @@ const elementIsVisibleInViewport = (el, partiallyVisible = false) => {
 
 }
 
-export { doc, the, all, animation, getElemOffset, ScrollHandler, elementIsVisibleInViewport}
+
+function forEach(list, callback) {
+  Array.prototype.forEach.call(list, callback)
+}
+
+export { forEach, doc, the, all, animation, getElemOffset, ScrollHandler, elementIsVisibleInViewport}

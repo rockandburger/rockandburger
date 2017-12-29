@@ -4,11 +4,13 @@ import {
     ScrollHandler,
     getElemOffset,
     elementIsVisibleInViewport,
-
+    forEach
 } from './utils'
 
 import GoogleMaps from './maps'
 import contact from './contact'
+
+
 
 export default function onSections() {
 
@@ -17,11 +19,58 @@ export default function onSections() {
 
     const wh = window.innerHeight
 
-    all('.section').forEach(section => {
+    // all('.section').forEach(section => {
+
+    //     const scroll = new ScrollHandler()
+
+    //    // const { top } = getElemOffset(section)
+
+    //     function action(section) {
+
+    //         section.classList.add('active')
+
+    //         if (section.id === 'contato') {
+
+    //             if (typeof google !== 'undefined') {
+    //                 gMaps.load()
+    //                 contact()
+    //                 scroll.stop()
+    //             }
+
+    //         } else {
+    //             scroll.stop()
+    //         }
+
+    //     }
+
+    //     if (elementIsVisibleInViewport(section, true)){
+    //         action(section)
+    //     }
+
+    //     scroll.init({
+
+    //         after: _ => {
+
+    //             if (elementIsVisibleInViewport(section, true)) {
+    //                 action(section)
+    //             }
+
+    //             if (section.id === 'contato' && scroll.lastPosY >= (getElemOffset(section).top - (getElemOffset(section).top / 5)  )){
+    //                 action(section)
+    //             }
+
+    //         }
+
+    //     })
+
+
+    // })
+    const sections = all('.section')
+    forEach(sections, function(section){
 
         const scroll = new ScrollHandler()
 
-       // const { top } = getElemOffset(section)
+        // const { top } = getElemOffset(section)
 
         function action(section) {
 
@@ -41,7 +90,7 @@ export default function onSections() {
 
         }
 
-        if (elementIsVisibleInViewport(section, true)){
+        if (elementIsVisibleInViewport(section, true)) {
             action(section)
         }
 
@@ -53,7 +102,7 @@ export default function onSections() {
                     action(section)
                 }
 
-                if (section.id === 'contato' && scroll.lastPosY >= (getElemOffset(section).top - (getElemOffset(section).top / 5)  )){
+                if (section.id === 'contato' && scroll.lastPosY >= (getElemOffset(section).top - (getElemOffset(section).top / 5))) {
                     action(section)
                 }
 
