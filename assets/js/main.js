@@ -7,24 +7,26 @@ import onSections from './sections'
 import zenscroll from 'zenscroll'
 import hamburger from './hamburger'
 import markOnMenu from './markOnMenu'
+import isMobile from './vendors/isMobile'
 import domready from 'domready'
 
-domready( () => {
+domready( _ => {
 
   // start parallax 
-  parallax()
+  isMobile.any() && hamburger()
 
-  // menu fixed on scroll
-  menuSticky()
-
-  //Lazy load
-  burgersLazyLoad()
-
+  if (!isMobile.any()){
+    parallax()
+    
+    // menu fixed on scroll
+    menuSticky()
+  }
   // when sections are reached
   onSections()
 
-  hamburger()
-
   markOnMenu()
+
+  //Lazy load
+  burgersLazyLoad()
   
 })

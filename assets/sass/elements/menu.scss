@@ -13,6 +13,11 @@ nav {
   padding: 25px 0 0;
   transition: transform 0.2s cubic-bezier(.175, .885, .32, .775), opacity linear;
 
+  .logo-menu{
+    width: 170px;
+    height: auto;
+  }
+
   &.fixed {
     background: $c8;
     max-width: none;

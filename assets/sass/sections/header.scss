@@ -14,6 +14,7 @@ header {
     }
     .banner-top {
         padding: 60px 0;
+        height: 100%;
         background: url('../assets/img/banner-header.jpg') no-repeat;
         
         .container {
@@ -59,7 +60,7 @@ header {
         }
     }
 
-    .logo-banner {
+    img.logo-banner {
         width: 510px;
         height: 280px;
         margin-top: 40px;
@@ -139,3 +140,4 @@ header {
 g {
     fill: $c5;
 }
+

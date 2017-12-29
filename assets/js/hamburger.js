@@ -11,7 +11,6 @@ export default function hamburger() {
         burger.classList.toggle('is-active')
     })
 
-
     menu.addEventListener('click', _ => {
         menu.classList.toggle('openned')
         burger.classList.toggle('is-active')
