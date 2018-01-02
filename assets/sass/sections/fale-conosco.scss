@@ -144,12 +144,14 @@
             }
 
         }
+
         ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
             color: $cWhite;
             font-size: 1rem;
             font-weight: 400;
             font-family: $contentFont;
         }
+        
         ::-moz-placeholder { /* Firefox 19+ */
             color: $cWhite;
             font-size: 1rem;
