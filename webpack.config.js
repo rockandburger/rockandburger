@@ -54,14 +54,14 @@ const browserSync = new BrowserSyncPlugin({
   }
 }, { reload: false })
 
-const gaze = new Gaze("./public/style.css");
-gaze.on('all', () => browserSync.browserSync.reload("./public/style.css"))
+const gaze = new Gaze("./public/styles.css");
+gaze.on('all', () => browserSync.browserSync.reload("./public/styles.css"))
 
 // webpack configuration
 module.exports = {
   entry: {
-    script: path.resolve(__dirname, 'assets/js/main.js'),
-    style: path.resolve(__dirname, 'assets/sass/style.scss')
+    scripts: path.resolve(__dirname, 'assets/js/main.js'),
+    styles: path.resolve(__dirname, 'assets/sass/style.scss')
   },
   output: {
     filename: '[name].js',
