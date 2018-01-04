@@ -12,7 +12,6 @@ export default function markOnMenu() {
 
     const anchors = []
 
-
     forEach(all('.nav-item'), item=> {
         const href = item.getAttribute('href').replace('#', '')
         anchors.push({ href, item })
@@ -41,9 +40,7 @@ export default function markOnMenu() {
             }
         }
 
-        scroll.init({
-            after: _ => action(section)
-        })
+        scroll.init({after: () => action(section)})
 
     })
 

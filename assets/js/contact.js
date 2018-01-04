@@ -9,7 +9,6 @@ import {
 import {validations, typing, fuck} from './contactHelpers'
 
 
-
 const opts = {
 	service: 'sendgrid',
 	template: 'normal'
@@ -17,16 +16,14 @@ const opts = {
 
 function sendEmail(args){
 
-	emailjs.send(`${opts.service}`, `${opts.template}`, {
+	const options = { 
 		name: args.name, 
 		phone: args.phone, 
-		email: args.email,
-		message: args.msg
-	}).then( response => {
-		comemore()
-		console.log("SUCCESS. status=%d, text=%s", response.status, response.text)
-	})
+		email: args.email, 
+		message: args.msg 
+	}
 
+	emailjs.send(`${opts.service}`, `${opts.template}`, options ).then( res => comemore() )
 }
 
 function comemore(){
