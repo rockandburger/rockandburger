@@ -10,9 +10,13 @@
     }
 
     #menu &{
-        margin-top: 40px;
-        display: flex;
-        justify-content: center;
+
+        @media(max-width: 420px) {
+            margin-top: 40px;
+            display: flex;
+            justify-content: center;
+        }
+
     }
 
     @extend %social-media;
