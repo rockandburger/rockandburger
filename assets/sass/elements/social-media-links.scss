@@ -10,7 +10,8 @@
     }
 
     #menu &{
-
+        display: none;
+        
         @media(max-width: 420px) {
             margin-top: 40px;
             display: flex;
