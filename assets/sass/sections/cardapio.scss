@@ -466,7 +466,7 @@
             justify-content: center;
         }
     }
-    .col {
+    .col{
         position: relative;
         padding: 0 20px;
         width: 33%;
@@ -478,6 +478,7 @@
 
         @media(max-width: 450px) {
             min-width: 100%;
+            padding: 0;
         }
 
         h3 {
@@ -533,7 +534,6 @@
 
        }
        
-
        .row, .name{
             &:before {
                 position: absolute;
@@ -633,6 +633,8 @@
 
     .active {
             .col .row:before,
+            .product .row:before,
+            .product .name:before,
             .col .name:before {
             transform: scale3d(0, 1, 1);
         }

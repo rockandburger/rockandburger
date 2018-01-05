@@ -44,6 +44,11 @@
     a {
         position: relative;
         background: rgba($cWhite, 0.8);
+        transition: 0.2s background linear;
+
+        &:hover{
+            background: rgba($cWhite, 1);
+        }
 
         @media(max-width: 768px) {
             display: inline-block;

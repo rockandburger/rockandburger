@@ -9,6 +9,7 @@ import hamburger from './hamburger'
 import markOnMenu from './markOnMenu'
 import isMobile from './vendors/isMobile'
 import domready from 'domready'
+import moveElements from './moveElements'
 
 domready( _ => {
 
@@ -28,5 +29,8 @@ domready( _ => {
 
   //Lazy load
   burgersLazyLoad()
+
+  // move elements
+  isMobile.any() && moveElements()
   
 })
