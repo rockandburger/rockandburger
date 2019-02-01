@@ -513,11 +513,10 @@
 
         }
         p {
-            font-size: 1.125rem;
+            font-size: 1.1rem;
             font-weight: 700;
             font-family: $contentFont;
             color: $cWhite;
-            letter-spacing: .1rem;
         }
     
        .name {
@@ -569,9 +568,9 @@
 
         .row {
             position: relative;
-            margin: 0 0 9px;
+            margin: 0 0 4px;
             width: 100%;
-            line-height: 1.2em;
+            line-height: 1.6em;
 
 
             span {

@@ -1230,11 +1230,10 @@ p {
 .cardapio .col h3 span {
         right: 0; }
 .cardapio .col p {
-      font-size: 1.125rem;
+      font-size: 1.1rem;
       font-weight: 700;
       font-family: "Montserrat", sans-serif;
-      color: #fff;
-      letter-spacing: .1rem; }
+      color: #fff; }
 .cardapio .col .name {
       margin: 8px 0;
       font-family: "Montserrat", sans-serif;
@@ -1322,9 +1321,9 @@ p {
       transition: transform 0.4s 0.8s  cubic-bezier(0.77, 0, 0.3, 0.99), -webkit-transform 0.4s 0.8s  cubic-bezier(0.77, 0, 0.3, 0.99); }
 .cardapio .col .row {
       position: relative;
-      margin: 0 0 9px;
+      margin: 0 0 4px;
       width: 100%;
-      line-height: 1.2em; }
+      line-height: 1.6em; }
 .cardapio .col .row span {
         position: relative;
         z-index: 2;
