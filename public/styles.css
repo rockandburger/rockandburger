@@ -182,8 +182,8 @@ svg:not(.dflt) circle {
 #menu.fixed > a {
       height: 28px; }
 #menu.fixed > a:nth-child(1) {
-        -webkit-filter: drop-shadow(0 5px 2px transparent);
-                filter: drop-shadow(0 5px 2px transparent); }
+        -webkit-filter: drop-shadow(0 5px 2px rgba(0, 0, 0, 0));
+                filter: drop-shadow(0 5px 2px rgba(0, 0, 0, 0)); }
 #menu h1 a:before, #menu h1 a:after {
     display: none; }
 #menu > a {
@@ -295,8 +295,8 @@ svg:not(.dflt) circle {
 #menu > a:hover:after, #menu > a.actual:after {
       border-right: solid 13px transparent; }
 #menu > a:active {
-      -webkit-filter: drop-shadow(0 5px 2px transparent);
-              filter: drop-shadow(0 5px 2px transparent);
+      -webkit-filter: drop-shadow(0 5px 2px rgba(0, 0, 0, 0));
+              filter: drop-shadow(0 5px 2px rgba(0, 0, 0, 0));
       -webkit-transform: translate3d(0, 1px, 0);
               transform: translate3d(0, 1px, 0); }
 @media (max-width: 1100px) {
@@ -339,8 +339,8 @@ svg:not(.dflt) circle {
         line-height: 0.5;
         width: 100%;
         background: none;
-        -webkit-filter: drop-shadow(0 0 0 transparent);
-                filter: drop-shadow(0 0 0 transparent);
+        -webkit-filter: drop-shadow(0 0 0 rgba(0, 0, 0, 0));
+                filter: drop-shadow(0 0 0 rgba(0, 0, 0, 0));
         color: #f1c646; }
       #menu > a.fale-conosco span, #menu.fixed > a.fale-conosco span {
         width: 100%; } }
@@ -916,7 +916,7 @@ p {
             margin: 4px auto 0; }
 .cardapio .burger-wrp figure figcaption .ingredients {
           font-size: 0.824rem;
-          font-weight: 400;
+          font-weight: 700;
           text-align: center;
           font-family: "Montserrat", sans-serif;
           margin-bottom: 95px;
@@ -1175,6 +1175,12 @@ p {
       opacity: 1;
       -webkit-transform: translate3d(0, 0, 0);
               transform: translate3d(0, 0, 0); }
+.cardapio .burger-wrp.active.all-loaded figure:nth-child(even) {
+        -webkit-transform: rotate(5deg);
+                transform: rotate(5deg); }
+.cardapio .burger-wrp.active.all-loaded figure:nth-child(odd) {
+        -webkit-transform: rotate(-5deg);
+                transform: rotate(-5deg); }
 .cardapio .cardapio-wrp {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -1206,7 +1212,7 @@ p {
         padding: 0; } }
 .cardapio .col h3 {
       position: relative;
-      color: #f1c646;
+      color: #fff;
       z-index: 2;
       display: inline;
       font-family: "Phosphate-Solid", sans-serif;
@@ -1214,6 +1220,7 @@ p {
       letter-spacing: .1rem;
       line-height: .9em;
       margin: 0 auto 13px;
+      font-weight: 900;
       text-transform: uppercase;
       background: #341b1a; }
 @media (max-width: 1233px) {
@@ -1224,14 +1231,14 @@ p {
         right: 0; }
 .cardapio .col p {
       font-size: 1.125rem;
-      font-weight: 400;
+      font-weight: 700;
       font-family: "Montserrat", sans-serif;
       color: #fff;
       letter-spacing: .1rem; }
 .cardapio .col .name {
       margin: 8px 0;
       font-family: "Montserrat", sans-serif;
-      color: #fff;
+      color: #f1c646;
       font-weight: 700;
       font-size: 1.12rem; }
 .cardapio .col .name p {
@@ -1315,7 +1322,7 @@ p {
       transition: transform 0.4s 0.8s  cubic-bezier(0.77, 0, 0.3, 0.99), -webkit-transform 0.4s 0.8s  cubic-bezier(0.77, 0, 0.3, 0.99); }
 .cardapio .col .row {
       position: relative;
-      margin: 0 0 5px;
+      margin: 0 0 9px;
       width: 100%;
       line-height: 1.2em; }
 .cardapio .col .row span {
@@ -1323,13 +1330,30 @@ p {
         z-index: 2;
         font-family: "Montserrat", sans-serif;
         color: #fff;
-        font-size: 1.12rem;
-        font-weight: 500;
+        font-size: 1.05rem;
+        font-weight: 700;
         background: #341b1a; }
 .cardapio .col .row span:last-child {
           position: absolute;
           right: 0;
           bottom: 0;
+          color: #341b1a;
+          background: #fff;
+          padding-left: 2px;
+          display: -webkit-box;
+          display: -ms-flexbox;
+          display: flex;
+          -webkit-box-pack: center;
+              -ms-flex-pack: center;
+                  justify-content: center;
+          -webkit-box-align: center;
+              -ms-flex-align: center;
+                  align-items: center;
+          width: 90px;
+          height: 25px;
+          font-weight: 900;
+          border-radius: 5px;
+          letter-spacing: 1px;
           padding-left: 2px; }
 @media (max-width: 450px) {
           .cardapio .col .row span {
@@ -1358,7 +1382,7 @@ p {
         overflow: hidden; }
 .cardapio .sobremesa {
     font-size: 1.354rem;
-    font-weight: 700;
+    font-weight: 900;
     color: #f1c646;
     font-family: "Montserrat", sans-serif;
     text-align: center; }

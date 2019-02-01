@@ -142,7 +142,7 @@
                 }
                 .ingredients {
                     font-size: 0.824rem;
-                    font-weight: 400;
+                    font-weight: 700;
                     text-align: center;
                     font-family: $contentFont;
                     margin-bottom: 95px;
@@ -452,6 +452,12 @@
             figure{
                 opacity: 1;
                 transform: translate3d(0, 0, 0);
+                &:nth-child(even){
+                    transform: rotate(5deg);
+                }
+                 &:nth-child(odd){
+                    transform: rotate(-5deg);
+                }
             }
         }
 
@@ -483,7 +489,7 @@
 
         h3 {
             position: relative;
-            color: $c2;
+            color: $cWhite;
             z-index: 2;
             display: inline;
             font-family: $titleFont;
@@ -491,6 +497,8 @@
             letter-spacing: .1rem;
             line-height: .9em;
             margin: 0 auto 13px;
+            font-weight: 900;
+            
             text-transform: uppercase;
             background: $c3;
             
@@ -506,7 +514,7 @@
         }
         p {
             font-size: 1.125rem;
-            font-weight: 400;
+            font-weight: 700;
             font-family: $contentFont;
             color: $cWhite;
             letter-spacing: .1rem;
@@ -515,7 +523,7 @@
        .name {
             margin: 8px 0;
             font-family: $contentFont;
-            color: $cWhite;
+            color: $c2;
             font-weight: 700;
             font-size: 1.12rem;
 
@@ -561,7 +569,7 @@
 
         .row {
             position: relative;
-            margin: 0 0 5px;
+            margin: 0 0 9px;
             width: 100%;
             line-height: 1.2em;
 
@@ -571,13 +579,24 @@
                 z-index: 2;
                 font-family: $contentFont;
                 color: $cWhite;
-                font-size: 1.12rem;
-                font-weight: 500;
+                font-size: 1.05rem;
+                font-weight: 700;
                 background: $c3;
                 &:last-child {
                     position: absolute;
                     right: 0;
                     bottom: 0;
+                    color: $c3;
+                    background: $cWhite;
+                    padding-left: 2px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 90px;
+                    height: 25px;
+                    font-weight: 900;
+                    border-radius: 5px;
+                    letter-spacing: 1px;
                     padding-left: 2px;
                 }
                 @media(max-width: 450px) {
@@ -625,7 +644,7 @@
     }
     .sobremesa {
         font-size: 1.354rem;
-        font-weight: 700;
+        font-weight: 900;
         color: $c2;
         font-family: $contentFont;
         text-align: center;

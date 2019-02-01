@@ -843,7 +843,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 /*!
- * imagesLoaded v4.1.3
+ * imagesLoaded v4.1.4
  * JavaScript is all like "You images are done yet or what?"
  * MIT License
  */
@@ -888,22 +888,23 @@ function factory(window, EvEmitter) {
     return a;
   }
 
+  var arraySlice = Array.prototype.slice;
+
   // turn element or nodeList into an array
   function makeArray(obj) {
-    var ary = [];
     if (Array.isArray(obj)) {
       // use object if already an array
-      ary = obj;
-    } else if (typeof obj.length == 'number') {
-      // convert nodeList to array
-      for (var i = 0; i < obj.length; i++) {
-        ary.push(obj[i]);
-      }
-    } else {
-      // array of single index
-      ary.push(obj);
+      return obj;
     }
-    return ary;
+
+    var isArrayLike = (typeof obj === 'undefined' ? 'undefined' : _typeof(obj)) == 'object' && typeof obj.length == 'number';
+    if (isArrayLike) {
+      // convert nodeList to array
+      return arraySlice.call(obj);
+    }
+
+    // array of single index
+    return [obj];
   }
 
   // -------------------------- imagesLoaded -------------------------- //
@@ -919,13 +920,19 @@ function factory(window, EvEmitter) {
       return new ImagesLoaded(elem, options, onAlways);
     }
     // use elem as selector string
+    var queryElem = elem;
     if (typeof elem == 'string') {
-      elem = document.querySelectorAll(elem);
+      queryElem = document.querySelectorAll(elem);
+    }
+    // bail if bad element
+    if (!queryElem) {
+      console.error('Bad element for imagesLoaded ' + (queryElem || elem));
+      return;
     }
 
-    this.elements = makeArray(elem);
+    this.elements = makeArray(queryElem);
     this.options = extend({}, this.options);
-
+    // shift arguments if no options set
     if (typeof options == 'function') {
       onAlways = options;
     } else {
@@ -944,9 +951,7 @@ function factory(window, EvEmitter) {
     }
 
     // HACK check async to allow time to bind listeners
-    setTimeout(function () {
-      this.check();
-    }.bind(this));
+    setTimeout(this.check.bind(this));
   }
 
   ImagesLoaded.prototype = Object.create(EvEmitter.prototype);
@@ -1114,7 +1119,9 @@ function factory(window, EvEmitter) {
   };
 
   LoadingImage.prototype.getIsImageComplete = function () {
-    return this.img.complete && this.img.naturalWidth !== undefined;
+    // check for non-zero, non-undefined naturalWidth
+    // fixes Safari+InfiniteScroll+Masonry bug infinite-scroll#671
+    return this.img.complete && this.img.naturalWidth;
   };
 
   LoadingImage.prototype.confirm = function (isLoaded, message) {
@@ -1756,10 +1763,10 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 /**
- * Zenscroll 4.0.0
+ * Zenscroll 4.0.2
  * https://github.com/zengabor/zenscroll/
  *
- * Copyright 2015–2017 Gabor Lenard
+ * Copyright 2015–2018 Gabor Lenard
  *
  * This is free and unencumbered software released into the public domain.
  * 
@@ -1817,7 +1824,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 	// Detect if the browser already supports native smooth scrolling (e.g., Firefox 36+ and Chrome 49+) and it is enabled:
 
 	var isNativeSmoothScrollEnabledOn = function isNativeSmoothScrollEnabledOn(elem) {
-		return "getComputedStyle" in window && window.getComputedStyle(elem)["scroll-behavior"] === "smooth";
+		return elem && "getComputedStyle" in window && window.getComputedStyle(elem)["scroll-behavior"] === "smooth";
 	};
 
 	// Exit if it’s not a browser environment:
@@ -1933,6 +1940,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
    * @param {elem} The element.
    * @param {duration} Optionally the duration of the scroll operation.
    * @param {offset} Optionally the offset of the top of the element from the center of the screen.
+   *        A value of 0 is ignored.
    * @param {onDone} An optional callback function to be invoked once the scroll finished.
    */
 		var scrollToCenterOf = function scrollToCenterOf(elem, duration, offset, onDone) {
@@ -2027,7 +2035,8 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 	// Exclude IE8- or when native is enabled or Zenscroll auto- is disabled
 	if ("addEventListener" in window && !window.noZensmooth && !isNativeSmoothScrollEnabledOn(document.body)) {
 
-		var isScrollRestorationSupported = "scrollRestoration" in history;
+		var isHistorySupported = "history" in window && "pushState" in history;
+		var isScrollRestorationSupported = isHistorySupported && "scrollRestoration" in history;
 
 		// On first load & refresh make sure the browser restores the position first
 		if (isScrollRestorationSupported) {
@@ -2082,8 +2091,10 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 			}
 			// Save the current scrolling position so it can be used for scroll restoration:
 			if (isScrollRestorationSupported) {
+				var historyState = history.state && _typeof(history.state) === "object" ? history.state : {};
+				historyState.zenscrollY = zenscroll.getY();
 				try {
-					history.replaceState({ zenscrollY: zenscroll.getY() }, "");
+					history.replaceState(historyState, "");
 				} catch (e) {
 					// Avoid the Chrome Security exception on file protocol, e.g., file://index.html
 				}
@@ -2109,9 +2120,11 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 				var edgeOffset = zenscroll.setup().edgeOffset;
 				if (edgeOffset) {
 					targetY = Math.max(0, targetY - edgeOffset);
-					onDone = function onDone() {
-						history.pushState(null, "", href);
-					};
+					if (isHistorySupported) {
+						onDone = function onDone() {
+							history.pushState({}, "", href);
+						};
+					}
 				}
 				zenscroll.toY(targetY, null, onDone);
 			}
